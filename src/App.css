@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "jua";
+  font-weight: 50;
+  src: url("./assets/fonts/BMJUA_ttf.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'KOTRAHOPE';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Kalam-Bold";
+  font-weight: 50;
+  src: url("./assets/fonts/Kalam-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kalam-Light";
+  font-weight: 50;
+  src: url("./assets/fonts/Kalam-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kalam-Regular";
+  font-weight: 50;
+  src: url("./assets/fonts/Kalam-Regular.ttf") format("truetype");
+}
