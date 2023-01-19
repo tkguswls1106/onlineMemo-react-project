@@ -23,7 +23,7 @@ const LittleTitle = styled.div`
     text-align: center;
     font-family: "KOTRAHOPE";
     color: #463f3a;
-    //margin-bottom: 9px;
+    // margin-bottom: 9px;
 `;
 
 // <i class="fa fa-clone" aria-hidden="true"></i>
