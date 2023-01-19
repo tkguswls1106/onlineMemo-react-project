@@ -7,7 +7,7 @@ import {
 import styled from "styled-components";
 import './App.css';
 import NoLoginNav from "./components/Navigation/NoLoginNav";
-import MainPage from "./components/BodyPage/MainPage";
+import LoginPage from "./components/BodyPage/LoginPage";
 
 
 const MainTitleText = styled.header`
@@ -37,7 +37,7 @@ function App(props) {
       </MainTitleText>
       <NoLoginNav />
       <Routes>
-        <Route index element={<MainPage />} />
+        <Route index element={<LoginPage />} />
         {/* <Route index element={<MainPage />} />
         <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}

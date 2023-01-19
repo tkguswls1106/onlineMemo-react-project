@@ -8,18 +8,15 @@ const Wrapper = styled.nav`
     font-family: "jua";
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-
     border-top: solid #463f3a 1px;
     border-left: solid #463f3a 1px;
     border-right: solid #463f3a 1px;
-
     ul {
         list-style:none;
         display:inline-block;
         margin: 0px;
         padding: 0px;
     }
-
     @media(min-width: 320px) {
         ul li {
             list-style:none;
@@ -28,7 +25,6 @@ const Wrapper = styled.nav`
             line-height:50px;
         }  
     }
-
     @media(min-width: 425px) {
         ul li {
             list-style:none;
@@ -37,7 +33,6 @@ const Wrapper = styled.nav`
             line-height:50px;
         }  
     }
-
     @media(min-width: 768px) {
         ul li {
             list-style:none;
@@ -46,7 +41,6 @@ const Wrapper = styled.nav`
             line-height:50px;
         }  
     }
-
     a {
         text-decoration:none;
         font-size:2rem;
@@ -59,13 +53,12 @@ const Wrapper = styled.nav`
 
 function NoLoginNav(props) {
     // const { comment } = props;
-    const navtexts = ["공지사항", "사이트 정보"];
+    const navtexts = ["공지사항", "개발 정보"];
 
     return (
         <Wrapper>
             <ul>
-                {navtexts.map( (navtext) =>
-                {
+                {navtexts.map((navtext) => {
                     return (
                         <li><a href="#">{navtext}</a></li>
                     );

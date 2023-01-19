@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import '../../App.css';
 
-const Wrapper = styled.article`
+const Wrapper = styled.div`
     // text-align:center;
     background-color: #bcb8b1;
     border-bottom-left-radius: 5px;
@@ -21,11 +21,11 @@ const Wrapper = styled.article`
     // => 231.5px
     // height: calc(100vh - 231.5px);
 
-    @media(max-height: 500.18px) {
+    @media(max-height: 648.1px) {
         height: 100%;
     }
 
-    @media(min-height: 500.19px) {
+    @media(min-height: 648.2px) {
         height: calc(100vh - 231.5px);
     }
 
@@ -33,6 +33,10 @@ const Wrapper = styled.article`
         text-align: center;
         font-size: 2rem;
         color: #463f3a;
+
+    @media(min-height: 648.2px) {
+        margin-top: calc(50vh - 277.249px - 30px);
+    }
 
         :not(:first-child) {
             border: solid;
@@ -80,17 +84,28 @@ const Wrapper = styled.article`
 const DivWrapper = styled.div`
     font-size: 1.5rem;
     color: #463f3a;
-    margin-top: 17px;
     line-height: 135%;
 
     width: 479px;
     margin: 0 auto;
-    @media(max-width: 530px) {
+
+    @media(max-width: 370px) {
+        width: 320px;
+    }    
+    @media(min-width: 371px) and (max-width: 530px) {
         width: 346px;
     }
 
+
     ol {
+        margin-top: 17px;
+        margin-bottom: 16.6px;
         padding-right: 40px;
+
+
+    @media(min-height: 648.2px) {
+        margin-bottom: calc(50vh - 277.249px);
+    }
     }
 
     br {
@@ -100,7 +115,7 @@ const DivWrapper = styled.div`
     }
 `;
 
-function MainPage(props) {
+function LoginPage(props) {
 
     return (
         <Wrapper>
@@ -138,4 +153,4 @@ function MainPage(props) {
     );
 }
 
-export default MainPage;
+export default LoginPage;
