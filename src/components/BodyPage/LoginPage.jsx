@@ -56,7 +56,7 @@ function LoginPage(props) {
                         pw:&nbsp;&nbsp;<input type="text" value={null} />
                     </div>
                     <div class="flex-container">
-                        <a onClick={null}>pw 변경</a>
+                        <a onClick={() => { navigate('/pw') }}>pw 변경</a>
                         &nbsp;&nbsp;&nbsp;
                         <a onClick={() => {navigate('/member')}}>회원가입</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
