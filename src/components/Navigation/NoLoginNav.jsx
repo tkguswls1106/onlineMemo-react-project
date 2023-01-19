@@ -58,7 +58,8 @@ function NoLoginNav(props) {
     return (
         <Wrapper>
             <ul>
-                {navtexts.map((navtext) => {
+                {navtexts.map((navtext) =>
+                {
                     return (
                         <li><a href="#">{navtext}</a></li>
                     );

@@ -8,6 +8,7 @@ import styled from "styled-components";
 import './App.css';
 import NoLoginNav from "./components/Navigation/NoLoginNav";
 import LoginPage from "./components/BodyPage/LoginPage";
+import NewMember from "./components/BodyPage/NewMember";
 
 
 const MainTitleText = styled.header`
@@ -38,8 +39,8 @@ function App(props) {
       <NoLoginNav />
       <Routes>
         <Route index element={<LoginPage />} />
-        {/* <Route index element={<MainPage />} />
-        <Route path="post-write" element={<PostWritePage />} />
+        <Route path="member" element={<NewMember />} />
+        {/* <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}
       </Routes>
     </BrowserRouter>
