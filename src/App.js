@@ -14,7 +14,7 @@ const MainTitleText = styled.header`
     font-size: 3rem;
     text-align: center;
     font-family: "KOTRAHOPE";
-    margin: 9px 0px 0px 0px;
+    margin: 9px 0px;
     color: #463f3a;
 `;
 
@@ -23,7 +23,7 @@ const LittleTitle = styled.div`
     text-align: center;
     font-family: "KOTRAHOPE";
     color: #463f3a;
-    margin-bottom: 9px;
+    //margin-bottom: 9px;
 `;
 
 // <i class="fa fa-clone" aria-hidden="true"></i>
@@ -31,8 +31,10 @@ const LittleTitle = styled.div`
 function App(props) {
   return (
     <BrowserRouter>
-      <MainTitleText>온라인 메모장 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></MainTitleText>
-      <LittleTitle>OnlineMemo.kr</LittleTitle>
+      <MainTitleText>
+        온라인 메모장 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <LittleTitle>OnlineMemo.kr</LittleTitle>
+      </MainTitleText>
       <NoLoginNav />
       <Routes>
         <Route index element={<MainPage />} />
