@@ -77,7 +77,7 @@ const Wrapper = styled.article`
     }
 `;
 
-const Pwrapper = styled.div`
+const DivWrapper = styled.div`
     font-size: 1.5rem;
     color: #463f3a;
     margin-top: 17px;
@@ -126,14 +126,14 @@ function MainPage(props) {
                 </form>
             </h2>
 
-            <Pwrapper>
+            <DivWrapper>
                 <ol>
                     <li>간단하고 직관적인 UX/UI 디자인!</li>
                     <li>개인정보 필요없는 10초 회원가입 절차!&nbsp;<br></br>(생성할 id, pw 만 입력하면 끝!)</li>
                     <li>어느 기기에서든지 쉽고 빠르게 로그인 후&nbsp;<br></br>나만의 메모 관리!</li>
                     <li>친구들끼리 그룹을 만들어 공동 메모도 작성 가능!</li>
                 </ol>
-            </Pwrapper>
+            </DivWrapper>
         </Wrapper>
     );
 }
