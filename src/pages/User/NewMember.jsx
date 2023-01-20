@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import '../../App.css';
 import { useNavigate } from "react-router-dom";
-import HelloWrapper from "../Styled/HelloWrapper"
+import HelloWrapper from "../../components/Styled/HelloWrapper"
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {

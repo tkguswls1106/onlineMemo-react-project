@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import '../../App.css';
 import { useNavigate } from "react-router-dom";
-import HelloWrapper from "../Styled/HelloWrapper"
+import HelloWrapper from "../../components/Styled/HelloWrapper"
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
@@ -10,9 +10,12 @@ const MoreWrapper = styled(HelloWrapper)`
     }
 
     .fa-arrow-left {
-        border: solid 2.3px;
+        border: solid 2.3px ;
         border-radius: 6px;
         padding: 1px 6.7px;
+
+        // background-color: #463f3a;
+        // color: #bcb8b1;
     }
 
     .change {

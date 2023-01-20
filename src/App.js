@@ -8,9 +8,9 @@ import {
 import styled from "styled-components";
 import './App.css';
 import NoLoginNav from "./components/Navigation/NoLoginNav";
-import LoginPage from "./components/BodyPage/LoginPage";
-import NewMember from "./components/BodyPage/NewMember";
-import ChangePw from "./components/BodyPage/ChangePw";
+import LoginPage from "./pages/User/LoginPage";
+import NewMember from "./pages/User/NewMember";
+import ChangePw from "./pages/User/ChangePw";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
 
 

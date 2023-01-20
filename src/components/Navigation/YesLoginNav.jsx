@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
-import Dropdown from "../UI/Dropdown";
+import DropdownLeft from "../UI/DropdownLeft";
+import DropdownRight from "../UI/DropdownRight";
 
 const Wrapper = styled(NavWrapper)`
     ul {
@@ -82,13 +83,13 @@ function YesLoginNav(props) {
     return (
         <Wrapper>
             <ul>
-                <Dropdown
+                <DropdownLeft
                     dropMain={<i class="fa fa-user-o" aria-hidden="true"></i>}
                     dropItems={dropItemsUser}
                 />
                 <li><a href="#">공지사항</a></li>
                 <li><a href="#">개발 정보</a></li>
-                <Dropdown
+                <DropdownRight
                     dropMain={<span><button>+ 새 메모&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsPlus}
                 />

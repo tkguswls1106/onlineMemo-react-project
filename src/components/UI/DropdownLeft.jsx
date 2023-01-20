@@ -19,6 +19,10 @@ const DropMenu = styled.div`
     transform: translate(-50%, -20px);
     z-index: 999;  // 페이지위에 겹친 요소들중 가장 위에있는 정도. 숫자가 클수록 위에 있다.
 
+    @media(max-width: 565px) {
+        left: 145%;
+    }
+
     &:after {  // 세모화살표만들기
         content: "";
         height: 0;
@@ -30,6 +34,10 @@ const DropMenu = styled.div`
         border: 12px solid transparent;
         border-top-width: 0;
         border-bottom-color: #463f3a;
+
+        @media(max-width: 565px) {
+            left: 22%;
+        }
     }
 
     #dropUl {
@@ -59,7 +67,7 @@ const DropMenu = styled.div`
     }
 `;
 
-function Dropdown(props) {
+function DropdownLeft(props) {
     const [ddIsOpen, ddRef, ddHandler] = useDetectDropdown(false);  // props를 받아오는게 아닌 훅 종류를 사용하였으므로, {}가 아닌, []로 받아야한다.
     // useDetectDropdown(initialValue)의 initialValue를 false로 넣어주었다. 그러므로, IsOpen이 false가 되어 ddIsOpen도 false가 된다.
     // 참고로 dd는 dropdown을 줄여서 적어본것이다.
@@ -71,11 +79,10 @@ function Dropdown(props) {
             <li onClick={ddHandler} ref={ddRef}>
                 {dropMain}
             </li>
-            { ddIsOpen &&
+            {ddIsOpen &&
                 <DropMenu>
                     <ul id="dropUl">
-                        {dropItems.map((drop) =>
-                        {
+                        {dropItems.map((drop) => {
                             return (
                                 <li id="dropLi">
                                     <Link to={drop.link} style={{ textDecoration: "none" }}>
@@ -92,4 +99,4 @@ function Dropdown(props) {
     );
 }
 
-export default Dropdown;
+export default DropdownLeft;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import '../../App.css';
-import HelloWrapper from "../Styled/HelloWrapper"
+import HelloWrapper from "../../components/Styled/HelloWrapper"
 import { useNavigate } from "react-router-dom";
 
 const DivWrapper = styled.div`
