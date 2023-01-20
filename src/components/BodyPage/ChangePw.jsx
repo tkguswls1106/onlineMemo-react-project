@@ -7,6 +7,10 @@ const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
         line-height: 130%;
     }
+
+    .change {
+        text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+    }
 `;
 
 function ChangePw(props) {
@@ -25,10 +29,10 @@ function ChangePw(props) {
                     <div class="flex-container">
                         현재 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
                     </div>
-                    <div class="flex-container">
+                    <div class="flex-container change">
                         바꿀 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
                     </div>
-                    <div class="flex-container">
+                    <div class="flex-container change">
                         pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="15" />
                     </div>
                     <div class="flex-container">

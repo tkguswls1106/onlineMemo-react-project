@@ -68,9 +68,9 @@ const HelloWrapper = styled.div`
     a {
         margin-top:4px;
         text-decoration: none;
-        color: #ffffff;
+        color: #463f3a;
         font-size: 14px;
-        text-shadow:1px 1px 1px #000;
+        text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
         cursor:pointer;
     }
 

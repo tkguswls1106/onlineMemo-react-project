@@ -36,7 +36,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <MainTitleText>
-        <Link to="/" style={{ textDecoration: "none", color:"#463f3a"}}>
+        <Link to="/" style={{textDecoration: "none", color:"#463f3a"}}>
           온라인 메모장 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           <LittleTitle>OnlineMemo.kr</LittleTitle>
         </Link>

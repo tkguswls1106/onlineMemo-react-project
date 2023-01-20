@@ -37,7 +37,6 @@ const DivWrapper = styled.div`
     }
 `;
 
-
 function LoginPage(props) {
     const navigate = useNavigate();
 
