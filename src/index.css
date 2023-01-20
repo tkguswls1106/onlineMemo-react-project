@@ -2,6 +2,8 @@ html {
   font-size: 62.5%;
   background-color: #f4f3ee;
   margin: 0px 8px;
+  /* max-width: 1063px; */
+  /* max-width: 1385px; */
 }
 
 body {

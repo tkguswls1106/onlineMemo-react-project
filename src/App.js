@@ -11,6 +11,7 @@ import NoLoginNav from "./components/Navigation/NoLoginNav";
 import LoginPage from "./components/BodyPage/LoginPage";
 import NewMember from "./components/BodyPage/NewMember";
 import ChangePw from "./components/BodyPage/ChangePw";
+import YesLoginNav from "./components/Navigation/YesLoginNav";
 
 
 const MainTitleText = styled.header`
@@ -41,7 +42,8 @@ function App(props) {
           <LittleTitle>OnlineMemo.kr</LittleTitle>
         </Link>
       </MainTitleText>
-      <NoLoginNav />
+      {/* <NoLoginNav /> */}
+      <YesLoginNav />
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="member" element={<NewMember />} />

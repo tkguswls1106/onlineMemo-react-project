@@ -34,9 +34,9 @@ const HelloWrapper = styled.div`
         font-size: 2rem;
         color: #463f3a;
 
-    @media(min-height: 648.2px) {
-        margin-top: calc(50vh - 277.249px - 30px);
-    }
+        @media(min-height: 648.2px) {
+            margin-top: calc(50vh - 277.249px - 30px);
+        }
 
         :not(:first-child) {
             border: solid;

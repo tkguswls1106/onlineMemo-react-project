@@ -33,9 +33,16 @@ const Wrapper = styled(NavWrapper)`
         text-decoration:none;
         font-size:2rem;
         color: #ffffff;
-        border-left: #bcb8b1 solid;
-        border-right: #bcb8b1 solid;
+        border-left: #bcb8b1 solid 2px;
+        border-right: #bcb8b1 solid 2px;
         padding: 1px 7px;
+
+        &:hover {
+            color: #463f3a;
+            background-color: #bcb8b1;
+            border-left: #463f3a solid 2px;
+            border-right: #463f3a solid 2px;
+        }
     }
 `;
 

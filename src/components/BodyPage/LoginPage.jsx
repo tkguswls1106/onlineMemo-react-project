@@ -24,10 +24,9 @@ const DivWrapper = styled.div`
         margin-bottom: 16.6px;
         padding-right: 40px;
 
-
-    @media(min-height: 648.2px) {
-        margin-bottom: calc(50vh - 277.249px);
-    }
+        @media(min-height: 648.2px) {
+            margin-bottom: calc(50vh - 277.249px);
+        }
     }
 
     br {
