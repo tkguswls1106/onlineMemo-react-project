@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
+import Dropdown from "../UI/Dropdown";
 
 const Wrapper = styled(NavWrapper)`
     ul {
@@ -52,13 +53,45 @@ const Wrapper = styled(NavWrapper)`
 
 function YesLoginNav(props) {
 
+    const dropItemsUser = [
+        {
+            name: "회원정보",
+            link: "#",
+        },
+        {
+            name: "친구 목록",
+            link: "#",
+        },
+        {
+            name: "로그아웃",
+            link: "#",
+        },
+    ]
+
+    const dropItemsPlus = [
+        {
+            name: "+ 개인 메모",
+            link: "#",
+        },
+        {
+            name: "+ 공동 메모",
+            link: "#",
+        },
+    ]
+
     return (
         <Wrapper>
             <ul>
-                <li><i class="fa fa-user-o" aria-hidden="true"></i></li>
+                <Dropdown
+                    dropMain={<i class="fa fa-user-o" aria-hidden="true"></i>}
+                    dropItems={dropItemsUser}
+                />
                 <li><a href="#">공지사항</a></li>
                 <li><a href="#">개발 정보</a></li>
-                <li><span><button>+ 새 메모&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></button></span></li>
+                <Dropdown
+                    dropMain={<span><button>+ 새 메모&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></button></span>}
+                    dropItems={dropItemsPlus}
+                />
             </ul>
         </Wrapper>
     );
