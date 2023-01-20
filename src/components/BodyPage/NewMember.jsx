@@ -1,19 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 import '../../App.css';
+import { useNavigate } from "react-router-dom";
 import HelloWrapper from "../Styled/HelloWrapper"
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
         line-height: 130%;
     }
+
+    .fa-arrow-left {
+        border: solid 2.3px;
+        border-radius: 6px;
+        padding: 1px 6.7px;
+    }
 `;
 
 function NewMember(props) {
+    const navigate = useNavigate();
 
     return (
         <MoreWrapper>
-            <h2>환영합니다!&nbsp;&nbsp;<i class="fa fa-smile-o" aria-hidden="true"></i></h2>
+            <h2>
+                <i class="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+                환영합니다!&nbsp;&nbsp;<i class="fa fa-smile-o" aria-hidden="true"></i>
+            </h2>
             <h2>
                 <i class="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 회원가입<br></br>

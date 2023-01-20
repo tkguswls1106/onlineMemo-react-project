@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import '../../App.css';
+import { useNavigate } from "react-router-dom";
 import HelloWrapper from "../Styled/HelloWrapper"
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
         line-height: 130%;
+    }
+
+    .fa-arrow-left {
+        border: solid 2.3px;
+        border-radius: 6px;
+        padding: 1px 6.7px;
     }
 
     .change {
@@ -14,10 +21,14 @@ const MoreWrapper = styled(HelloWrapper)`
 `;
 
 function ChangePw(props) {
+    const navigate = useNavigate();
 
     return (
         <MoreWrapper>
-            <h2>pw를 변경하세요!&nbsp;&nbsp;<i class="fa fa-unlock-alt" aria-hidden="true"></i></h2>
+            <h2>
+                <i class="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+                pw를 변경하세요!&nbsp;&nbsp;<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            </h2>
             <h2>
                 <i class="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 비밀번호 변경<br></br>
