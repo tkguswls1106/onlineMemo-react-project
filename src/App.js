@@ -21,6 +21,10 @@ const MainTitleText = styled.header`
     font-family: "KOTRAHOPE";
     margin: 9px 0px;
     color: #463f3a;
+
+    @media(min-width: 1365px) {
+        font-size: 3.3rem;
+    }
 `;
 
 const LittleTitle = styled.div`
@@ -28,11 +32,12 @@ const LittleTitle = styled.div`
     text-align: center;
     font-family: "KOTRAHOPE";
     color: #463f3a;
-    // margin-bottom: 9px;
+
+    @media(min-width: 1365px) {
+        font-size: 1.7rem;
+    }
 `;
 
-// <i class="fa fa-clone" aria-hidden="true"></i>
-// 이건 copy 아이콘
 function App(props) {
 
   return (

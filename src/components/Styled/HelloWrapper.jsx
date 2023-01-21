@@ -14,6 +14,10 @@ const HelloWrapper = styled.div`
     border-left: solid #463f3a 1px;
     border-right: solid #463f3a 1px;
 
+    @media(min-width: 1365px) {
+        border: none;
+    }
+
     // header = 49.5 + 18 px = 67.5px
     // nav = 55.5 + 1 px = 56.5px
     // footer = 64.5 + 18 px = 82.5px

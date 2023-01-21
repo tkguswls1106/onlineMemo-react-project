@@ -12,7 +12,8 @@ const DivWrapper = styled.div`
     // 이게 flex-container 역할
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: baseline;
 
     .flex-item {
         // 이게 flex-item 역할

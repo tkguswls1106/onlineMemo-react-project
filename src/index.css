@@ -20,3 +20,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#footerUp {
+  font-size: 1.1rem;
+}
+
+#footerDown {
+  color: black;
+  font-size: 1.2rem;
+  font-family: "Kalam-Regular";
+}
+
+@media(min-width: 1365px) {
+  html {
+    margin: 0px 185px;
+  }
+
+  #footerUp {
+    font-size: 1.25rem;
+  }
+
+  #footerDown {
+    font-size: 1.35rem;
+  }
+}

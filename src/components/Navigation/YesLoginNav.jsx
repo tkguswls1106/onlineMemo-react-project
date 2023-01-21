@@ -10,6 +10,8 @@ const Wrapper = styled(NavWrapper)`
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        
+        align-items: baseline;
     }
 
     ul li {
