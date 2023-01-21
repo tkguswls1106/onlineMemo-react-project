@@ -82,10 +82,10 @@ function DropdownCenter(props) {
             { ddIsOpen &&
                 <DropMenu>
                     <ul id="dropUl">
-                        {dropItems.map((drop) =>
+                        {dropItems.map((drop, index) =>
                         {
                             return (
-                                <li id="dropLi">
+                                <li id="dropLi" key={index}>
                                     <Link to={drop.link} style={{ textDecoration: "none" }}>
                                         {drop.name}
                                     </Link>

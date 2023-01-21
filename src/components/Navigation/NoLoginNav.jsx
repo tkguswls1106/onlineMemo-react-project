@@ -53,10 +53,10 @@ function NoLoginNav(props) {
     return (
         <Wrapper>
             <ul>
-                {navtexts.map((navtext) =>
+                {navtexts.map((navtext, index) =>
                 {
                     return (
-                        <li><a href="#">{navtext}</a></li>
+                        <li key={index}><a href="#">{navtext}</a></li>
                     );
                 }
                 )}

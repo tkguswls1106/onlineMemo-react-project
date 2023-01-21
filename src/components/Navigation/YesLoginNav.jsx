@@ -84,13 +84,13 @@ function YesLoginNav(props) {
         <Wrapper>
             <ul>
                 <DropdownLeft
-                    dropMain={<i class="fa fa-user-o" aria-hidden="true"></i>}
+                    dropMain={<i className="fa fa-user-o" aria-hidden="true"></i>}
                     dropItems={dropItemsUser}
                 />
                 <li><a href="#">공지사항</a></li>
                 <li><a href="#">개발 정보</a></li>
                 <DropdownRight
-                    dropMain={<span><button>+ 새 메모&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></button></span>}
+                    dropMain={<span><button>+ 새 메모&nbsp;<i className="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsPlus}
                 />
             </ul>

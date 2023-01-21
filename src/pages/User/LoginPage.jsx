@@ -41,19 +41,19 @@ function LoginPage(props) {
 
     return (
         <HelloWrapper>
-            <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i class="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
+            <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i className="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
             <h2>
-                <i class="fa fa-user-circle" aria-hidden="true"></i><br></br>
+                <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 Login<br></br>
                 <hr></hr>
                 <form onSubmit={null}>
-                    <div class="flex-container">
+                    <div className="flex-container">
                         &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" value={null} />
                     </div>
-                    <div class="flex-container">
+                    <div className="flex-container">
                         pw:&nbsp;&nbsp;<input type="text" value={null} />
                     </div>
-                    <div class="flex-container">
+                    <div className="flex-container">
                         <a onClick={() => { navigate('/pw') }}>pw 변경</a>
                         &nbsp;&nbsp;&nbsp;
                         <a onClick={() => {navigate('/member')}}>회원가입</a>

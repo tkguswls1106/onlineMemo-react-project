@@ -12,6 +12,7 @@ import LoginPage from "./pages/User/LoginPage";
 import NewMember from "./pages/User/NewMember";
 import ChangePw from "./pages/User/ChangePw";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
+import MainPage from "./pages/Main/MainPage";
 
 
 const MainTitleText = styled.header`
@@ -38,7 +39,7 @@ function App(props) {
     <BrowserRouter>
       <MainTitleText>
         <Link to="/" style={{textDecoration: "none", color:"#463f3a"}}>
-          온라인 메모장 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          온라인 메모장 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
           <LittleTitle>OnlineMemo.kr</LittleTitle>
         </Link>
       </MainTitleText>
@@ -50,6 +51,7 @@ function App(props) {
         <Route path="pw" element={<ChangePw />} />
         {/* <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}
+        <Route path="main" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );
