@@ -10,27 +10,19 @@ const HelloWrapper = styled.div`
     padding: 12px;
     font-family: "jua";
 
-    border-bottom: solid #463f3a 1px;
-    border-left: solid #463f3a 1px;
-    border-right: solid #463f3a 1px;
-
-    @media(min-width: 1365px) {
-        border: none;
-    }
-
     // header = 49.5 + 18 px = 67.5px
-    // nav = 55.5 + 1 px = 56.5px
+    // nav = 55.5px
     // footer = 64.5 + 18 px = 82.5px
-    // article padding & border = 25px
-    // => 231.5px
-    // height: calc(100vh - 231.5px);
+    // article padding = 24px
+    // => 229.5px
+    // height: calc(100vh - 229.5px);
 
     // header = 94.5px
     // nav = 50px
     // footer = 64.5 + 18 px = 102.5px
-    // article padding & border = 24px
+    // article padding = 24px
     // => 271px
-    // height: calc(100vh - 271.5px);
+    // height: calc(100vh - 271px);
 
     @media(max-height: 648.1px) {
         height: 100%;

@@ -9,14 +9,6 @@ const NavWrapper = styled.nav`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
-    border-top: solid #463f3a 1px;
-    border-left: solid #463f3a 1px;
-    border-right: solid #463f3a 1px;
-
-    @media(min-width: 1365px) {
-        border: none;
-    }
-
     ul {
         list-style:none;
         display:inline-block;
