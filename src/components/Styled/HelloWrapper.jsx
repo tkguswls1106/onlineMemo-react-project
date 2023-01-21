@@ -25,12 +25,23 @@ const HelloWrapper = styled.div`
     // => 231.5px
     // height: calc(100vh - 231.5px);
 
+    // header = 94.5px
+    // nav = 50px
+    // footer = 64.5 + 18 px = 102.5px
+    // article padding & border = 24px
+    // => 271px
+    // height: calc(100vh - 271.5px);
+
     @media(max-height: 648.1px) {
         height: 100%;
     }
 
     @media(min-height: 648.2px) {
-        height: calc(100vh - 231.5px);
+        height: calc(100vh - 271px);
+    }
+
+    @media(min-height: 648.2px) and (max-width: 1364.9px) {
+        height: calc(100vh - 271px + 43.5px);
     }
 
     & > h2 {

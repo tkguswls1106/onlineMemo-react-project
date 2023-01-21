@@ -21,6 +21,14 @@ code {
     monospace;
 }
 
+footer {
+  text-align: center;
+  color: #463f3a;
+  margin: 9px;
+  line-height: 155%;
+  font-family: "Kalam-Light";
+}
+
 #footerUp {
   font-size: 1.1rem;
 }
@@ -42,5 +50,10 @@ code {
 
   #footerDown {
     font-size: 1.35rem;
+  }
+
+  footer {
+    margin-top: 18px;
+    margin-bottom: 18px;
   }
 }

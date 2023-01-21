@@ -24,6 +24,7 @@ const MainTitleText = styled.header`
 
     @media(min-width: 1365px) {
         font-size: 3.3rem;
+        margin: 18px 0px;
     }
 `;
 
