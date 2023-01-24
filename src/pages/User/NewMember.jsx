@@ -31,13 +31,16 @@ function NewMember(props) {
                 <hr></hr>
                 <form onSubmit={null}>
                     <div className="flex-container">
+                        &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" value={null} size="17" />
+                    </div>
+                    <div className="flex-container">
                         &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" value={null} />
                     </div>
                     <div className="flex-container">
                         pw:&nbsp;&nbsp;<input type="text" value={null} />
                     </div>
                     <div className="flex-container">
-                        pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="15"/>
+                        pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="14"/>
                     </div>
                     <div className="flex-container">
                         본인확인용 2차 pw:&nbsp;&nbsp;<input type="text" value={null} />
