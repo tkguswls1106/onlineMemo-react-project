@@ -33,7 +33,7 @@ function SortMemo(props) {
                 <option value="all-memo">전체 메모</option>
                 <option value="private-memo">개인 메모</option>
                 <option value="group-memo">공동 메모</option>
-                <option value="star-memo">즐겨찾기 메모</option>
+                <option value="star-memo">즐겨찾기 개인메모</option>
             </select>
             &nbsp;<Button type="submit">정렬</Button>
         </form>
