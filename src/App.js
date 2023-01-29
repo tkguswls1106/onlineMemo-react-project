@@ -13,6 +13,7 @@ import NewMember from "./pages/User/NewMember";
 import ChangePw from "./pages/User/ChangePw";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
 import MainPage from "./pages/Main/MainPage";
+import InformationPage from "./pages/Etc/InformationPage";
 
 
 const MainTitleText = styled.header`
@@ -55,6 +56,7 @@ function App(props) {
         <Route index element={<LoginPage />} />
         <Route path="member" element={<NewMember />} />
         <Route path="pw" element={<ChangePw />} />
+        <Route path="information" element={<InformationPage />} />
         {/* <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}
         <Route path="main" element={<MainPage />} />
