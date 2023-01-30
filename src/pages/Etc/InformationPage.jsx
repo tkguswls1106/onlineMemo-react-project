@@ -44,12 +44,12 @@ const DivWrapper = styled.div`
     }
 
     ul {
-        margin: 11.3px 0px;
-        padding-left: 39px;
+        margin: 12.8px 0px;
+        padding-left: 32px;
     }
 
     strong {
-        font-size: 1.9rem;
+        font-size: 1.78rem;
     }
 
     span {
@@ -88,6 +88,15 @@ const DivWrapper = styled.div`
             color: #322d2a;
         }
     }
+
+    .device {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 1.83rem;
+    }
 `;
 
 const Inform = () => {
@@ -96,29 +105,32 @@ const Inform = () => {
             <div style={{ lineHeight: "150%" }}><br></br></div>
             <h5>&lt;&nbsp;개발자 정보&nbsp;&nbsp;<i className="fa fa-id-badge" aria-hidden="true"></i>&nbsp;&gt;</h5>
             <ul>
-                <li><strong>이름:</strong>&nbsp;사현진 (SAHYUNJIN)</li>
-                <li><strong>정보:</strong>&nbsp;상명대학교 소프트웨어학과 19학번</li>
-                <li><strong>역할:</strong>&nbsp;프론트엔드, 백엔드 개발, 웹 디자인</li>
+                <li><strong>이름 :</strong>&nbsp;&nbsp;사현진 (SAHYUNJIN)</li>
+                <li><strong>정보 :</strong>&nbsp;&nbsp;상명대학교 소프트웨어학과 19학번</li>
+                <li><strong>역할 :</strong>&nbsp;&nbsp;프론트엔드, 백엔드 개발, 웹 디자인</li>
                 <div style={{ lineHeight: "17%" }}><br></br></div>
-                <span><i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;Full Stack Developer</span>
+                <span>&nbsp;&nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;Full Stack Developer</span>
             </ul>
             <div style={{ lineHeight: "145%" }}><br></br></div>
 
             <h5>&lt;&nbsp;개발 기술&nbsp;&nbsp;<i className="fa fa-wrench" aria-hidden="true"></i>&nbsp;&gt;</h5>
-            <ul>
-                <span><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;WEB&nbsp;&nbsp;<i className="fa fa-desktop" aria-hidden="true"></i></span>
+            <div style={{ lineHeight: "12.8px" }}><br></br></div>
+            <span className="device"><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;WEB&nbsp;&nbsp;<i className="fa fa-desktop" aria-hidden="true"></i></span>
+            <ul style={{ marginTop: "0px", marginBottom: "0px" }}>
                 <div style={{ lineHeight: "30%" }}><br></br></div>
-                <li><strong>프론트엔드:</strong>&nbsp;React.js</li>
-                <li><strong>백엔드:</strong>&nbsp;Spring Boot, Java</li>
-                <li><strong>데이터베이스:</strong>&nbsp;MySQL, Redis</li>
-                <li><strong>인증:</strong>&nbsp;Json Web Token, Spring Security</li>
-                <li><strong>기타:</strong>&nbsp;Nginx, Amazon AWS, Axios</li>
+                <li><strong>프론트엔드 :</strong>&nbsp;&nbsp;React.js</li>
+                <li><strong>백엔드 :</strong>&nbsp;&nbsp;Spring Boot, Java</li>
+                <li><strong>데이터베이스 :</strong>&nbsp;&nbsp;MySQL, Redis</li>
+                <li><strong>인증 :</strong>&nbsp;&nbsp;Json Web Token, Spring Security</li>
+                <li><strong>기타 :</strong>&nbsp;&nbsp;Nginx, Amazon AWS, Axios</li>
                 <div style={{ lineHeight: "17%" }}><br></br></div>
-                <span><i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;REST API</span>
+                <span>&nbsp;&nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;REST API</span>
                 <div style={{ lineHeight: "10.5px" }}><br></br></div>
-                <span><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;APP&nbsp;&nbsp;<i className="fa fa-mobile" aria-hidden="true"></i></span>
-                <div style={{ lineHeight: "30%" }}><br></br></div>
-                <li><strong>모바일 앱:</strong>&nbsp;React Native + WebView</li>
+            </ul>
+            <span className="device"><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;APP&nbsp;&nbsp;<i className="fa fa-mobile" aria-hidden="true"></i></span>
+            <div style={{ lineHeight: "30%" }}><br></br></div>
+            <ul style={{ marginTop: "0px" }}>
+                <li><strong>모바일 앱 :</strong>&nbsp;&nbsp;React Native + WebView</li>
             </ul>
             <div style={{ lineHeight: "145%" }}><br></br></div>
 
