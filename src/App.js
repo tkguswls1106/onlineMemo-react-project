@@ -14,6 +14,7 @@ import ChangePw from "./pages/User/ChangePw";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
 import MainPage from "./pages/Main/MainPage";
 import InformationPage from "./pages/Etc/InformationPage";
+import axios from 'axios'
 
 
 const MainTitleText = styled.header`
