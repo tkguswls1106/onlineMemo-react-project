@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate ,useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
-import MemoListItem from "./MemoListItem";
 
 const MemosWrapper = styled.div`
     display: flex;
@@ -17,18 +16,20 @@ const MemosWrapper = styled.div`
     }
 `;
 
-function MemoList(props) {
-    const { userId } = props;
+function MemoViewPage(props) {
+    const navigate = useNavigate();
+
+    const { memoId } = useParams();
 
     const baseUrl = "http://localhost:8080";
 
-    const [memos, setMemos] = useState();
+    const [memo, setMemo] = useState();
 
-    async function getMemos() {  // 해당 사용자의 모든 메모 리스트 조회 (초기 메인 화면)
+    async function getMemo() {  // 해당 사용자의 메모 1개 조회
         await axios
-            .get(baseUrl + `/users/${userId}/memos`)
+            .get(baseUrl + `/memos/${memoId}`)
             .then((response) => {
-                setMemos(response.data);
+                setMemo(response.data);
                 console.log(response);
             })
             .catch((error) => {
@@ -37,20 +38,24 @@ function MemoList(props) {
     }
 
     useEffect(() => {
-        getMemos();  // 출생시점에 getMemos() 한번 실행.
+        getMemo();  // 출생시점에 getMemo 한번 실행.
     }, []);
+
+    let deleteButton;
+    memo.memoHasUsersCount > 1
+        ? deleteButton = <button>그룹 탈퇴</button>  // 개인메모가 아닌 공동메모일 경우, 버튼의 텍스트를 '그룹 탈퇴'로 변경.
+        : deleteButton = <button>삭제</button>  // 개인메모일 경우, 버튼의 텍스트를 '삭제'로 변경.
 
     return (
         <MemosWrapper>
-            {memos.map((memo) => {
-                return (
-                    <Link key={memo.id} style={{ textDecoration: "none" }} to={`/memos/${memo.id}`}>
-                        <MemoListItem /> 
-                    </Link>
-                );
-            })}
+            <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>
+            메모 보기
+            <button>수정</button>
+            {deleteButton}
+            {memo.title}
+            {memo.content}
         </MemosWrapper>
     );
 }
 
-export default MemoList;
+export default MemoViewPage;

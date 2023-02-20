@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 
@@ -25,31 +26,41 @@ const TitleText = styled.p`
 
 function MemoListItem(props) {
 
+    const { memoId } = useParams();
+
     const baseUrl = "http://localhost:8080";
 
     const [memo, setMemo] = useState();
     const [isStar, setIsStar] = useState();
 
-    useEffect(() => {  // 출생(mount)과, '함수 컴포넌트 리렌더링'시 인생(update) 시점에 실행.
-        setMemo(props.memo);
-        setIsStar(props.memo.isStar);
-    });
+    async function getMemo() {  // 해당 사용자의 메모 1개 조회
+        await axios
+            .get(baseUrl + `/memos/${memoId}`)
+            .then((response) => {
+                setMemo(response.data);
+                setIsStar(response.data.isStar);
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     useEffect(() => {
-        setMemo(props.memo);  // 출생시점에 setMemo 한번 실행.
-        setIsStar(props.memo.isStar);  // 출생시점에 IsStar 한번 실행.
+        getMemo();  // 출생시점에 getMemo 한번 실행.
     }, []);
 
-    const handleIsStarClick = async (id, e) => {
-        e.preventDefault();
+    const handleIsStarClick = async (id, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         setIsStar((isStar) => !isStar);  // toggle
 
         await axios
-            .put(baseUrl + "/memos/" + memo.id + "star", {
+            .put(baseUrl + `/memos/${memo.Id}/star`, {
                 isStar: isStar
             })
             .then((response) => {
+                console.log(response);
             })
             .catch((error) => {
                 console.log(error);
@@ -57,10 +68,10 @@ function MemoListItem(props) {
     }
 
     let isStarButton;
-    if (memo.memoHasUsersCount > 1) {
+    if (memo.memoHasUsersCount > 1) {  // 개인메모가 아닌 공동메모일 경우에는, 별이 아닌 다른 그림을 보여주어 즐겨찾기 기능 사용불가하도록 해제시킴.
         isStarButton = <i className="fa fa-users" aria-hidden="true"></i>;
     }
-    else {
+    else {  // 개인메모일 경우에는, 별 그림을 보여주어 즐겨찾기 기능 사용가능하도록 함.
         {isStar
             ? isStarButton = <i className="fa fa-star" aria-hidden="true" onClick={handleIsStarClick}></i>  // isStar이 1이면 꽉찬 별 버튼
             : isStarButton = <i className="fa fa-star-o" aria-hidden="true" onClick={handleIsStarClick}></i>  // isStar이 0이먄 속이빈 별 버튼
@@ -68,14 +79,17 @@ function MemoListItem(props) {
     }
 
     return (
-        <Wrapper onClick={props.onClick}>
-            {/* <TitleText>{post.title}</TitleText> */}
-            <isStarButton />
+        <Wrapper>
+            {isStarButton}
             {memo.title}
             {memo.modifiedDate}
             {memo.userResponseDtos.map((user) => {
                 return (
-                    user.username + " "
+                    <ul style={ memo.memoHasUsersCount == 1 && {visibility:"hidden"}}>
+                        <li style={{ listStyleImage: URL("./../../assets/images/user.png")}}>
+                            {user.username}
+                        </li>
+                    </ul>
                 );
             })}
             <i className="fa fa-ellipsis-v" aria-hidden="true"></i>

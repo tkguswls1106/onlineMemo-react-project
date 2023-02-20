@@ -15,6 +15,7 @@ import YesLoginNav from "./components/Navigation/YesLoginNav";
 import MainPage from "./pages/Main/MainPage";
 import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
+import MemoViewPage from "./pages/Memo/MemoViewPage";
 
 
 const MainTitleText = styled.header`
@@ -60,7 +61,9 @@ function App(props) {
         <Route path="information" element={<InformationPage />} />
         {/* <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}
-        <Route path="main" element={<MainPage />} />
+
+        <Route path="users/:userId/memos" element={<MainPage />} />
+        <Route path="memos/:memoId" element={<MemoViewPage />} />
       </Routes>
     </BrowserRouter>
   );
