@@ -21,15 +21,15 @@ function MemoViewPage(props) {
 
     const { memoId } = useParams();
 
-    const baseUrl = "http://localhost:8080";
+    // const baseUrl = "http://localhost:8080";
 
     const [memo, setMemo] = useState();
 
     async function getMemo() {  // 해당 사용자의 메모 1개 조회
         await axios
-            .get(baseUrl + `/memos/${memoId}`)
+            .get(`/memos/${memoId}`)
             .then((response) => {
-                setMemo(response.data);
+                setMemo(response.data.data);
                 console.log(response);
             })
             .catch((error) => {
@@ -42,7 +42,7 @@ function MemoViewPage(props) {
     }, []);
 
     let deleteButton;
-    memo.memoHasUsersCount > 1
+    memo && memo.memoHasUsersCount > 1
         ? deleteButton = <button>그룹 탈퇴</button>  // 개인메모가 아닌 공동메모일 경우, 버튼의 텍스트를 '그룹 탈퇴'로 변경.
         : deleteButton = <button>삭제</button>  // 개인메모일 경우, 버튼의 텍스트를 '삭제'로 변경.
 
@@ -52,8 +52,8 @@ function MemoViewPage(props) {
             메모 보기
             <button>수정</button>
             {deleteButton}
-            {memo.title}
-            {memo.content}
+            {memo && memo.title}
+            {memo && memo.content}
         </MemosWrapper>
     );
 }

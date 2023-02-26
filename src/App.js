@@ -62,8 +62,8 @@ function App(props) {
         {/* <Route path="post-write" element={<PostWritePage />} />
         <Route path="post/:postId" element={<PostViewPage />} /> */}
 
-        <Route path="users/:userId/memos" element={<MainPage />} />
-        <Route path="memos/:memoId" element={<MemoViewPage />} />
+        <Route path="/users/:userId/memos" element={<MainPage />} />
+        <Route path="/memos/:memoId" element={<MemoViewPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -16,6 +16,8 @@ const DivWrapper = styled.div`
     justify-content: space-evenly;
     align-items: baseline;
 
+    margin-bottom: 12px;
+
     .flex-item {
         // 이게 flex-item 역할
     }
