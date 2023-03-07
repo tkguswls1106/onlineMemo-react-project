@@ -41,6 +41,17 @@ const UserWrapper = styled.div`
     height: 37px;
     overflow: auto;
 
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: lightgray;
+        border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        // background-color: #b4a8a1;
+        background-color: gray;
+        border-radius: 4px;
+    }
+
     .user-ul {
         list-style-type: none;
         margin-top: 5px;
@@ -62,7 +73,6 @@ const UserWrapper = styled.div`
 `;
 
 function MemoListItem(props) {
-
     const { memoId } = props;
 
     // const baseUrl = "http://localhost:8080";
@@ -96,7 +106,7 @@ function MemoListItem(props) {
                     return (
                         <ul key={user.id} className="user-ul" style={memo.memoHasUsersCount == 1 ? { visibility: "hidden" } : { visibility: "visible" }}>
                             <li className="user-li">
-                                &nbsp;{user.username}
+                                &nbsp;{user.username}&nbsp;
                             </li>
                         </ul>
                     );

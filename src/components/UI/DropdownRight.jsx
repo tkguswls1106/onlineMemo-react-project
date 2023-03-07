@@ -13,7 +13,7 @@ const DropMenu = styled.div`
     position: absolute;
     top: 67px;
     left: 50%;
-    width: 100px;
+    width: 94px;
     text-align: left;
     border-radius: 7px;
     transform: translate(-50%, -20px);

@@ -58,6 +58,7 @@ const MemoItemsWrapper = styled.div`
     }
     .fa-ellipsis-v {
         font-size: 1.7rem;
+        color: #463f3a;
 
         :hover {
             cursor: grab;
@@ -99,7 +100,7 @@ function MemoList(props) {
                             <MemoListItem memoId={memo.id} /> 
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <MemoOptionButton style={{ flexGrow: "4" }} />
+                        <MemoOptionButton memoHasUsersCount={memo.memoHasUsersCount} style={{ flexGrow: "4" }} />
                     </MemoItemsWrapper>
                 );
             })}
