@@ -66,6 +66,26 @@ const MemoItemsWrapper = styled.div`
     }
 `;
 
+const NoneSearch = styled.div`
+    #noneResult {
+        display: none;
+
+        margin-top: 11.5px;
+        word-break: keep-all;
+        text-align: center;
+        font-size: 1.43rem;
+        line-height: 127%;
+
+        .fa-times-circle {
+            font-size: 4rem;
+        }
+
+        & > span {
+            color: red;
+        }
+    }
+`;
+
 function MemoList(props) {
     const { userId, sortValue, searchValue } = props;
 
@@ -79,6 +99,9 @@ function MemoList(props) {
             .then((response) => {
                 setMemos(response.data.data);
                 console.log(response);
+
+                var result = document.getElementById("noneResult");
+                result.style.display = 'none';
             })
             .catch((error) => {
                 console.log(error);
@@ -91,6 +114,9 @@ function MemoList(props) {
             .then((response) => {
                 setMemos(response.data.data);
                 console.log(response);
+
+                var result = document.getElementById("noneResult");
+                result.style.display = 'none';
             })
             .catch((error) => {
                 console.log(error);
@@ -104,8 +130,14 @@ function MemoList(props) {
                 setMemos(response.data.data);
                 console.log(response);
 
-                if (Object.keys(response.data.data).length == 0) {
-                    alert("검색하신 메모는 존재하지 않습니다.");
+                if (Object.keys(response.data.data).length == 0) {  // 검색 결과가 0개일 경우
+                    // alert("검색하신 메모는 존재하지 않습니다.");
+                    var result = document.getElementById("noneResult");
+                    result.style.display = 'block';
+                }
+                else {
+                    var result = document.getElementById("noneResult");
+                    result.style.display = 'none';
                 }
             })
             .catch((error) => {
@@ -127,6 +159,13 @@ function MemoList(props) {
 
     return (
         <MemosWrapper>
+            <NoneSearch>
+                <div id="noneResult">
+                    <span><i className="fa fa-times-circle" aria-hidden="true"></i></span><div style={{ lineHeight: "45%" }}><br></br></div>
+                    검색하신 <strong>&#39;{searchValue}&#39;</strong>을 포함하는 <span>메모가 존재하지 않습니다.</span><br></br>
+                    제목 또는 내용에 포함된 키워드로 <span>다시 검색해주십시오.</span>
+                </div>
+            </NoneSearch>
             {memos && memos.map((memo) => {
                 return (
                     <MemoItemsWrapper key={memo.id}>
