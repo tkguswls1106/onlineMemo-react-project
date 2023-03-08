@@ -67,7 +67,7 @@ const MemoItemsWrapper = styled.div`
 `;
 
 function MemoList(props) {
-    const { userId } = props;
+    const { userId, sortValue, searchValue } = props;
 
     // const baseUrl = "http://localhost:8080";
 
@@ -85,9 +85,45 @@ function MemoList(props) {
             })
     }
 
-    useEffect(() => {
-        getMemos();  // 출생시점에 getMemos() 한번 실행.
-    }, []);
+    async function sortMemos() {  // 메모들 정렬해서 조회
+        await axios
+            .get(`/users/${userId}/memos?order=${sortValue}`)
+            .then((response) => {
+                setMemos(response.data.data);
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    async function searchMemos() {  // 메모들 검색해서 조회
+        await axios
+            .get(`/users/${userId}/memos?search=${searchValue}`)
+            .then((response) => {
+                setMemos(response.data.data);
+                console.log(response);
+
+                if (Object.keys(response.data.data).length == 0) {
+                    alert("검색하신 메모는 존재하지 않습니다.");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {  // 출생시점과, sortValue 또는 searchValue 의 값이 변경될때 실행.
+        if (sortValue == null && searchValue == null) {
+            getMemos();
+        }
+        else if (sortValue != null) {
+            sortMemos();
+        }
+        else if (searchValue != null) {
+            searchMemos();
+        }
+    }, [sortValue, searchValue]);
 
     return (
         <MemosWrapper>

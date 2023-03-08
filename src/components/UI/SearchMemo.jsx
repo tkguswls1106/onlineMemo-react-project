@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
+import MainPage from "../../pages/Main/MainPage";
 
 const Button = styled.button`
     background-color: #645b56;
@@ -11,27 +13,29 @@ const Button = styled.button`
 `;
 
 function SearchMemo(props) {
+    const navigate = useNavigate();
+
+    const { userId } = props;
+
     const [value, setValue] = useState('');
 
     const handleChange = (event) => {
         setValue(event.target.value);
     }
 
-    const handleSubmit = (event) => {
-        // 이 내부 코드는 실험용이다.
-        alert('검색한 텍스트: ' + value);
-        event.preventDefault();
+    const handleSearchClick = (event) => {
+        navigate(`/users/${userId}/memos?search=${value}`);
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
             <input 
                 type="text" value={value} placeholder="검색" onChange={handleChange}
                 style={{ border:"solid 2px #645b56", borderRadius:"3px",
                     width: "91px", height: "18.2px", fontSize: "1.5rem", fontFamily: "jua", color:"#463f3a"}}
             />
-            &nbsp;<Button type="submit"><i className="fa fa-search" aria-hidden="true"></i></Button>
-        </form>
+            &nbsp;<Button onClick={handleSearchClick}><i className="fa fa-search" aria-hidden="true"></i></Button>
+        </div>
     );
 }
 

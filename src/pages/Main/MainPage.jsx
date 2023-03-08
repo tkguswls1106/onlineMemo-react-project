@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import '../../App.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import BasicWrapper from "../../components/Styled/BasicWrapper";
 import SortMemo from "../../components/UI/SortMemo";
 import SearchMemo from "../../components/UI/SearchMemo";
@@ -24,17 +24,20 @@ const DivWrapper = styled.div`
 `;
 
 function MainPage(props) {
-    const navigate = useNavigate();
-
     const { userId } = useParams();
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const sortValue = searchParams.get('order');
+    const searchValue = searchParams.get('search');
 
     return (
         <BasicWrapper>
             <DivWrapper className="flex-container">
-                <SortMemo className="flex-item"/>
-                <SearchMemo className="flex-item" />
+                <SortMemo className="flex-item" userId={userId} />
+                <SearchMemo className="flex-item" userId={userId} />
             </DivWrapper>
-            <MemoList userId={userId} />
+            <MemoList userId={userId} sortValue={sortValue} searchValue={searchValue} />
         </BasicWrapper>
     );
 }
