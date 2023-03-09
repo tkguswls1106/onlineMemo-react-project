@@ -121,7 +121,7 @@ const Inform = () => {
                 <li><strong>프론트엔드 :</strong>&nbsp;&nbsp;React.js</li>
                 <li><strong>백엔드 :</strong>&nbsp;&nbsp;Spring Boot, Java</li>
                 <li><strong>데이터베이스 :</strong>&nbsp;&nbsp;MySQL, Redis</li>
-                <li><strong>인증 :</strong>&nbsp;&nbsp;Json Web Token, Spring Security</li>
+                <li><strong>보안 :</strong>&nbsp;&nbsp;Json Web Token, Spring Security</li>
                 <li><strong>기타 :</strong>&nbsp;&nbsp;Nginx, Amazon AWS, Axios</li>
                 <div style={{ lineHeight: "17%" }}><br></br></div>
                 <span>&nbsp;&nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;REST API</span>
