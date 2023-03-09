@@ -10,6 +10,10 @@ const Button = styled.button`
     border-radius: 5px;
     font-family: "jua";
     font-size: 1.7rem;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 function SortMemo(props) {

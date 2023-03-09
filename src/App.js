@@ -16,6 +16,7 @@ import MainPage from "./pages/Main/MainPage";
 import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
 import MemoViewPage from "./pages/Memo/MemoViewPage";
+import OneMemoNav from "./components/Navigation/OneMemoNav";
 
 
 const MainTitleText = styled.header`
@@ -52,8 +53,11 @@ function App(props) {
           <LittleTitle>OnlineMemo.kr</LittleTitle>
         </Link>
       </MainTitleText>
-      {/* <NoLoginNav /> */}
-      <YesLoginNav />
+      <Routes>
+        <Route index element={<NoLoginNav />} />
+        <Route path="/users/:userId/memos" element={<YesLoginNav />} />
+        <Route path="/memos/:memoId" element={<OneMemoNav />} />
+      </Routes>
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="member" element={<NewMember />} />

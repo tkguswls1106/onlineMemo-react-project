@@ -10,6 +10,10 @@ const Button = styled.button`
     border-radius: 5px;
     // font-family: "jua";
     font-size: 1.64rem;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 function SearchMemo(props) {

@@ -6,6 +6,7 @@ import DropdownLeft from "../UI/DropdownLeft";
 import DropdownRight from "../UI/DropdownRight";
 
 const Wrapper = styled(NavWrapper)`
+
     ul {
         display: flex;
         flex-direction: row;
@@ -27,6 +28,10 @@ const Wrapper = styled(NavWrapper)`
         padding: 2.3px 4.8px;
         color: #ffffff;
         background-color: #463f3a;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     a {
@@ -51,6 +56,10 @@ const Wrapper = styled(NavWrapper)`
         border-radius: 5px;
         font-family: "jua";
         font-size: 1.8rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 `;
 

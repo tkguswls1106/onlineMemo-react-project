@@ -35,6 +35,19 @@ const BasicWrapper = styled.div`
     @media(min-height: 648.2px) and (max-width: 1364.9px) {
         height: calc(100vh - 271px + 43.5px);
     }
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: #bcb8b1;
+        border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        // background-color: #b4a8a1;
+        background-color: #5e5c58;
+        border-radius: 4px;
+    }
 `;
 
 export default BasicWrapper;

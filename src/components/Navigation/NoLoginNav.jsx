@@ -36,7 +36,6 @@ const Wrapper = styled(NavWrapper)`
 `;
 
 function NoLoginNav(props) {
-    // const { comment } = props;
     const navtexts = ["공지사항", "개발 정보"];
 
     return (
