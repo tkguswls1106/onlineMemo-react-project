@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
@@ -31,6 +32,7 @@ const Wrapper = styled(NavWrapper)`
 
         &:hover {
             cursor: pointer;
+            background-color: #463f3aa4;
         }
     }
 
@@ -59,11 +61,13 @@ const Wrapper = styled(NavWrapper)`
 
         &:hover {
             cursor: pointer;
+            background-color: #463f3aa4;
         }
     }
 `;
 
 function YesLoginNav(props) {
+    const navigate = useNavigate();
 
     const dropItemsUser = [
         {
@@ -99,7 +103,7 @@ function YesLoginNav(props) {
                     dropItems={dropItemsUser}
                 />
                 <li><a href="#">공지사항</a></li>
-                <li><a href="#">개발 정보</a></li>
+                <li><a onClick={() => { navigate('/information') }}>개발 정보</a></li>
                 <DropdownRight
                     dropMain={<span><button>+ 새 메모&nbsp;<i className="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsPlus}

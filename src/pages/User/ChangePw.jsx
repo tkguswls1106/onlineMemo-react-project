@@ -14,8 +14,12 @@ const MoreWrapper = styled(HelloWrapper)`
         border-radius: 6px;
         padding: 1px 6.7px;
 
-        // background-color: #463f3a;
-        // color: #bcb8b1;
+        &:hover {
+            cursor:pointer;
+            background-color: #463f3a;
+            color: #bcb8b1;
+            border-color: #463f3a;
+        }
     }
 
     .change {

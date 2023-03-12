@@ -33,6 +33,7 @@ const Wrapper = styled(NavWrapper)`
 
         &:hover {
             cursor: pointer;
+            color: #f4f3eea4;
         }
     }
 
@@ -54,16 +55,28 @@ const Wrapper = styled(NavWrapper)`
     .editButton {
         background-color: #463f3a;
         color: white;
+
+        &:hover {
+            background-color: #463f3aa4;
+        }
     }
 
     .deleteButton {
         background-color: #dfafa1;
         color: #463f3a;
+
+        &:hover {
+            background-color: #dfb1a1a4;
+        }
     }
 
     .saveButton {
         background-color: #a1c4df;
         color: #463f3a;
+
+        &:hover {
+            background-color: #a1c4dfa4;
+        }
     }
 
     .flex-left {
@@ -88,6 +101,7 @@ const Wrapper = styled(NavWrapper)`
 
         &:hover {
             cursor: pointer;
+            background-color: #f4f3eea4;
         }
     }
 
@@ -106,10 +120,15 @@ const Wrapper = styled(NavWrapper)`
 function OneMemoNav(props) {
     const navigate = useNavigate();
 
+    const handleClickCopy = (event) => {   
+        window.navigator.clipboard.writeText("내용 복사 내역");
+        // alert("메모 내용을 전체 복사하였습니다.");
+    }
+
     const readNavItems = [  // 메모 보기 용도
         <span className="flex-left">
             &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
-            <span className="flex-copy">
+            <span className="flex-copy" onClick={handleClickCopy}>
                 <i className="fa fa-clone" aria-hidden="true"></i>
                 <span className="copyText">복사</span>
             </span>

@@ -13,6 +13,13 @@ const MoreWrapper = styled(HelloWrapper)`
         border: solid 2.3px;
         border-radius: 6px;
         padding: 1px 6.7px;
+
+        &:hover {
+            cursor:pointer;
+            background-color: #463f3a;
+            color: #bcb8b1;
+            border-color: #463f3a;
+        }
     }
 `;
 

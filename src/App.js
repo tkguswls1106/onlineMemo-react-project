@@ -55,16 +55,17 @@ function App(props) {
       </MainTitleText>
       <Routes>
         <Route index element={<NoLoginNav />} />
+        <Route path="member" element={<NoLoginNav />} />
+        <Route path="pw" element={<NoLoginNav />} />
         <Route path="/users/:userId/memos" element={<YesLoginNav />} />
         <Route path="/memos/:memoId" element={<OneMemoNav />} />
+        <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
       </Routes>
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="member" element={<NewMember />} />
         <Route path="pw" element={<ChangePw />} />
         <Route path="information" element={<InformationPage />} />
-        {/* <Route path="post-write" element={<PostWritePage />} />
-        <Route path="post/:postId" element={<PostViewPage />} /> */}
 
         <Route path="/users/:userId/memos" element={<MainPage />} />
         <Route path="/memos/:memoId" element={<MemoViewPage />} />
