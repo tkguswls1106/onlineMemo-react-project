@@ -58,7 +58,7 @@ function App(props) {
         <Route path="member" element={<NoLoginNav />} />
         <Route path="pw" element={<NoLoginNav />} />
         <Route path="/users/:userId/memos" element={<YesLoginNav />} />
-        <Route path="/memos/:memoId" element={<OneMemoNav />} />
+        {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
         <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
       </Routes>
       <Routes>

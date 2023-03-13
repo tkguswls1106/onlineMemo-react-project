@@ -61,9 +61,20 @@ const Wrapper = styled(NavWrapper)`
         }
     }
 
-    .deleteButton {
+    .deletePrivateButton {
         background-color: #dfafa1;
         color: #463f3a;
+
+        &:hover {
+            background-color: #dfb1a1a4;
+        }
+    }
+
+    .deleteGroupButton {
+        background-color: #dfafa1;
+        color: #463f3a;
+
+        width: 80px;
 
         &:hover {
             background-color: #dfb1a1a4;
@@ -118,14 +129,16 @@ const Wrapper = styled(NavWrapper)`
 `;
 
 function OneMemoNav(props) {
+    const { purpose, content } = props;
+
     const navigate = useNavigate();
 
     const handleClickCopy = (event) => {   
-        window.navigator.clipboard.writeText("내용 복사 내역");
+        window.navigator.clipboard.writeText(content);
         // alert("메모 내용을 전체 복사하였습니다.");
     }
 
-    const readNavItems = [  // 메모 보기 용도
+    const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">
             &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
@@ -133,7 +146,17 @@ function OneMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton">수정</button>&nbsp;&nbsp;<button className="deleteButton">삭제</button>&nbsp;</span>
+        <span><button className="editButton">수정</button>&nbsp;&nbsp;<button className="deletePrivateButton">삭제</button>&nbsp;</span>
+    ];
+    const readGroupNavItems = [  // 공동메모 보기 용도
+        <span className="flex-left">
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+            <span className="flex-copy" onClick={handleClickCopy}>
+                <i className="fa fa-clone" aria-hidden="true"></i>
+                <span className="copyText">복사</span>
+            </span>
+        </span>,
+        <span><button className="editButton">수정</button>&nbsp;&nbsp;<button className="deleteGroupButton">그룹 탈퇴</button>&nbsp;</span>
     ];
     const newNavItems = [  // 메모 작성 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
@@ -144,10 +167,24 @@ function OneMemoNav(props) {
         <span><button className="saveButton">저장</button>&nbsp;</span>
     ];
 
+    let navItems;
+    if (purpose == "readPrivate") {
+        navItems = readPrivateNavItems;
+    }
+    else if (purpose == "readGroup") {
+        navItems = readGroupNavItems;
+    }
+    else if (purpose == "new") {
+        navItems = newNavItems;
+    }
+    else if (purpose == "edit") {
+        navItems = editNavItems;
+    }
+
     return (
         <Wrapper>
             <ul>
-                {readNavItems.map((navItem, index) => {
+                {navItems.map((navItem, index) => {
                     return (
                         <li key={index}>{navItem}</li>
                     );

@@ -3,6 +3,7 @@ import { useNavigate ,useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
+import OneMemoNav from "../../components/Navigation/OneMemoNav";
 
 // const DivWrapper = styled.div`
 //     // 클래스 이름들은 어떠한 역할로 쓰였는지 참고하라고 명시해둔것이다.
@@ -45,20 +46,20 @@ function MemoViewPage(props) {
         getMemo();  // 출생시점에 getMemo 한번 실행.
     }, []);
 
-    // let deleteButton;
-    // memo && memo.memoHasUsersCount > 1
-    //     ? deleteButton = <button>그룹 탈퇴</button>  // 개인메모가 아닌 공동메모일 경우, 버튼의 텍스트를 '그룹 탈퇴'로 변경.
-    //     : deleteButton = <button>삭제</button>  // 개인메모일 경우, 버튼의 텍스트를 '삭제'로 변경.
+    let deleteText;
+    memo && memo.memoHasUsersCount > 1
+        ? deleteText = "readGroup"  // 개인메모가 아닌 공동메모일 경우, 버튼의 텍스트를 '그룹 탈퇴'로 변경.
+        : deleteText = "readPrivate"  // 개인메모일 경우, 버튼의 텍스트를 '삭제'로 변경.
 
     return (
-        <OneMemoWrapper>
-            {/* <DivWrapper className="flex-container">
-                {deleteButton}
-            </DivWrapper> */}
-            <div className="memoTitle">{memo && memo.title}</div>
-            <hr></hr>
-            <div className="memoContent">{memo && memo.content}</div>
-        </OneMemoWrapper>
+        <div>
+            <OneMemoNav purpose={deleteText} content={memo && memo.content} />
+            <OneMemoWrapper>
+                <div className="memoTitle">{memo && memo.title}</div>
+                <hr></hr>
+                <div className="memoContent">{memo && memo.content}</div>
+            </OneMemoWrapper>
+        </div>
     );
 }
 
