@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
+import axios from 'axios'
 
 const Wrapper = styled(NavWrapper)`
 
@@ -129,13 +130,33 @@ const Wrapper = styled(NavWrapper)`
 `;
 
 function OneMemoNav(props) {
-    const { purpose, content } = props;
-
     const navigate = useNavigate();
 
     const handleClickCopy = (event) => {   
-        window.navigator.clipboard.writeText(content);
+        window.navigator.clipboard.writeText(props.content);
         // alert("메모 내용을 전체 복사하였습니다.");
+    }
+
+    const handleEditClick = (event) => {
+        props.propPurposeFunction("edit");  // 하위 컴포넌트 함수
+    }
+
+    const handleUpdateSaveClick = async (titleValue, contentValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .put(`/memos/${props.memoId}`, {
+                title: titleValue,
+                content: contentValue
+            })
+            .then((response) => {
+                console.log(response);
+                
+                props.propPurposeFunction("read");  // 하위 컴포넌트 함수
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     const readPrivateNavItems = [  // 개인메모 보기 용도
@@ -146,7 +167,7 @@ function OneMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton">수정</button>&nbsp;&nbsp;<button className="deletePrivateButton">삭제</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton">삭제</button>&nbsp;</span>
     ];
     const readGroupNavItems = [  // 공동메모 보기 용도
         <span className="flex-left">
@@ -156,7 +177,7 @@ function OneMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton">수정</button>&nbsp;&nbsp;<button className="deleteGroupButton">그룹 탈퇴</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton">그룹 탈퇴</button>&nbsp;</span>
     ];
     const newNavItems = [  // 메모 작성 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
@@ -164,20 +185,20 @@ function OneMemoNav(props) {
     ];
     const editNavItems = [  // 메모 수정 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
-        <span><button className="saveButton">저장</button>&nbsp;</span>
+        <span><button className="saveButton" onClick={(event) => handleUpdateSaveClick(props.title, props.content, event)}>저장</button>&nbsp;</span>
     ];
 
     let navItems;
-    if (purpose == "readPrivate") {
+    if (props.purpose == "readPrivate") {
         navItems = readPrivateNavItems;
     }
-    else if (purpose == "readGroup") {
+    else if (props.purpose == "readGroup") {
         navItems = readGroupNavItems;
     }
-    else if (purpose == "new") {
+    else if (props.purpose == "new") {
         navItems = newNavItems;
     }
-    else if (purpose == "edit") {
+    else if (props.purpose == "edit") {
         navItems = editNavItems;
     }
 

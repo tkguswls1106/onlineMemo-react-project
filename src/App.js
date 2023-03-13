@@ -15,7 +15,7 @@ import YesLoginNav from "./components/Navigation/YesLoginNav";
 import MainPage from "./pages/Main/MainPage";
 import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
-import MemoViewPage from "./pages/Memo/MemoViewPage";
+import OneMemoPage from "./pages/Memo/OneMemoPage";
 import OneMemoNav from "./components/Navigation/OneMemoNav";
 
 
@@ -68,7 +68,7 @@ function App(props) {
         <Route path="information" element={<InformationPage />} />
 
         <Route path="/users/:userId/memos" element={<MainPage />} />
-        <Route path="/memos/:memoId" element={<MemoViewPage />} />
+        <Route path="/memos/:memoId" element={<OneMemoPage />} />
       </Routes>
     </BrowserRouter>
   );

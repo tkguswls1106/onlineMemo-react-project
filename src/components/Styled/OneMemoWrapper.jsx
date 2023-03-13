@@ -15,7 +15,7 @@ const OneMemoWrapper = styled.div`
     font-size: 1.4rem;
     font-family: "LINESeedKR-Bd";
     word-spacing: 2.23px;
-    line-height: 180%;
+    line-height: 150%;
 
     .memoTitle {
         font-size: 1.55rem;
