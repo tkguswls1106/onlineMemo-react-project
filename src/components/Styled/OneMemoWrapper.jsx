@@ -24,6 +24,8 @@ const OneMemoWrapper = styled.div`
     }
     .memoContent {
         text-decoration: none;
+        
+        white-space: pre-wrap;
     }
 
     hr {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate ,useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
@@ -41,6 +41,27 @@ function OneMemoPage(props) {
         }
     };
 
+    const autoResizeAndTapkeyTextarea = (event) => {
+        let textarea = document.querySelector('.autoTextarea');
+
+        if (textarea) {
+            textarea.style.height = 'auto';
+            let height = textarea.scrollHeight; // 높이
+            textarea.style.height = `${height + 8}px`;
+        }
+
+        if (event.keyCode === 9) {
+            event.preventDefault();
+            let val = event.target.value;
+            let start = event.target.selectionStart;
+            let end = event.target.selectionEnd;
+            event.target.value = val.substring(0, start) + "\t" + val.substring(end);
+            event.target.selectionStart = event.target.selectionEnd = start + 1;
+
+            return false;  // focus 막음
+        }
+    };
+
     async function getMemo() {  // 해당 사용자의 메모 1개 조회
         await axios
             .get(`/memos/${memoId}`)
@@ -48,6 +69,14 @@ function OneMemoPage(props) {
                 setMemo(response.data.data);
                 setTitleValue(response.data.data.title);
                 setContentValue(response.data.data.content);
+
+                let textarea = document.querySelector('.autoTextarea');
+                if (textarea) {
+                    textarea.style.height = 'auto';
+                    let height = textarea.scrollHeight; // 높이
+                    textarea.style.height = `${height + 8}px`;
+                }  // textarea 초기 높이 지정
+
                 console.log(response);
             })
             .catch((error) => {
@@ -64,7 +93,7 @@ function OneMemoPage(props) {
     if (purpose == "edit") {
         purposeText = "edit";
 
-        purposeComponent = 
+        purposeComponent =
             <div>
                 <div className="memoTitle">
                     <input type="text" value={memo && titleValue} onChange={handleChangeTitle} placeholder="제목을 입력해주세요."
@@ -74,7 +103,7 @@ function OneMemoPage(props) {
                 <div className="memoContent">
                     <textarea className="autoTextarea" value={memo && contentValue} onChange={handleChangeContent} placeholder="내용을 입력해주세요."
                         style={{ width: "99.2%", resize: "none", minHeight: "calc(100vh - 271px - 38px)", paddingTop: "5px", paddingBottom: "5px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }}
-                        onKeyDown={autoResizeTextarea} onKeyUp={autoResizeTextarea} />
+                        onKeyDown={(event) => autoResizeAndTapkeyTextarea(event)} onKeyUp={autoResizeTextarea} />
                 </div>
             </div>
     }
