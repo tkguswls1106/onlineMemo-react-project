@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate ,useParams } from "react-router-dom";
+import { useNavigate ,useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
@@ -9,6 +9,9 @@ function OneMemoPage(props) {
     const navigate = useNavigate();
 
     const { memoId } = useParams();
+
+    const location = useLocation();
+    const { userId } = location.state;
 
     // const baseUrl = "http://localhost:8080";
 
@@ -20,7 +23,7 @@ function OneMemoPage(props) {
     const highPurposeFunction = (text) => {  // 상위 컴포넌트 함수
         setPurpose(text);
     }
-    
+
     const handleChangeTitle = (event) => {
         setTitleValue(event.target.value);
     }
@@ -93,7 +96,7 @@ function OneMemoPage(props) {
 
     return (
         <div>
-            <OneMemoNav purpose={purposeText} memoId={memoId} title={memo && titleValue} content={memo && contentValue} propPurposeFunction={highPurposeFunction} />
+            <OneMemoNav purpose={purposeText} userId={userId} memoId={memoId} title={memo && titleValue} content={memo && contentValue} propPurposeFunction={highPurposeFunction} />
             <OneMemoWrapper>
                 {purposeComponent}
             </OneMemoWrapper>

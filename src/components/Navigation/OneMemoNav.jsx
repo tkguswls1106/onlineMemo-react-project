@@ -159,6 +159,21 @@ function OneMemoNav(props) {
             })
     }
 
+    const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .delete(`/users/${props.userId}/memos/${props.memoId}`)
+            .then((response) => {
+                console.log(response);
+
+                navigate(`/users/${props.userId}/memos`);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">
             &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
@@ -167,7 +182,7 @@ function OneMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton">삭제</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton" onClick={(event) => handleDeleteClick(event)}>삭제</button>&nbsp;</span>
     ];
     const readGroupNavItems = [  // 공동메모 보기 용도
         <span className="flex-left">
@@ -177,7 +192,7 @@ function OneMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton">그룹 탈퇴</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleDeleteClick(event)}>그룹 탈퇴</button>&nbsp;</span>
     ];
     const newNavItems = [  // 메모 작성 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
