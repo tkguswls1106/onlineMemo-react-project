@@ -36,7 +36,7 @@ function OneMemoPage(props) {
 
         if (textarea) {
             textarea.style.height = 'auto';
-            let height = textarea.scrollHeight; // 높이
+            let height = textarea.scrollHeight;  // 높이
             textarea.style.height = `${height + 8}px`;
         }
     };
@@ -46,7 +46,7 @@ function OneMemoPage(props) {
 
         if (textarea) {
             textarea.style.height = 'auto';
-            let height = textarea.scrollHeight; // 높이
+            let height = textarea.scrollHeight;  // 높이
             textarea.style.height = `${height + 8}px`;
         }
 
@@ -73,7 +73,7 @@ function OneMemoPage(props) {
                 let textarea = document.querySelector('.autoTextarea');
                 if (textarea) {
                     textarea.style.height = 'auto';
-                    let height = textarea.scrollHeight; // 높이
+                    let height = textarea.scrollHeight;  // 높이
                     textarea.style.height = `${height + 8}px`;
                 }  // textarea 초기 높이 지정
 
