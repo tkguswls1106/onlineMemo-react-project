@@ -35,9 +35,18 @@ function OneMemoPage(props) {
         let textarea = document.querySelector('.autoTextarea');
 
         if (textarea) {
+            var scrollLeft = window.pageXOffset ||
+                (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+            var scrollTop = window.pageYOffset ||
+                (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
             textarea.style.height = 'auto';
             let height = textarea.scrollHeight;  // 높이
             textarea.style.height = `${height + 8}px`;
+
+            window.scrollTo(scrollLeft, scrollTop);
+            // textarea.style.height = 'auto'; 로 인하여 발생하는
+            // textarea Autosizing Scroll Jumping 현상을 방지하는 역할의 코드이다.
         }
     };
 
@@ -45,9 +54,18 @@ function OneMemoPage(props) {
         let textarea = document.querySelector('.autoTextarea');
 
         if (textarea) {
+            var scrollLeft = window.pageXOffset ||
+                (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+            var scrollTop = window.pageYOffset ||
+                (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
             textarea.style.height = 'auto';
             let height = textarea.scrollHeight;  // 높이
             textarea.style.height = `${height + 8}px`;
+
+            window.scrollTo(scrollLeft, scrollTop);
+            // textarea.style.height = 'auto'; 로 인하여 발생하는
+            // textarea Autosizing Scroll Jumping 현상을 방지하는 역할의 코드이다.
         }
 
         if (event.keyCode === 9) {
