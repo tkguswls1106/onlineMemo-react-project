@@ -129,7 +129,7 @@ const Wrapper = styled(NavWrapper)`
     }
 `;
 
-function OneMemoNav(props) {
+function ReadAndEditMemoNav(props) {
     const navigate = useNavigate();
 
     const handleClickCopy = (event) => {   
@@ -232,4 +232,4 @@ function OneMemoNav(props) {
     );
 }
 
-export default OneMemoNav;
+export default ReadAndEditMemoNav;

@@ -3,9 +3,9 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
-import OneMemoNav from "../../components/Navigation/OneMemoNav";
+import ReadAndEditMemoNav from "../../components/Navigation/ReadAndEditMemoNav";
 
-function OneMemoPage(props) {
+function ReadAndEditMemoPage(props) {
     const navigate = useNavigate();
 
     const { memoId } = useParams();
@@ -158,7 +158,7 @@ function OneMemoPage(props) {
 
     return (
         <div>
-            <OneMemoNav purpose={purposeText} userId={userId} memoId={memoId} title={memo && titleValue} content={memo && contentValue} propPurposeFunction={highPurposeFunction} />
+            <ReadAndEditMemoNav purpose={purposeText} userId={userId} memoId={memoId} title={memo && titleValue} content={memo && contentValue} propPurposeFunction={highPurposeFunction} />
             <OneMemoWrapper>
                 {purposeComponent}
             </OneMemoWrapper>
@@ -166,4 +166,4 @@ function OneMemoPage(props) {
     );
 }
 
-export default OneMemoPage;
+export default ReadAndEditMemoPage;
