@@ -21,6 +21,14 @@ const MoreWrapper = styled(HelloWrapper)`
             border-color: #463f3a;
         }
     }
+
+    .fa-user-plus {
+        font-size: 2.1rem;
+        
+        /* border: solid 2px #463f3a;
+        padding: 2.3px;
+        border-radius: 42%; */
+    }
 `;
 
 function NewMember(props) {
@@ -33,7 +41,7 @@ function NewMember(props) {
                 환영합니다!&nbsp;&nbsp;<i className="fa fa-smile-o" aria-hidden="true"></i>
             </h2>
             <h2>
-                <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
+                <i className="fa fa-user-plus" aria-hidden="true"></i><br></br>
                 회원가입<br></br>
                 <hr></hr>
                 <form onSubmit={null}>
