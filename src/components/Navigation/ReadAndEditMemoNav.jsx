@@ -195,10 +195,6 @@ function ReadAndEditMemoNav(props) {
         </span>,
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleDeleteClick(event)}>그룹 탈퇴</button>&nbsp;</span>
     ];
-    const newNavItems = [  // 메모 작성 용도
-        <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
-        <span><button className="saveButton">저장</button>&nbsp;</span>
-    ];
     const editNavItems = [  // 메모 수정 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
         <span><button className="saveButton" onClick={(event) => handleUpdateSaveClick(props.title, props.content, event)}>저장</button>&nbsp;</span>
@@ -210,9 +206,6 @@ function ReadAndEditMemoNav(props) {
     }
     else if (props.purpose == "readGroup") {
         navItems = readGroupNavItems;
-    }
-    else if (props.purpose == "new") {
-        navItems = newNavItems;
     }
     else if (props.purpose == "edit") {
         navItems = editNavItems;

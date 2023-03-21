@@ -125,24 +125,6 @@ function ReadAndEditMemoPage(props) {
                 </div>
             </div>
     }
-    else if (purpose == "new") {
-        purposeText = "new";
-
-        // new는 다른 용도와는 다르게, 애초에 빈값이므로 value 속성을 삭제해주어야 인풋으로 값이 적혀진다. 예시로 useState("") 로 시작해버리면 값이 안적혀진다.
-        purposeComponent =
-            <div>
-                <div className="memoTitle">
-                    <input type="text" onChange={handleChangeTitle} placeholder="제목을 입력해주세요."
-                        style={{ width: "38vw", textAlign: "center", paddingTop: "4px", paddingBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
-                </div>
-                <hr></hr>
-                <div className="memoContent">
-                    <textarea className="autoTextarea" onChange={handleChangeContent} placeholder="내용을 입력해주세요."
-                        style={{ width: "99.2%", resize: "none", minHeight: "calc(100vh - 271px - 38px)", paddingTop: "5px", paddingBottom: "5px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }}
-                        onKeyDown={(event) => autoResizeAndTapkeyTextarea(event)} onKeyUp={autoResizeTextarea} />
-                </div>
-            </div>
-    }
     else {  // (purpose == "read") 일때
         memo && memo.memoHasUsersCount > 1
             ? purposeText = "readGroup"  // 개인메모가 아닌 공동메모일 경우, 버튼의 텍스트를 '그룹 탈퇴'로 변경.
