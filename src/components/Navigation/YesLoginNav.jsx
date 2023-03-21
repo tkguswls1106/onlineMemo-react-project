@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
@@ -68,6 +68,8 @@ const Wrapper = styled(NavWrapper)`
 
 function YesLoginNav(props) {
     const navigate = useNavigate();
+
+    const { userId } = useParams();
 
     const dropItemsUser = [
         {
