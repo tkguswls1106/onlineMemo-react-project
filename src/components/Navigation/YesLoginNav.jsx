@@ -74,7 +74,7 @@ function YesLoginNav(props) {
     const dropItemsUser = [
         {
             name: "회원정보",
-            link: "#",
+            link: `/users/${userId}`,
         },
         {
             name: "친구 목록",

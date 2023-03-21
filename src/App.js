@@ -17,6 +17,7 @@ import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
 import ReadAndEditMemoPage from "./pages/Memo/ReadAndEditMemoPage";
 import NewMemoPage from "./pages/Memo/NewMemoPage";
+import UserProfilePage from "./pages/User/UserProfilePage";
 
 
 const MainTitleText = styled.header`
@@ -58,6 +59,7 @@ function App(props) {
         <Route path="member" element={<NoLoginNav />} />
         <Route path="pw" element={<NoLoginNav />} />
         <Route path="/users/:userId/memos" element={<YesLoginNav />} />
+        <Route path="/users/:userId" element={<YesLoginNav />} />
         {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
         <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
       </Routes>
@@ -71,6 +73,8 @@ function App(props) {
         <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
 
         <Route path="/users/:userId/memo" element={<NewMemoPage />} />
+
+        <Route path="/users/:userId" element={<UserProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
