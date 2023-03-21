@@ -89,7 +89,7 @@ function YesLoginNav(props) {
     const dropItemsPlus = [
         {
             name: "+ 개인 메모",
-            link: "#",
+            link: `/users/${userId}/memo`,
         },
         {
             name: "+ 공동 메모",

@@ -17,6 +17,7 @@ import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
 import OneMemoPage from "./pages/Memo/OneMemoPage";
 import OneMemoNav from "./components/Navigation/OneMemoNav";
+import NewMemoPage from "./pages/Memo/NewMemoPage";
 
 
 const MainTitleText = styled.header`
@@ -69,6 +70,8 @@ function App(props) {
 
         <Route path="/users/:userId/memos" element={<MainPage />} />
         <Route path="/memos/:memoId" element={<OneMemoPage />} />
+
+        <Route path="/users/:userId/memo" element={<NewMemoPage />} />
       </Routes>
     </BrowserRouter>
   );
