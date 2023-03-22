@@ -74,6 +74,10 @@ function UserProfilePage(props) {
 
     const [user, setUser] = useState();
 
+    const handleClickCopy = (event) => {
+        window.navigator.clipboard.writeText(user.loginId);
+    }
+
     async function getUser() {  // 사용자 회원정보 조회
         await axios
             .get(`/users/${userId}`)
@@ -106,7 +110,7 @@ function UserProfilePage(props) {
                     <hr className="divideHr"></hr>
                     <div className="flex-container">
                         <span>초대 id:&nbsp;&nbsp;<span>{user && user.loginId}</span></span>
-                        <button className="copyButton">복사&nbsp;<i className="fa fa-clone" aria-hidden="true"></i></button>
+                        <button className="copyButton" onClick={handleClickCopy}>복사&nbsp;<i className="fa fa-clone" aria-hidden="true"></i></button>
                     </div>
                     <hr className="divideHr"></hr>
                     <button>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
