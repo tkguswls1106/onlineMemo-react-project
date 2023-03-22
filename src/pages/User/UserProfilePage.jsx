@@ -10,7 +10,7 @@ const MoreWrapper = styled(HelloWrapper)`
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        
         line-height: 142%;
     }
 
@@ -65,6 +65,15 @@ const MoreWrapper = styled(HelloWrapper)`
             background-color: #f4f3eea4;
         }
     }
+
+    .saveNameButton {
+        background-color: #a1c4df;
+        color: #463f3a;
+
+        &:hover {
+            background-color: #a1c4dfa4;
+        }
+    }
 `;
 
 function UserProfilePage(props) {
@@ -73,9 +82,36 @@ function UserProfilePage(props) {
     const { userId } = useParams();
 
     const [user, setUser] = useState();
+    const [nameValue, setNameValue] = useState("");
+    const [purpose, setPurpose] = useState("read");
+
+    const handleChangeName = (event) => {
+        setNameValue(event.target.value);
+    }    
 
     const handleClickCopy = (event) => {
         window.navigator.clipboard.writeText(user.loginId);
+    }
+
+    const handleEditClick = (event) => {
+        setPurpose("edit");
+    }
+
+    const handleUpdateSaveClick = async (nameValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .put(`/users/${userId}`, {
+                username: nameValue,
+            })
+            .then((response) => {
+                console.log(response);
+
+                setPurpose("read");
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     async function getUser() {  // 사용자 회원정보 조회
@@ -83,6 +119,7 @@ function UserProfilePage(props) {
             .get(`/users/${userId}`)
             .then((response) => {
                 setUser(response.data.data);
+                setNameValue(response.data.data.username)
                 console.log(response);
             })
             .catch((error) => {
@@ -92,7 +129,26 @@ function UserProfilePage(props) {
 
     useEffect(() => {
         getUser();
-    }, []);
+    }, [purpose]);
+
+    let purposeText;
+    let nameComponent;
+    let saveComponent;
+    if (purpose == "edit") {
+        purposeText = "edit";
+
+        nameComponent = <input type="text" value={user && nameValue} onChange={handleChangeName} placeholder="이름을 입력해주세요."
+            style={{ width: "60px", textAlign: "center", paddingTop: "4.5px", paddingBottom: "2.5px", marginBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
+
+        saveComponent = <button className="saveNameButton" style={{ width: "51.6px" }} onClick={(event) => handleUpdateSaveClick(nameValue)}>저장</button>
+    }
+    else {  // (purpose == "read") 일때
+        purposeText = "read";
+
+        nameComponent = <span>{user && user.username}</span>
+
+        saveComponent = <button onClick={handleEditClick}>수정&nbsp;<i className="fa fa-pencil" aria-hidden="true"></i></button>
+    }       
 
     return (
         <MoreWrapper>
@@ -104,8 +160,8 @@ function UserProfilePage(props) {
                 <span style={{ lineHeight: "175%" }}><br></br></span>
                 <div>
                     <div className="flex-container">
-                        <span>이름:&nbsp;&nbsp;<span>{user && user.username}</span></span>
-                        <button>수정&nbsp;<i className="fa fa-pencil" aria-hidden="true"></i></button>
+                        <span>이름:&nbsp;&nbsp;{nameComponent}</span>
+                        {saveComponent}
                     </div>
                     <hr className="divideHr"></hr>
                     <div className="flex-container">
