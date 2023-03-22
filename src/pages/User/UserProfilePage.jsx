@@ -169,7 +169,7 @@ function UserProfilePage(props) {
                         <button className="copyButton" onClick={handleClickCopy}>복사&nbsp;<i className="fa fa-clone" aria-hidden="true"></i></button>
                     </div>
                     <hr className="divideHr"></hr>
-                    <button>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                    <button onClick={() => {navigate('/pw')}}>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
                     &nbsp;&nbsp;<button className="deleteUserButton">회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
                 </div>
             </h2>
