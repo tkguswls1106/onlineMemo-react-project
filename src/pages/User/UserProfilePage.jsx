@@ -114,6 +114,22 @@ function UserProfilePage(props) {
             })
     }
 
+    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
+    const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .delete(`/users/${userId}`)
+            .then((response) => {
+                console.log(response);
+
+                navigate(`/`);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     async function getUser() {  // 사용자 회원정보 조회
         await axios
             .get(`/users/${userId}`)
@@ -170,7 +186,7 @@ function UserProfilePage(props) {
                     </div>
                     <hr className="divideHr"></hr>
                     <button onClick={() => {navigate('/pw')}}>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
-                    &nbsp;&nbsp;<button className="deleteUserButton">회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;<button className="deleteUserButton" onClick={handleDeleteClick}>회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
                 </div>
             </h2>
         </MoreWrapper>
