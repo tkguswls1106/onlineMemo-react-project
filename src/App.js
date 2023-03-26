@@ -20,7 +20,6 @@ import NewMemoPage from "./pages/Memo/NewMemoPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
 import FriendListPage from "./pages/Friend/FriendListPage";
 import SenderListPage from "./pages/Friend/SenderListPage";
-// import FriendListPage from "./pages/Friend/SenderListPage";
 
 const MainTitleText = styled.header`
     font-size: 3rem;
