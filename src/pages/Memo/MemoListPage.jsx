@@ -23,7 +23,7 @@ const DivWrapper = styled.div`
     }
 `;
 
-function MainPage(props) {
+function MemoListPage(props) {
     const { userId } = useParams();
 
     const location = useLocation();
@@ -42,4 +42,4 @@ function MainPage(props) {
     );
 }
 
-export default MainPage;
+export default MemoListPage;

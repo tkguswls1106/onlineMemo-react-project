@@ -12,13 +12,15 @@ import LoginPage from "./pages/User/LoginPage";
 import NewMember from "./pages/User/NewMember";
 import ChangePw from "./pages/User/ChangePw";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
-import MainPage from "./pages/Main/MainPage";
+import MemoListPage from "./pages/Memo/MemoListPage";
 import InformationPage from "./pages/Etc/InformationPage";
 import axios from 'axios'
 import ReadAndEditMemoPage from "./pages/Memo/ReadAndEditMemoPage";
 import NewMemoPage from "./pages/Memo/NewMemoPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
-
+import FriendListPage from "./pages/Friend/FriendListPage";
+import SenderListPage from "./pages/Friend/SenderListPage";
+// import FriendListPage from "./pages/Friend/SenderListPage";
 
 const MainTitleText = styled.header`
     font-size: 3rem;
@@ -62,6 +64,9 @@ function App(props) {
         <Route path="/users/:userId" element={<YesLoginNav />} />
         {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
         <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
+
+        <Route path="/users/:userId/friends" element={<YesLoginNav />} />
+        <Route path="/users/:userId/senders" element={<YesLoginNav />} />
       </Routes>
       <Routes>
         <Route index element={<LoginPage />} />
@@ -69,12 +74,15 @@ function App(props) {
         <Route path="pw" element={<ChangePw />} />
         <Route path="information" element={<InformationPage />} />
 
-        <Route path="/users/:userId/memos" element={<MainPage />} />
+        <Route path="/users/:userId/memos" element={<MemoListPage />} />
         <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
 
         <Route path="/users/:userId/memo" element={<NewMemoPage />} />
 
         <Route path="/users/:userId" element={<UserProfilePage />} />
+
+        <Route path="/users/:userId/friends" element={<FriendListPage />} />
+        <Route path="/users/:userId/senders" element={<SenderListPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -78,7 +78,7 @@ function YesLoginNav(props) {
         },
         {
             name: "친구 목록",
-            link: "#",
+            link: `/users/${userId}/friends`,
         },
         {
             name: "로그아웃",
