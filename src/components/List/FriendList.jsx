@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 
@@ -58,8 +57,6 @@ const NameIdWrapper = styled.div`
 `;
 
 function FriendList(props) {
-    const navigate = useNavigate();
-
     const { userId } = props;
 
     // const baseUrl = "http://localhost:8080";

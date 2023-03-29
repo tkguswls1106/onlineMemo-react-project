@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 
@@ -64,6 +63,42 @@ function SenderList(props) {
 
     const [senders, setSenders] = useState();
 
+    const handleAcceptClick = async (senderId, event) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .put(`/users/${userId}/senders/${senderId}`, {
+                isFriend: 1,
+                isWait: 0
+            })
+            .then((response) => {
+                console.log(response);
+
+                getSenders();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const handleRefuseClick = async (senderId, event) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .put(`/users/${userId}/senders/${senderId}`, {
+                isFriend: 0,
+                isWait: 0
+            })
+            .then((response) => {
+                console.log(response);
+
+                getSenders();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     async function getSenders() {  // 해당 사용자의 모든 친구요청발신자 리스트 조회
         await axios
             .get(`/users/${userId}/senders`)
@@ -92,7 +127,8 @@ function SenderList(props) {
                             <div className="idDiv">id:&nbsp;{sender && sender.loginId}</div>
                         </NameIdWrapper>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button className="acceptButton">수락</button>&nbsp;&nbsp;<button className="refuseButton">거절</button>
+                        <button className="acceptButton" onClick={(event) => sender && handleAcceptClick(sender.id, event)}>수락</button>&nbsp;&nbsp;
+                        <button className="refuseButton" onClick={(event) => sender && handleRefuseClick(sender.id, event)}>거절</button>
                     </SenderItemsWrapper>
                 );
             })}
