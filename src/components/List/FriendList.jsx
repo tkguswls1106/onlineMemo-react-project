@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 
@@ -58,11 +58,29 @@ const NameIdWrapper = styled.div`
 `;
 
 function FriendList(props) {
+    const navigate = useNavigate();
+
     const { userId } = props;
 
     // const baseUrl = "http://localhost:8080";
 
     const [friends, setFriends] = useState();
+
+    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
+    const handleDeleteClick = async (friendId, event) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .delete(`/users/${userId}/friends/${friendId}`)
+            .then((response) => {
+                console.log(response);
+
+                getFriends();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     async function getFriends() {  // 해당 사용자의 모든 친구 리스트 조회
         await axios
@@ -92,7 +110,7 @@ function FriendList(props) {
                             <div className="idDiv">id:&nbsp;{friend && friend.loginId}</div>
                         </NameIdWrapper>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button className="deleteFriendButton">- 친구 삭제</button>
+                        <button className="deleteFriendButton" onClick={(event) => friend && handleDeleteClick(friend.id, event)}>- 친구 삭제</button>
                     </FriendItemsWrapper>
                 );
             })}
