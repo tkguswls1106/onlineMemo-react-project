@@ -73,7 +73,6 @@ function FriendListPage(props) {
         },
         {
             name: "+ 친구 요청",
-            link: "#",
         },
     ]
 
@@ -87,6 +86,7 @@ function FriendListPage(props) {
                 <FriendOptionDropdownCenter
                     dropMain={<span><button><i className="fa fa-users" aria-hidden="true"></i>&nbsp;<i className="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsFriends}
+                    userId = {userId}
                 />
             </h2>
             <FriendList userId={userId} />

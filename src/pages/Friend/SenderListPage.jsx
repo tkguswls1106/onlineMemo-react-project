@@ -87,7 +87,6 @@ function SenderListPage(props) {
         },
         {
             name: "+ 친구 요청",
-            link: "#",
         },
     ]
 

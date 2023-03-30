@@ -17,7 +17,7 @@ const DropMenu = styled.div`
     text-align: left;
     border-radius: 7px;
     transform: translate(-50%, -20px);
-    z-index: 999;  // 페이지위에 겹친 요소들중 가장 위에있는 정도. 숫자가 클수록 위에 있다.
+    z-index: 990;  // 페이지위에 겹친 요소들중 가장 위에있는 정도. 숫자가 클수록 위에 있다.
 
     @media(max-width: 565px) {
         // left: 145%;

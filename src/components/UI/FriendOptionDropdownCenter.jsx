@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import useDetectDropdown from "../../hooks/useDetectDropdown";
+import SendFriendshipModal from "../Modal/SendFriendshipModal";
+import axios from 'axios'
 
 const DropdownContainer = styled.span`
     position: relative;
@@ -17,7 +19,7 @@ const DropMenu = styled.div`
     text-align: left;
     border-radius: 7px;
     transform: translate(-50%, -20px);
-    z-index: 999;  // 페이지위에 겹친 요소들중 가장 위에있는 정도. 숫자가 클수록 위에 있다.
+    z-index: 990;  // 페이지위에 겹친 요소들중 가장 위에있는 정도. 숫자가 클수록 위에 있다.
 
     @media(max-width: 565px) {
         // left: 145%;
@@ -95,7 +97,31 @@ function FriendOptionDropdownRight(props) {
     // useDetectDropdown(initialValue)의 initialValue를 false로 넣어주었다. 그러므로, IsOpen이 false가 되어 ddIsOpen도 false가 된다.
     // 참고로 dd는 dropdown을 줄여서 적어본것이다.
 
-    const { dropMain, dropItems } = props;
+    const { dropMain, dropItems, userId } = props;
+
+    const [modalOn, setModalOn] = useState(false);
+    const [idValue, setIdValue] = useState("");
+
+    const handleChangeId = (event) => {
+        setIdValue(event.target.value);
+    }
+
+    const handleSendClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .post(`/users/${userId}/friends`, {
+                loginId: idValue
+            })
+            .then((response) => {
+                console.log(response);
+
+                setModalOn(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <DropdownContainer>
@@ -108,9 +134,10 @@ function FriendOptionDropdownRight(props) {
                         {dropItems.map((drop, index) => {
                             return (
                                 <li id="dropLi" key={index}>
-                                    <Link to={drop.link} style={{ textDecoration: "none" }}>
-                                        {drop.name}
-                                    </Link>
+                                    {index==1  // 친구요청 클릭하면
+                                        ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link>  // true 일때
+                                        : <Link to={drop.link} style={{ textDecoration: "none" }}>{drop.name}</Link>  // false 일때
+                                    }
                                 </li>
                             );
                         }
@@ -118,6 +145,16 @@ function FriendOptionDropdownRight(props) {
                     </ul>
                 </DropMenu>
             }
+            {modalOn && (
+                <SendFriendshipModal closeModal={() => setModalOn(!modalOn)}>
+                    <h2>-&nbsp;친구 요청&nbsp;<i className="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;-</h2>
+                    <div style={{ marginBottom: "10px" }}>
+                        초대 id:&nbsp;&nbsp;<input type="text" onChange={handleChangeId} placeholder="친구의 id를 입력해주세요."
+                            style={{ width: "150px", textAlign: "center", paddingTop: "4px", paddingBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
+                    </div>
+                    <button style={{ float: "right", fontSize: "1.5rem" }} onClick={handleSendClick}>요청 완료</button>
+                </SendFriendshipModal>
+            )}
         </DropdownContainer>
     );
 }
