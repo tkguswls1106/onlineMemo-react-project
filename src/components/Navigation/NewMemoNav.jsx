@@ -151,7 +151,7 @@ function NewMemoNav(props) {
     }
 
     const newNavItems = [  // 메모 작성 용도
-        <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
+        <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i></span>,
         <span><button className="saveButton" onClick={(event) => handleNewSaveClick(props.title, props.content, event)}>저장</button>&nbsp;</span>
     ];
 

@@ -33,7 +33,7 @@ function ChangePw(props) {
     return (
         <MoreWrapper>
             <h2>
-                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
                 pw를 변경하세요!&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i>
             </h2>
             <h2>

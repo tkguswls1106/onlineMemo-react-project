@@ -177,7 +177,7 @@ function ReadAndEditMemoNav(props) {
 
     const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">
-            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
                 <i className="fa fa-clone" aria-hidden="true"></i>
                 <span className="copyText">복사</span>
@@ -187,7 +187,7 @@ function ReadAndEditMemoNav(props) {
     ];
     const readGroupNavItems = [  // 공동메모 보기 용도
         <span className="flex-left">
-            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
                 <i className="fa fa-clone" aria-hidden="true"></i>
                 <span className="copyText">복사</span>
@@ -196,7 +196,7 @@ function ReadAndEditMemoNav(props) {
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleDeleteClick(event)}>그룹 탈퇴</button>&nbsp;</span>
     ];
     const editNavItems = [  // 메모 수정 용도
-        <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i></span>,
+        <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => {props.propPurposeFunction("read")}}></i></span>,
         <span><button className="saveButton" onClick={(event) => handleUpdateSaveClick(props.title, props.content, event)}>저장</button>&nbsp;</span>
     ];
 

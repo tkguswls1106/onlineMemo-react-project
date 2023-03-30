@@ -93,7 +93,7 @@ function SenderListPage(props) {
     return (
         <MoreWrapper>
             <h2>
-                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>
+                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>
                 &nbsp;&nbsp;
                 받은 친구요청 목록
                 &nbsp;&nbsp;

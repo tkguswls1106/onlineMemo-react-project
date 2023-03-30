@@ -169,7 +169,7 @@ function UserProfilePage(props) {
     return (
         <MoreWrapper>
             <h2>
-                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate('/') }}></i>&nbsp;&nbsp;회원정보
+                <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;회원정보
             </h2>
             <h2>
                 <i className="fa fa-user-circle" aria-hidden="true"></i>
