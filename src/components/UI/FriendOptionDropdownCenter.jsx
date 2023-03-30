@@ -134,9 +134,9 @@ function FriendOptionDropdownRight(props) {
                         {dropItems.map((drop, index) => {
                             return (
                                 <li id="dropLi" key={index}>
-                                    {index==1  // 친구요청 클릭하면
-                                        ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link>  // true 일때
-                                        : <Link to={drop.link} style={{ textDecoration: "none" }}>{drop.name}</Link>  // false 일때
+                                    {index == 1  // 친구요청 부분의 인덱스번호
+                                        ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link>  // 친구요청 클릭하면
+                                        : <Link to={drop.link} style={{ textDecoration: "none" }}>{drop.name}</Link>  // 친구목록 또는 수신목록 클릭하면
                                     }
                                 </li>
                             );

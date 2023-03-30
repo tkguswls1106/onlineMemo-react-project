@@ -39,7 +39,7 @@ const MemoOptionWrapper = styled.div`
 `;
 
 function MemoOptionButton(props) {
-    const { memoHasUsersCount } = props;
+    const { memoHasUsersCount, userId, memoId, rerendering } = props;
 
     const dropItemsGroupOption = [
         {
@@ -48,7 +48,6 @@ function MemoOptionButton(props) {
         },
         {
             name: "그룹 탈퇴",
-            link: "#",
         },
     ]
 
@@ -59,7 +58,6 @@ function MemoOptionButton(props) {
         },
         {
             name: "메모 삭제",
-            link: "#",
         },
     ]
 
@@ -76,6 +74,9 @@ function MemoOptionButton(props) {
             <MemoOptionDropdownRight
                 dropMain={<i className="fa fa-ellipsis-v" aria-hidden="true"></i>}
                 dropItems={dropItemsOption}
+                userId={userId}
+                memoId={memoId}
+                rerendering={rerendering}
             />
         </MemoOptionWrapper>
     );

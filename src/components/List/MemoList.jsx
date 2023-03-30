@@ -175,7 +175,7 @@ function MemoList(props) {
                             <MemoListItem memoId={memo.id} /> 
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <MemoOptionButton memoHasUsersCount={memo.memoHasUsersCount} style={{ flexGrow: "4" }} />
+                        <MemoOptionButton memoHasUsersCount={memo.memoHasUsersCount} style={{ flexGrow: "4" }} userId={userId} memoId={memo.id} rerendering={getMemos} />
                     </MemoItemsWrapper>
                 );
             })}
