@@ -56,7 +56,7 @@ const MoreWrapper = styled(BasicWrapper)`
         }
 
         @media(max-width: 381px) {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
         }
     }
 
@@ -70,7 +70,7 @@ const MoreWrapper = styled(BasicWrapper)`
         }
 
         @media(max-width: 381px) {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
         }
     }
 `;

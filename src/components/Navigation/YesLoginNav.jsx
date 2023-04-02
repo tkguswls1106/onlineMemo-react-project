@@ -4,7 +4,7 @@ import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
 import DropdownLeft from "../UI/DropdownLeft";
-import DropdownRight from "../UI/DropdownRight";
+import NewMemoOptionDropdownRight from "../UI/NewMemoOptionDropdownRight";
 
 const Wrapper = styled(NavWrapper)`
 
@@ -93,7 +93,6 @@ function YesLoginNav(props) {
         },
         {
             name: "+ 공동 메모",
-            link: "#",
         },
     ]
 
@@ -106,9 +105,10 @@ function YesLoginNav(props) {
                 />
                 <li><a href="#">공지사항</a></li>
                 <li><a onClick={() => { navigate('/information') }}>개발 정보</a></li>
-                <DropdownRight
+                <NewMemoOptionDropdownRight
                     dropMain={<span><button>+ 새 메모&nbsp;<i className="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsPlus}
+                    userId={userId}
                 />
             </ul>
         </Wrapper>
