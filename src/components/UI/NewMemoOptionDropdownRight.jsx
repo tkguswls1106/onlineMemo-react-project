@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import useDetectDropdown from "../../hooks/useDetectDropdown";
@@ -91,6 +91,8 @@ const FriendsWrapper = styled.div`
 `;
 
 function NewMemoOptionDropdownRight(props) {
+    const navigate = useNavigate();
+
     const [ddIsOpen, ddRef, ddHandler] = useDetectDropdown(false);  // props를 받아오는게 아닌 훅 종류를 사용하였으므로, {}가 아닌, []로 받아야한다.
     // useDetectDropdown(initialValue)의 initialValue를 false로 넣어주었다. 그러므로, IsOpen이 false가 되어 ddIsOpen도 false가 된다.
     // 참고로 dd는 dropdown을 줄여서 적어본것이다.
@@ -113,7 +115,7 @@ function NewMemoOptionDropdownRight(props) {
                                 <li id="dropLi" key={index}>
                                     {index == 1  // 새 공동메모 부분의 인덱스번호
                                         ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link>  // 새 공동메모 클릭하면
-                                        : <Link to={drop.link} style={{ textDecoration: "none" }}>{drop.name}</Link>  // 새 개인메모 클릭하면
+                                        : <Link to={drop.link} style={{ textDecoration: "none" }} state={{ isGroup: 0, friendsList: [] }}>{drop.name}</Link>  // 새 개인메모 클릭하면
                                     }
                                 </li>
                             );
@@ -128,8 +130,7 @@ function NewMemoOptionDropdownRight(props) {
                     <FriendsWrapper>
                         <SelectFriendList userId={userId} checkedList={checkedList} setCheckedList={setCheckedList} />
                     </FriendsWrapper>
-                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={null}>선택 완료</button>
-                    {/* 다음에 만들 과정은, navigate으로 개인메모 입력폼으로 이동하면서 state로 checkedList를 함께주는 작업 코드를 작성해주면 된다. */}
+                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={() => navigate(`/users/${userId}/memo`, { state: { isGroup: 1, friendsList: checkedList }})}>선택 완료</button>
                 </NewGroupModal>
             )}
         </DropdownContainer>

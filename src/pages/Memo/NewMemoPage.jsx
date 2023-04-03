@@ -10,6 +10,9 @@ function NewMemoPage(props) {
 
     const { userId } = useParams();
 
+    const location = useLocation();
+    const { isGroup, friendsList } = location.state;
+
     // const baseUrl = "http://localhost:8080";
 
     const [titleValue, setTitleValue] = useState("");
@@ -101,7 +104,7 @@ function NewMemoPage(props) {
 
     return (
         <div>
-            <NewMemoNav userId={userId} title={titleValue} content={contentValue} />
+            <NewMemoNav userId={userId} title={titleValue} content={contentValue} isGroup={isGroup} friendsList={friendsList} />
             <OneMemoWrapper>
                 {purposeComponent}
             </OneMemoWrapper>

@@ -132,6 +132,23 @@ const Wrapper = styled(NavWrapper)`
 function NewMemoNav(props) {
     const navigate = useNavigate();
 
+    const handleInviteGroupMemo = async (memoId, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .post(`/memos/${memoId}`, {
+                userRequestDtos: props.friendsList
+            })
+            .then((response) => {
+                console.log(response);
+
+                navigate(`/users/${props.userId}/memos`);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     const handleNewSaveClick = async (titleValue, contentValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
@@ -143,7 +160,14 @@ function NewMemoNav(props) {
             .then((response) => {
                 console.log(response);
 
-                navigate(`/memos/${response.data.data.memoId}`, { state: { userId: props.userId } });
+                var memoId = response.data.data.memoId
+
+                if (props.isGroup == 1) {  // 새 공동메모 생성시라면
+                    handleInviteGroupMemo(memoId, e);
+                }
+                else {  // 새 개인메모 생성시라면
+                    navigate(`/memos/${memoId}`, { state: { userId: props.userId } });
+                }
             })
             .catch((error) => {
                 console.log(error);
