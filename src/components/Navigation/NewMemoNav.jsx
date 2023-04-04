@@ -137,7 +137,7 @@ function NewMemoNav(props) {
 
         await axios
             .post(`/memos/${memoId}`, {
-                userRequestDtos: props.friendsList
+                userRequestDtos: props.friendList
             })
             .then((response) => {
                 console.log(response);

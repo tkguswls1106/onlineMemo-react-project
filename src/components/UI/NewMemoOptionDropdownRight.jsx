@@ -115,7 +115,7 @@ function NewMemoOptionDropdownRight(props) {
                                 <li id="dropLi" key={index}>
                                     {index == 1  // 새 공동메모 부분의 인덱스번호
                                         ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link>  // 새 공동메모 클릭하면
-                                        : <Link to={drop.link} style={{ textDecoration: "none" }} state={{ isGroup: 0, friendsList: [] }}>{drop.name}</Link>  // 새 개인메모 클릭하면
+                                        : <Link to={drop.link} style={{ textDecoration: "none" }} state={{ isGroup: 0, friendList: [] }}>{drop.name}</Link>  // 새 개인메모 클릭하면
                                     }
                                 </li>
                             );
@@ -130,7 +130,7 @@ function NewMemoOptionDropdownRight(props) {
                     <FriendsWrapper>
                         <SelectFriendList userId={userId} checkedList={checkedList} setCheckedList={setCheckedList} />
                     </FriendsWrapper>
-                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={() => navigate(`/users/${userId}/memo`, { state: { isGroup: 1, friendsList: checkedList }})}>선택 완료</button>
+                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={() => navigate(`/users/${userId}/memo`, { state: { isGroup: 1, friendList: checkedList }})}>선택 완료</button>
                 </NewGroupModal>
             )}
         </DropdownContainer>
