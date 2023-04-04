@@ -28,7 +28,7 @@ const TitleDateWrapper = styled.div`
     }
 
     .dateDiv {
-        font-size: 1.18rem;
+        font-size: 1.13rem;
 
         height: 13.1px;
     }

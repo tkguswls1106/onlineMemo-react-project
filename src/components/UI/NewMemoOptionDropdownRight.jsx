@@ -4,7 +4,7 @@ import styled from "styled-components";
 import '../../App.css';
 import useDetectDropdown from "../../hooks/useDetectDropdown";
 import axios from 'axios'
-import NewGroupModal from "../Modal/NewGroupModal";
+import FriendGroupModal from "../Modal/FriendGroupModal";
 import SelectFriendList from "../List/SelectFriendList";
 
 const DropdownContainer = styled.div`
@@ -125,13 +125,13 @@ function NewMemoOptionDropdownRight(props) {
                 </DropMenu>
             }
             {modalOn && (
-                <NewGroupModal closeModal={() => setModalOn(!modalOn)}>
+                <FriendGroupModal closeModal={() => setModalOn(!modalOn)}>
                     <h2 style={{ fontSize: "2rem", color: "#463f3a", marginTop: "1.5px", marginBottom: "15px" }}>-&nbsp;공동 작성할 친구들 선택&nbsp;-</h2>
                     <FriendsWrapper>
                         <SelectFriendList userId={userId} checkedList={checkedList} setCheckedList={setCheckedList} />
                     </FriendsWrapper>
                     <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={() => navigate(`/users/${userId}/memo`, { state: { isGroup: 1, friendList: checkedList }})}>선택 완료</button>
-                </NewGroupModal>
+                </FriendGroupModal>
             )}
         </DropdownContainer>
     );

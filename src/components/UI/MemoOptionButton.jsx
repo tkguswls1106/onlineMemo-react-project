@@ -39,12 +39,11 @@ const MemoOptionWrapper = styled.div`
 `;
 
 function MemoOptionButton(props) {
-    const { memoHasUsersCount, userId, memoId, rerendering } = props;
+    const { memoHasUsersCount, userId, memoId, rerendering, forceUpdate, handleForceUpdate } = props;
 
     const dropItemsGroupOption = [
         {
             name: "친구 초대",
-            link: "#",
         },
         {
             name: "그룹 탈퇴",
@@ -54,7 +53,6 @@ function MemoOptionButton(props) {
     const dropItemsPrivateOption = [
         {
             name: "친구 초대",
-            link: "#",
         },
         {
             name: "메모 삭제",
