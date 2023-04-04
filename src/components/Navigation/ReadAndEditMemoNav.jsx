@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
 import axios from 'axios'
+import ConfirmModal from "../Modal/ConfirmModal";
 
 const Wrapper = styled(NavWrapper)`
 
@@ -132,6 +133,14 @@ const Wrapper = styled(NavWrapper)`
 function ReadAndEditMemoNav(props) {
     const navigate = useNavigate();
 
+    const [modalOn, setModalOn] = useState(false);
+    const [modalText, setModalText] = useState();
+
+    const handleFirstModalClick = (textValue, event) => {
+        setModalOn((modalOn) => !modalOn);
+        setModalText(textValue);
+    }
+
     const handleClickCopy = (event) => {   
         window.navigator.clipboard.writeText(props.content);
         // alert("메모 내용을 전체 복사하였습니다.");
@@ -159,7 +168,6 @@ function ReadAndEditMemoNav(props) {
             })
     }
 
-    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
     const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
@@ -177,13 +185,13 @@ function ReadAndEditMemoNav(props) {
 
     const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">
-            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(`/users/${props.userId}/memos`) }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
                 <i className="fa fa-clone" aria-hidden="true"></i>
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton" onClick={(event) => handleDeleteClick(event)}>삭제</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton" onClick={(event) => handleFirstModalClick("삭제", event)}>삭제</button>&nbsp;</span>
     ];
     const readGroupNavItems = [  // 공동메모 보기 용도
         <span className="flex-left">
@@ -193,7 +201,7 @@ function ReadAndEditMemoNav(props) {
                 <span className="copyText">복사</span>
             </span>
         </span>,
-        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleDeleteClick(event)}>그룹 탈퇴</button>&nbsp;</span>
+        <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleFirstModalClick("그룹을 탈퇴", event)}>그룹 탈퇴</button>&nbsp;</span>
     ];
     const editNavItems = [  // 메모 수정 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => {props.propPurposeFunction("read")}}></i></span>,
@@ -221,6 +229,17 @@ function ReadAndEditMemoNav(props) {
                 }
                 )}
             </ul>
+            {modalOn && (
+                <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">정말&nbsp;{modalText}하시겠습니까?</h2>
+                    <br></br>
+                    <div style={{ float: "right" }}>
+                        <button className="confirmDeleteButton" onClick={handleDeleteClick}>확인</button>&nbsp;&nbsp;
+                        <button className="cancelButton" onClick={() => setModalOn(!modalOn)}>취소</button>
+                    </div>
+                </ConfirmModal>
+            )}
         </Wrapper>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios'
+import ConfirmModal from "../Modal/ConfirmModal";
 
 const FriendsWrapper = styled.div`
     display: flex;
@@ -62,9 +63,15 @@ function FriendList(props) {
     // const baseUrl = "http://localhost:8080";
 
     const [friends, setFriends] = useState();
+    const [modalOn, setModalOn] = useState(false);
+    const [modalFriendId, setModalFriendId] = useState();
 
-    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
-    const handleDeleteClick = async (friendId, event) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+    const handleFirstModalClick = (friendId, event) => {
+        setModalOn((modalOn) => !modalOn);
+        setModalFriendId(friendId);
+    }
+
+    const handleDeleteClick = async (friendId) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
@@ -72,6 +79,7 @@ function FriendList(props) {
             .then((response) => {
                 console.log(response);
 
+                setModalOn((modalOn) => !modalOn);
                 getFriends();
             })
             .catch((error) => {
@@ -107,10 +115,21 @@ function FriendList(props) {
                             <div className="idDiv">id:&nbsp;{friend && friend.loginId}</div>
                         </NameIdWrapper>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button className="deleteFriendButton" onClick={(event) => friend && handleDeleteClick(friend.id, event)}>- 친구 삭제</button>
+                        <button className="deleteFriendButton" onClick={(event) => friend && handleFirstModalClick(friend.id, event)}>- 친구 삭제</button>
                     </FriendItemsWrapper>
                 );
             })}
+            {modalOn && (
+                <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">정말 삭제하시겠습니까?</h2>
+                    <br></br>
+                    <div style={{ float: "right" }}>
+                        <button className="confirmDeleteButton" style={{ fontSize: "1.5rem" }} onClick={() => {handleDeleteClick(modalFriendId)}}>확인</button>&nbsp;&nbsp;
+                        <button style={{ fontSize: "1.5rem" }} onClick={() => setModalOn(!modalOn)}>취소</button>
+                    </div>
+                </ConfirmModal>
+            )}
         </FriendsWrapper>
     );
 }

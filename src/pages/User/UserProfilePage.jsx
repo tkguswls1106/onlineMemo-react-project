@@ -4,6 +4,7 @@ import styled from "styled-components";
 import '../../App.css';
 import axios from 'axios'
 import HelloWrapper from "../../components/Styled/HelloWrapper"
+import ConfirmModal from "../../components/Modal/ConfirmModal";
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
@@ -85,6 +86,8 @@ function UserProfilePage(props) {
     const [nameValue, setNameValue] = useState("");
     const [purpose, setPurpose] = useState("read");
 
+    const [modalOn, setModalOn] = useState(false);
+
     const handleChangeName = (event) => {
         setNameValue(event.target.value);
     }    
@@ -114,7 +117,6 @@ function UserProfilePage(props) {
             })
     }
 
-    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
     const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
@@ -186,9 +188,20 @@ function UserProfilePage(props) {
                     </div>
                     <hr className="divideHr"></hr>
                     <button onClick={() => {navigate('/pw')}}>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
-                    &nbsp;&nbsp;<button className="deleteUserButton" onClick={handleDeleteClick}>회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
+                    &nbsp;&nbsp;<button className="deleteUserButton" onClick={() => setModalOn(!modalOn)}>회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
                 </div>
             </h2>
+            {modalOn && (
+                <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">정말 삭제하시겠습니까?</h2>
+                    <br></br>
+                    <div style={{ float: "right" }}>
+                        <button className="confirmDeleteButton" onClick={handleDeleteClick}>확인</button>&nbsp;&nbsp;
+                        <button className="cancelButton" onClick={() => setModalOn(!modalOn)}>취소</button>
+                    </div>
+                </ConfirmModal>
+            )}
         </MoreWrapper>
     );
 }

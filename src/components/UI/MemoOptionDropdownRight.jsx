@@ -6,6 +6,7 @@ import useDetectDropdown from "../../hooks/useDetectDropdown";
 import axios from 'axios'
 import FriendGroupModal from "../Modal/FriendGroupModal";
 import InviteFriendList from "../List/InviteFriendList";
+import ConfirmModal from "../Modal/ConfirmModal";
 
 const DropdownContainer = styled.div`
     position: relative;
@@ -107,12 +108,26 @@ function MemoOptionDropdownRight(props) {
 
     const { dropMain, dropItems, userId, memoId, rerendering } = props;
 
-    const [modalOn, setModalOn] = useState(false);
+    const [inviteModalOn, setInviteModalOn] = useState(false);
     const [checkedList, setCheckedList] = useState([]);
 
     const [allFriends, setAllFriends] = useState([]);
     const [users, setUsers] = useState([]);
     const [invitableFriends, setInvitableFriends] = useState([]);
+
+    const [deleteModalOn, setDeleteModalOn] = useState(false);
+    const [modalText, setModalText] = useState();
+
+    const handleFirstModalClick = (textValue, event) => {
+        setDeleteModalOn((deleteModalOn) => !deleteModalOn);
+
+        if (textValue == "그룹 탈퇴") {
+            setModalText("그룹을 탈퇴");
+        }
+        else {  // textValue == "메모 삭제" 일때
+            setModalText("삭제");
+        }
+    }
 
     const handleInviteGroupMemo = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
@@ -131,7 +146,6 @@ function MemoOptionDropdownRight(props) {
             })
     }
 
-    // 나중에 삭제전에 alert확인같은걸로 삭제할건지 재확인하는 코드도 추가하자.
     const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
@@ -191,8 +205,8 @@ function MemoOptionDropdownRight(props) {
                             return (
                                 <li id="dropLi" key={index}>
                                     {index == 0  // 친구초대 부분의 인덱스번호
-                                        ? <Link style={{ textDecoration: "none" }} onClick={() => setModalOn(!modalOn)}>{drop.name}</Link> // 친구초대 클릭하면
-                                        : <Link style={{ textDecoration: "none" }} onClick={(event) => handleDeleteClick(event)}>{drop.name}</Link>  // 메모삭제 클릭하면
+                                        ? <Link style={{ textDecoration: "none" }} onClick={() => setInviteModalOn(!inviteModalOn)}>{drop.name}</Link> // 친구초대 클릭하면
+                                        : <Link style={{ textDecoration: "none" }} onClick={(event) => handleFirstModalClick(`${drop.name}`, event)}>{drop.name}</Link>  // 메모삭제 클릭하면
                                     }
                                 </li>
                             );
@@ -201,14 +215,25 @@ function MemoOptionDropdownRight(props) {
                     </ul>
                 </DropMenu>
             }
-            {modalOn && (
-                <FriendGroupModal closeModal={() => setModalOn(!modalOn)}>
+            {inviteModalOn && (
+                <FriendGroupModal closeModal={() => setInviteModalOn(!inviteModalOn)}>
                     <h2 style={{ fontSize: "2rem", color: "#463f3a", marginTop: "1.5px", marginBottom: "15px" }}>-&nbsp;초대할 친구들 선택&nbsp;-</h2>
                     <FriendsWrapper>
                         <InviteFriendList userId={userId} checkedList={checkedList} setCheckedList={setCheckedList} friends={invitableFriends} />
                     </FriendsWrapper>
                     <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={handleInviteGroupMemo}>선택 완료</button>
                 </FriendGroupModal>
+            )}
+            {deleteModalOn && (
+                <ConfirmModal closeModal={() => setDeleteModalOn(!deleteModalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">정말&nbsp;{modalText}하시겠습니까?</h2>
+                    <br></br>
+                    <div style={{ float: "right" }}>
+                        <button className="confirmDeleteButton" onClick={handleDeleteClick}>확인</button>&nbsp;&nbsp;
+                        <button className="cancelButton" onClick={() => setDeleteModalOn(!deleteModalOn)}>취소</button>
+                    </div>
+                </ConfirmModal>
             )}
         </DropdownContainer>
     );
