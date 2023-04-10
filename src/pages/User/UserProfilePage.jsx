@@ -67,6 +67,12 @@ const MoreWrapper = styled(HelloWrapper)`
         }
     }
 
+    .fa-check {
+        /* font-size: 1.45rem;   
+        font-weight: bold; */
+        color: #3fb950;
+    }
+
     .saveNameButton {
         background-color: #a1c4df;
         color: #463f3a;
@@ -82,6 +88,8 @@ function UserProfilePage(props) {
 
     const { userId } = useParams();
 
+    const [copyClassName, setCopyClassName] = useState('fa fa-clone');
+
     const [user, setUser] = useState();
     const [nameValue, setNameValue] = useState("");
     const [purpose, setPurpose] = useState("read");
@@ -94,6 +102,11 @@ function UserProfilePage(props) {
 
     const handleClickCopy = (event) => {
         window.navigator.clipboard.writeText(user.loginId);
+
+        setCopyClassName('fa fa-check');
+        setTimeout(() => {
+            setCopyClassName('fa fa-clone');
+        }, 2000); // 2초 딜레이 후에 다시 아이콘 변경.
     }
 
     const handleEditClick = (event) => {
@@ -184,7 +197,7 @@ function UserProfilePage(props) {
                     <hr className="divideHr"></hr>
                     <div className="flex-container">
                         <span>초대 id:&nbsp;&nbsp;<span>{user && user.loginId}</span></span>
-                        <button className="copyButton" onClick={handleClickCopy}>복사&nbsp;<i className="fa fa-clone" aria-hidden="true"></i></button>
+                        <button className="copyButton" onClick={handleClickCopy}>복사&nbsp;<i className={copyClassName} aria-hidden="true"></i></button>
                     </div>
                     <hr className="divideHr"></hr>
                     <button onClick={() => {navigate('/pw')}}>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>

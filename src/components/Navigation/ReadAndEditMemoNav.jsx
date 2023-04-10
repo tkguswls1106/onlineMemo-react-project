@@ -123,6 +123,12 @@ const Wrapper = styled(NavWrapper)`
         font-weight: bold;
     }
 
+    .fa-check {
+        font-size: 1.45rem;   
+        font-weight: bold;
+        color: #3fb950;
+    }
+
     .copyText {
         font-size: 1.15rem;
         font-weight: bold; 
@@ -132,6 +138,8 @@ const Wrapper = styled(NavWrapper)`
 
 function ReadAndEditMemoNav(props) {
     const navigate = useNavigate();
+
+    const [copyClassName, setCopyClassName] = useState('fa fa-clone');
 
     const [modalOn, setModalOn] = useState(false);
     const [modalText, setModalText] = useState();
@@ -143,7 +151,11 @@ function ReadAndEditMemoNav(props) {
 
     const handleClickCopy = (event) => {   
         window.navigator.clipboard.writeText(props.content);
-        // alert("메모 내용을 전체 복사하였습니다.");
+
+        setCopyClassName('fa fa-check');
+        setTimeout(() => {
+            setCopyClassName('fa fa-clone');
+        }, 2000); // 2초 딜레이 후에 다시 아이콘 변경.
     }
 
     const handleEditClick = (event) => {
@@ -187,7 +199,7 @@ function ReadAndEditMemoNav(props) {
         <span className="flex-left">
             &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(`/users/${props.userId}/memos`) }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
-                <i className="fa fa-clone" aria-hidden="true"></i>
+                <i className={copyClassName} aria-hidden="true"></i>
                 <span className="copyText">복사</span>
             </span>
         </span>,
@@ -197,7 +209,7 @@ function ReadAndEditMemoNav(props) {
         <span className="flex-left">
             &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
-                <i className="fa fa-clone" aria-hidden="true"></i>
+                <i className={copyClassName} aria-hidden="true"></i>
                 <span className="copyText">복사</span>
             </span>
         </span>,
