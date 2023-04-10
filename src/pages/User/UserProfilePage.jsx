@@ -68,8 +68,6 @@ const MoreWrapper = styled(HelloWrapper)`
     }
 
     .fa-check {
-        /* font-size: 1.45rem;   
-        font-weight: bold; */
         color: #3fb950;
     }
 
