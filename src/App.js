@@ -20,6 +20,7 @@ import NewMemoPage from "./pages/Memo/NewMemoPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
 import FriendListPage from "./pages/Friend/FriendListPage";
 import SenderListPage from "./pages/Friend/SenderListPage";
+import NoticePage from "./pages/Etc/NoticePage";
 
 const MainTitleText = styled.header`
     font-size: 3rem;
@@ -63,6 +64,7 @@ function App(props) {
         <Route path="/users/:userId" element={<YesLoginNav />} />
         {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
         <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
+        <Route path="notice" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
 
         <Route path="/users/:userId/friends" element={<YesLoginNav />} />
         <Route path="/users/:userId/senders" element={<YesLoginNav />} />
@@ -72,6 +74,7 @@ function App(props) {
         <Route path="member" element={<NewMember />} />
         <Route path="pw" element={<ChangePw />} />
         <Route path="information" element={<InformationPage />} />
+        <Route path="notice" element={<NoticePage />} />
 
         <Route path="/users/:userId/memos" element={<MemoListPage />} />
         <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />

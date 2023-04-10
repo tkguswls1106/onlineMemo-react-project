@@ -43,7 +43,7 @@ function NoLoginNav(props) {
     return (
         <Wrapper>
             <ul>
-                <li><a href="#">공지사항</a></li>
+                <li><a onClick={() => { navigate('/notice') }}>공지사항</a></li>
                 <li><a onClick={() => { navigate('/information') }}>개발 정보</a></li>
             </ul>
         </Wrapper>
