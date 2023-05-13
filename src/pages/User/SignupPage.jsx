@@ -60,6 +60,7 @@ function SignupPage(props) {
                     </div>
                     <div className="flex-container">
                         <button type="submit">가입 완료</button>
+                        {/* 가입 완료했으면 홈화면으로 리다이렉트 시키자. */}
                     </div>
                 </form>
             </h2>

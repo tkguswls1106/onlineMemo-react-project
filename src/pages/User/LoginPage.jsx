@@ -51,7 +51,13 @@ function LoginPage(props) {
 
     const handleChangePw = (event) => {
         setPwValue(event.target.value);
-    }   
+    }
+
+    const doClickEnter = (event) => {
+        if (event.key === 'Enter') {
+            handleLoginClick(loginIdValue, pwValue);
+        }
+    };
 
     const handleLoginClick = async (loginIdValue, pwValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
@@ -115,10 +121,10 @@ function LoginPage(props) {
                 Login<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} />
+                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
+                    pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
                     <Link to={'/password'}>pw 변경</Link>
