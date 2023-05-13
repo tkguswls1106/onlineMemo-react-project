@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from 'axios'
 import '../../App.css';
 import { useNavigate } from "react-router-dom";
 import HelloWrapper from "../../components/Styled/HelloWrapper"
@@ -10,7 +11,7 @@ const MoreWrapper = styled(HelloWrapper)`
     }
 
     .fa-arrow-left {
-        border: solid 2.3px;
+        border: solid 2.3px ;
         border-radius: 6px;
         padding: 1px 6.7px;
 
@@ -22,43 +23,39 @@ const MoreWrapper = styled(HelloWrapper)`
         }
     }
 
-    .fa-user-plus {
-        font-size: 2.1rem;
-        
-        /* border: solid 2px #463f3a;
-        padding: 2.3px;
-        border-radius: 42%; */
+    .change {
+        text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
     }
 `;
 
-function NewMember(props) {
+function ChangePwPage(props) {
     const navigate = useNavigate();
 
     return (
         <MoreWrapper>
             <h2>
                 <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
-                환영합니다!&nbsp;&nbsp;<i className="fa fa-smile-o" aria-hidden="true"></i>
+                pw를 변경하세요!&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i>
             </h2>
             <h2>
-                <i className="fa fa-user-plus" aria-hidden="true"></i><br></br>
-                회원가입<br></br>
+                <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
+                비밀번호 변경<br></br>
                 <hr></hr>
                 <form onSubmit={null}>
                     <div className="flex-container">
-                        &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" value={null} size="17" />
+                        &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" value={null} size="15" />
                     </div>
                     <div className="flex-container">
-                        &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" value={null} />
+                        현재 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
+                    </div>
+                    <div className="flex-container change">
+                        바꿀 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
+                    </div>
+                    <div className="flex-container change">
+                        pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="15" />
                     </div>
                     <div className="flex-container">
-                        pw:&nbsp;&nbsp;<input type="text" value={null} />
-                    </div>
-                    <div className="flex-container">
-                        pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="14"/>
-                    </div>
-                    <div className="flex-container">
-                        <button type="submit">가입 완료</button>
+                        <button type="submit">변경 완료</button>
                     </div>
                 </form>
             </h2>
@@ -66,4 +63,4 @@ function NewMember(props) {
     );
 }
 
-export default NewMember;
+export default ChangePwPage;

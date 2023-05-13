@@ -9,12 +9,11 @@ import styled from "styled-components";
 import './App.css';
 import NoLoginNav from "./components/Navigation/NoLoginNav";
 import LoginPage from "./pages/User/LoginPage";
-import NewMember from "./pages/User/NewMember";
-import ChangePw from "./pages/User/ChangePw";
+import SignupPage from "./pages/User/SignupPage";
+import ChangePwPage from "./pages/User/ChangePwPage";
 import YesLoginNav from "./components/Navigation/YesLoginNav";
 import MemoListPage from "./pages/Memo/MemoListPage";
 import InformationPage from "./pages/Etc/InformationPage";
-import axios from 'axios'
 import ReadAndEditMemoPage from "./pages/Memo/ReadAndEditMemoPage";
 import NewMemoPage from "./pages/Memo/NewMemoPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
@@ -58,21 +57,23 @@ function App(props) {
       </MainTitleText>
       <Routes>
         <Route index element={<NoLoginNav />} />
-        <Route path="member" element={<NoLoginNav />} />
-        <Route path="pw" element={<NoLoginNav />} />
+        <Route path="login" element={<NoLoginNav />} />
+        <Route path="signup" element={<NoLoginNav />} />
+        <Route path="password" element={<NoLoginNav />} />
         <Route path="/users/:userId/memos" element={<YesLoginNav />} />
         <Route path="/users/:userId" element={<YesLoginNav />} />
         {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
-        <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
-        <Route path="notice" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자*/}
+        <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자. 또는 뒤로가기버튼 만들자.*/}
+        <Route path="notice" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자. 또는 뒤로가기버튼 만들자.*/}
 
         <Route path="/users/:userId/friends" element={<YesLoginNav />} />
         <Route path="/users/:userId/senders" element={<YesLoginNav />} />
       </Routes>
       <Routes>
         <Route index element={<LoginPage />} />
-        <Route path="member" element={<NewMember />} />
-        <Route path="pw" element={<ChangePw />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<SignupPage />} />
+        <Route path="password" element={<ChangePwPage />} />
         <Route path="information" element={<InformationPage />} />
         <Route path="notice" element={<NoticePage />} />
 

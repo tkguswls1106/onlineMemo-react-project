@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from 'axios'
 import '../../App.css';
 import HelloWrapper from "../../components/Styled/HelloWrapper"
-import { useNavigate } from "react-router-dom";
 
 const DivWrapper = styled.div`
     font-size: 1.5rem;
@@ -39,6 +40,49 @@ const DivWrapper = styled.div`
 function LoginPage(props) {
     const navigate = useNavigate();
 
+    const [loginIdValue, setLoginIdValue] = useState("");
+    const [pwValue, setPwValue] = useState("");
+
+    const handleChangeLoginId = (event) => {
+        setLoginIdValue(event.target.value);
+    }   
+
+    const handleChangePw = (event) => {
+        setPwValue(event.target.value);
+    }   
+
+    const handleLoginClick = async (loginIdValue, pwValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        await axios
+            .post('/login', {
+                loginId: loginIdValue,
+                firstPw: pwValue
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    async function checkLogin() {  // 로그인 상태 여부 확인.
+        await axios
+            .get(`/auth`)
+            .then((response) => {  // 로그인 상태가 맞을경우
+                navigate(`users/${response.data.data.id}/memos`);
+                console.log(response);
+            })
+            .catch((error) => {  // 로그인 상태가 아닌경우
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
     return (
         <HelloWrapper>
             <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i className="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
@@ -48,17 +92,17 @@ function LoginPage(props) {
                 <hr></hr>
                 <form onSubmit={null}>
                     <div className="flex-container">
-                        &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" value={null} />
+                        &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} />
                     </div>
                     <div className="flex-container">
-                        pw:&nbsp;&nbsp;<input type="text" value={null} />
+                        pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
                     </div>
                     <div className="flex-container">
-                        <a onClick={() => { navigate('/pw') }}>pw 변경</a>
+                        <Link to={'/password'}>pw 변경</Link>
                         &nbsp;&nbsp;&nbsp;
-                        <a onClick={() => {navigate('/member')}}>회원가입</a>
+                        <Link to={'/signup'}>회원가입</Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="submit">로그인</button>
+                        <button onClick={handleLoginClick}>로그인</button>
                     </div>
                 </form>
             </h2>
