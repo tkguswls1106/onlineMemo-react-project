@@ -62,7 +62,7 @@ function App(props) {
         <Route path="password" element={<NoLoginNav />} />
         <Route path="/users/:userId/memos" element={<YesLoginNav />} />
         <Route path="/users/:userId" element={<YesLoginNav />} />
-        {/* <Route path="/memos/:memoId" element={<OneMemoNav />} /> */}
+
         <Route path="information" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자. 또는 뒤로가기버튼 만들자.*/}
         <Route path="notice" element={<NoLoginNav />} />  {/*이거 나중에 로그인여부에 따라 교체하는걸로 바꾸도록하자. 또는 뒤로가기버튼 만들자.*/}
 
