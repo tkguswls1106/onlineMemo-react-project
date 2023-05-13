@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
 import axios from 'axios'
 import ConfirmModal from "../Modal/ConfirmModal";
+import { CheckToken } from "../../utils/CheckToken";
 
 const Wrapper = styled(NavWrapper)`
 
@@ -194,6 +195,10 @@ function ReadAndEditMemoNav(props) {
                 console.log(error);
             })
     }
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">

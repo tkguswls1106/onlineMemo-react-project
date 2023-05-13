@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
 import ReadAndEditMemoNav from "../../components/Navigation/ReadAndEditMemoNav";
+import { CheckToken } from "../../utils/CheckToken";
 
 function ReadAndEditMemoPage(props) {
     const navigate = useNavigate();
@@ -103,6 +104,8 @@ function ReadAndEditMemoPage(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getMemo();  // 출생시점에 getMemo 한번 실행.
     }, [purpose]);
 

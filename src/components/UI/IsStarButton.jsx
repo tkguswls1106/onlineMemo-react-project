@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios'
+import { CheckToken } from "../../utils/CheckToken";
 
 function IsStarButton(props) {
 
@@ -25,6 +26,8 @@ function IsStarButton(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getMemo();  // 출생시점에 getMemo 한번 실행.
     }, []);
 

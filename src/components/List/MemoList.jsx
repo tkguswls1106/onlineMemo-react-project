@@ -5,6 +5,7 @@ import axios from 'axios'
 import MemoListItem from "./MemoListItem";
 import IsStarButton from "../UI/IsStarButton";
 import MemoOptionButton from "../UI/MemoOptionButton";
+import { CheckToken } from "../../utils/CheckToken";
 
 const MemosWrapper = styled.div`
     display: flex;
@@ -146,6 +147,8 @@ function MemoList(props) {
     }
 
     useEffect(() => {  // 출생시점과, sortValue 또는 searchValue 의 값이 변경될때 실행.
+        CheckToken();
+
         if (sortValue == null && searchValue == null) {
             getMemos();
         }

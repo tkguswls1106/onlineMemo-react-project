@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
 import axios from 'axios'
+import { CheckToken } from "../../utils/CheckToken";
 
 const Wrapper = styled(NavWrapper)`
 
@@ -173,6 +174,10 @@ function NewMemoNav(props) {
                 console.log(error);
             })
     }
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     const newNavItems = [  // 메모 작성 용도
         <span className="flex-left">&nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i></span>,

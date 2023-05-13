@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios'
+import { CheckToken } from "../../utils/CheckToken";
 
 const SendersWrapper = styled.div`
     display: flex;
@@ -112,6 +113,8 @@ function SenderList(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getSenders();
     }, []);
 

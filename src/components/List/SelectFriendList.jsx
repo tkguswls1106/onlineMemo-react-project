@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios'
 import Checkbox from "../UI/Checkbox";
+import { CheckToken } from "../../utils/CheckToken";
 
 const FriendsWrapper = styled.div`
     display: flex;
@@ -101,6 +102,8 @@ function SelectFriendList(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getFriends();
     }, []);
 

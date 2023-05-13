@@ -5,6 +5,7 @@ import '../../App.css';
 import axios from 'axios'
 import HelloWrapper from "../../components/Styled/HelloWrapper"
 import ConfirmModal from "../../components/Modal/ConfirmModal";
+import { CheckToken } from "../../utils/CheckToken";
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
@@ -157,6 +158,8 @@ function UserProfilePage(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getUser();
     }, [purpose]);
 

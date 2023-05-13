@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import NavWrapper from "../Styled/NavWrapper";
 import DropdownLeft from "../UI/DropdownLeft";
 import NewMemoOptionDropdownRight from "../UI/NewMemoOptionDropdownRight";
+import { CheckToken } from "../../utils/CheckToken";
 
 const Wrapper = styled(NavWrapper)`
 
@@ -86,7 +87,6 @@ function YesLoginNav(props) {
         },
         {
             name: "로그아웃",
-            link: "#",
         },
     ]
 
@@ -99,6 +99,10 @@ function YesLoginNav(props) {
             name: "+ 공동 메모",
         },
     ]
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     return (
         <Wrapper>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
 import '../../App.css';
-import HelloWrapper from "../../components/Styled/HelloWrapper"
+import HelloWrapper from "../../components/Styled/HelloWrapper";
 
 const DivWrapper = styled.div`
     font-size: 1.5rem;
@@ -43,6 +43,8 @@ function LoginPage(props) {
     const [loginIdValue, setLoginIdValue] = useState("");
     const [pwValue, setPwValue] = useState("");
 
+    const [tokenUserId, setTokenUserId] = useState();
+
     const handleChangeLoginId = (event) => {
         setLoginIdValue(event.target.value);
     }   
@@ -60,6 +62,12 @@ function LoginPage(props) {
                 firstPw: pwValue
             })
             .then((response) => {
+                axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.data.accessToken}`;
+                localStorage.setItem('token', response.data.data.accessToken);
+                localStorage.setItem('expirationTime', String(response.data.data.tokenExpiresIn));
+
+                checkLogin();
+
                 console.log(response);
             })
             .catch((error) => {
@@ -67,21 +75,37 @@ function LoginPage(props) {
             })
     }
 
-    async function checkLogin() {  // 로그인 상태 여부 확인.
+    async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get(`/auth`)
-            .then((response) => {  // 로그인 상태가 맞을경우
-                navigate(`users/${response.data.data.id}/memos`);
+            .get('/auth')
+            .then((response) => {
+                setTokenUserId(response.data.data.id);
                 console.log(response);
             })
-            .catch((error) => {  // 로그인 상태가 아닌경우
+            .catch((error) => {
                 console.log(error);
             })
     }
 
     useEffect(() => {
-        checkLogin();
-    }, []);
+        const storedToken = localStorage.getItem('token');
+        const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
+
+        if(storedToken) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+
+            const remaingTime = (new Date(storedExpirationDate).getTime()) - (new Date().getTime());
+            if(remaingTime <= 1000) {  // 토큰 잔여만료시간이 1초 이하라면
+                localStorage.removeItem('token');
+                localStorage.removeItem('expirationTime');
+            }
+
+            checkLogin();
+            if(tokenUserId) {
+                navigate(`/users/${tokenUserId}/memos`);
+            }
+        }
+    }, [tokenUserId]);
 
     return (
         <HelloWrapper>
@@ -90,21 +114,19 @@ function LoginPage(props) {
                 <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 Login<br></br>
                 <hr></hr>
-                <form onSubmit={null}>
-                    <div className="flex-container">
-                        &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} />
-                    </div>
-                    <div className="flex-container">
-                        pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
-                    </div>
-                    <div className="flex-container">
-                        <Link to={'/password'}>pw 변경</Link>
-                        &nbsp;&nbsp;&nbsp;
-                        <Link to={'/signup'}>회원가입</Link>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onClick={handleLoginClick}>로그인</button>
-                    </div>
-                </form>
+                <div className="flex-container">
+                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} />
+                </div>
+                <div className="flex-container">
+                    pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
+                </div>
+                <div className="flex-container">
+                    <Link to={'/password'}>pw 변경</Link>
+                    &nbsp;&nbsp;&nbsp;
+                    <Link to={'/signup'}>회원가입</Link>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button onClick={(event) => handleLoginClick(loginIdValue, pwValue)}>로그인</button>
+                </div>
             </h2>
 
             <DivWrapper>

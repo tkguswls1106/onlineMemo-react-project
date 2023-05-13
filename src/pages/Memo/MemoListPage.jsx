@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from 'axios'
 import '../../App.css';
-import { useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import BasicWrapper from "../../components/Styled/BasicWrapper";
 import SortMemo from "../../components/UI/SortMemo";
 import SearchMemo from "../../components/UI/SearchMemo";
 import MemoList from "../../components/List/MemoList";
+import { CheckToken } from "../../utils/CheckToken";
 
 const DivWrapper = styled.div`
     // 클래스 이름들은 어떠한 역할로 쓰였는지 참고하라고 명시해둔것이다.
@@ -24,12 +26,18 @@ const DivWrapper = styled.div`
 `;
 
 function MemoListPage(props) {
+    const navigate = useNavigate();
+
     const { userId } = useParams();
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const sortValue = searchParams.get('order');
     const searchValue = searchParams.get('search');
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     return (
         <BasicWrapper>

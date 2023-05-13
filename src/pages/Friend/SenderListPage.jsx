@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import '../../App.css';
 import { useNavigate, useParams } from "react-router-dom";
 import BasicWrapper from "../../components/Styled/BasicWrapper";
 import FriendOptionDropdownCenter from "../../components/UI/FriendOptionDropdownCenter";
 import SenderList from "../../components/List/SenderList";
+import { CheckToken } from "../../utils/CheckToken";
 
 const MoreWrapper = styled(BasicWrapper)`
     .fa-arrow-left {
@@ -89,6 +90,10 @@ function SenderListPage(props) {
             name: "+ 친구 요청",
         },
     ]
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     return (
         <MoreWrapper>

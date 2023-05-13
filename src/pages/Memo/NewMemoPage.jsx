@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
 import NewMemoNav from "../../components/Navigation/NewMemoNav";
+import { CheckToken } from "../../utils/CheckToken";
 
 function NewMemoPage(props) {
     const navigate = useNavigate();
@@ -84,6 +85,8 @@ function NewMemoPage(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         startNewMemo();  // 출생시점에 startNewMemo 한번 실행.
     }, []);
 

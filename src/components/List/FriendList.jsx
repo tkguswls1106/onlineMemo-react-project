@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios'
 import ConfirmModal from "../Modal/ConfirmModal";
+import { CheckToken } from "../../utils/CheckToken";
 
 const FriendsWrapper = styled.div`
     display: flex;
@@ -100,6 +101,8 @@ function FriendList(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getFriends();
     }, []);
 

@@ -7,6 +7,7 @@ import axios from 'axios'
 import FriendGroupModal from "../Modal/FriendGroupModal";
 import InviteFriendList from "../List/InviteFriendList";
 import ConfirmModal from "../Modal/ConfirmModal";
+import { CheckToken } from "../../utils/CheckToken";
 
 const DropdownContainer = styled.div`
     position: relative;
@@ -186,6 +187,8 @@ function MemoOptionDropdownRight(props) {
     }
 
     useEffect(() => {
+        CheckToken();
+
         getFriends();
         getMemoHasUsers();
         const invitableFriendList = allFriends.filter(obj => !users.map(x => JSON.stringify(x)).includes(JSON.stringify(obj)));

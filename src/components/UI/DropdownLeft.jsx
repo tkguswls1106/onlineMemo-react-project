@@ -74,6 +74,13 @@ function DropdownLeft(props) {
 
     const { dropMain, dropItems } = props;
 
+    const handleLogoutClick = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expirationTime');
+        
+        window.location.href = '/login';
+    }
+
     return (
         <DropdownContainer>
             <li onClick={ddHandler} ref={ddRef}>
@@ -85,9 +92,10 @@ function DropdownLeft(props) {
                         {dropItems.map((drop, index) => {
                             return (
                                 <li id="dropLi" key={index}>
-                                    <Link to={drop.link} style={{ textDecoration: "none" }}>
-                                        {drop.name}
-                                    </Link>
+                                    {index==3 && drop.name=="로그아웃"
+                                        ? <Link onClick={handleLogoutClick}>{drop.name}</Link>
+                                        : <Link to={drop.link} style={{ textDecoration: "none" }}>{drop.name}</Link>
+                                    }
                                 </li>
                             );
                         }

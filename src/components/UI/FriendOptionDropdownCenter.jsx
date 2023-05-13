@@ -5,6 +5,7 @@ import '../../App.css';
 import useDetectDropdown from "../../hooks/useDetectDropdown";
 import SendFriendshipModal from "../Modal/SendFriendshipModal";
 import axios from 'axios'
+import { CheckToken } from "../../utils/CheckToken";
 
 const DropdownContainer = styled.span`
     position: relative;
@@ -122,6 +123,10 @@ function FriendOptionDropdownRight(props) {
                 console.log(error);
             })
     }
+
+    useEffect(() => {
+        CheckToken();
+    }, []);
 
     return (
         <DropdownContainer>
