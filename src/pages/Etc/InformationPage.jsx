@@ -9,6 +9,8 @@ const MoreWrapper = styled(BasicWrapper)`
     flex-direction: column;
     justify-content: center;
 
+    position: relative;
+
     @media(max-height: 767.1px) {
         height: 100%;
     }
@@ -19,6 +21,26 @@ const MoreWrapper = styled(BasicWrapper)`
 
     @media(min-height: 767.2px) and (max-width: 1364.9px) {
         height: calc(100vh - 271px + 43.5px);
+    }
+
+    .fa-arrow-left {
+        font-size: 2rem;
+        color: #463f3a;
+
+        border: solid 2.3px;
+        border-radius: 6px;
+        padding: 1px 6.7px;
+
+        position: absolute;
+        top: 11.5px;
+        left: 16px;
+
+        &:hover {
+            cursor:pointer;
+            background-color: #463f3a;
+            color: #bcb8b1;
+            border-color: #463f3a;
+        }
     }
 `;
 
@@ -151,6 +173,7 @@ function InformationPage(props) {
 
     return (
         <MoreWrapper>
+            <i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>
             <DivWrapper className="flex-container">
                 <Inform />
             </DivWrapper>
