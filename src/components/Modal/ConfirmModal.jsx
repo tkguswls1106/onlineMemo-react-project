@@ -44,9 +44,21 @@ const ModalWrapper = styled.div`
         color: #dd2b2b;
     }
 
+    .fa-thumbs-o-up {
+        font-size: 2.95rem;
+        color: #463f3a;
+    }
+
     .modalTitle {
         font-size: 1.93rem;
         color: #dd2b2b;
+        margin-top: 9px;
+        margin-bottom: 19px;
+    }
+
+    .successSignupModalTitle {
+        font-size: 1.93rem;
+        color: #463f3a;
         margin-top: 9px;
         margin-bottom: 19px;
     }
