@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from 'axios'
 import '../../App.css';
 import HelloWrapper from "../../components/Styled/HelloWrapper";
+import ConfirmModal from "../../components/Modal/ConfirmModal";
 
 const DivWrapper = styled.div`
     font-size: 1.5rem;
@@ -39,6 +40,8 @@ const DivWrapper = styled.div`
 
 function LoginPage(props) {
     const navigate = useNavigate();
+
+    const [loginFailModalOn, setLoginFailModalOn] = useState(false);
 
     const [loginIdValue, setLoginIdValue] = useState("");
     const [pwValue, setPwValue] = useState("");
@@ -77,6 +80,7 @@ function LoginPage(props) {
                 console.log(response);
             })
             .catch((error) => {
+                setLoginFailModalOn(true);
                 console.log(error);
             })
     }
@@ -143,6 +147,16 @@ function LoginPage(props) {
                     <li>친구들끼리 그룹을 만들어 공동 메모도 작성 가능!</li>
                 </ol>
             </DivWrapper>
+            {loginFailModalOn && (
+                <ConfirmModal closeModal={() => setLoginFailModalOn(!loginFailModalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">
+                        로그인에 실패하였습니다.<br></br>
+                        다시 입력해주세요.
+                    </h2>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)}>확인</button>
+                </ConfirmModal>
+            )}
         </HelloWrapper>
     );
 }

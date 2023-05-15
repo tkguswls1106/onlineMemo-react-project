@@ -34,6 +34,7 @@ const MoreWrapper = styled(BasicWrapper)`
         position: absolute;
         top: 11.5px;
         left: 16px;
+        z-index: 10;
 
         &:hover {
             cursor:pointer;
