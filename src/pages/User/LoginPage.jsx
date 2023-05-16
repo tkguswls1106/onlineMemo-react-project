@@ -104,10 +104,12 @@ function LoginPage(props) {
         if(storedToken) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
 
-            const remaingTime = (new Date(storedExpirationDate).getTime()) - (new Date().getTime());
-            if(remaingTime <= 1000) {  // 토큰 잔여만료시간이 1초 이하라면
+            const remainingTime = storedExpirationDate - String(new Date().getTime());
+            if(remainingTime <= '1000') {  // 토큰 잔여만료시간이 1초 이하라면
                 localStorage.removeItem('token');
                 localStorage.removeItem('expirationTime');
+
+                navigate('/login');
             }
 
             checkLogin();

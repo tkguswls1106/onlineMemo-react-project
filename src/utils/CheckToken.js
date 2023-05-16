@@ -10,10 +10,12 @@ function CheckToken() {
     if (storedToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
 
-        const remainingTime = new Date(storedExpirationDate).getTime() - new Date().getTime();
-        if (remainingTime <= 1000) {
+        const remainingTime = storedExpirationDate - String(new Date().getTime());
+        if (remainingTime <= '1000') {
             localStorage.removeItem('token');
             localStorage.removeItem('expirationTime');
+
+            window.location.href = '/login';
         }
     }
     else {

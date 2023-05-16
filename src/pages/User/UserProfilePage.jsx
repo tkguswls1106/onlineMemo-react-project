@@ -139,7 +139,7 @@ function UserProfilePage(props) {
 
                 localStorage.removeItem('token');
                 localStorage.removeItem('expirationTime');
-                navigate(`/`);
+                navigate('/login');
             })
             .catch((error) => {
                 console.log(error);

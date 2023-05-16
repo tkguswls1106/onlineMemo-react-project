@@ -174,7 +174,7 @@ function MemoList(props) {
                     <MemoItemsWrapper key={memo.id}>
                         <IsStarButton memoId={memo.id} style={{ flexGrow: "4" }} />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <Link style={{ textDecoration: "none", flexGrow: "8" }} to={`/memos/${memo.id}`} state={{ userId: userId }}>
+                        <Link style={{ textDecoration: "none", flexGrow: "8" }} to={`/memos/${memo.id}`} state={{ userId: userId }} >
                             <MemoListItem memoId={memo.id} /> 
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
