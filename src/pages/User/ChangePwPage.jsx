@@ -4,6 +4,7 @@ import axios from 'axios'
 import '../../App.css';
 import { useNavigate } from "react-router-dom";
 import HelloWrapper from "../../components/Styled/HelloWrapper"
+import ConfirmModal from "../../components/Modal/ConfirmModal";
 
 const MoreWrapper = styled(HelloWrapper)`
     .flex-container {
@@ -31,6 +32,95 @@ const MoreWrapper = styled(HelloWrapper)`
 function ChangePwPage(props) {
     const navigate = useNavigate();
 
+    const [successModalOn, setSuccessModalOn] = useState(false);
+    const [confirmErrorModalOn, setConfirmErrorModalOn] = useState(false);
+    const [samePwErrorModalOn, setSamePwErrorModalOn] = useState(false);
+    const [loginErrorModalOn, setLoginErrorModalOn] = useState(false);
+
+    const [loginIdValue, setLoginIdValue] = useState("");
+    const [pwValue, setPwValue] = useState("");
+    const [newPwValue, setNewPwValue] = useState("");
+    const [confirmValue, setConfirmValue] = useState("");
+
+    const [tokenUserId, setTokenUserId] = useState();
+
+    const handleChangeLoginId = (event) => {
+        setLoginIdValue(event.target.value);
+    }
+
+    const handleChangePw = (event) => {
+        setPwValue(event.target.value);
+    }
+
+    const handleChangeNewPw = (event) => {
+        setNewPwValue(event.target.value);
+    }
+
+    const handleChangeConfirm = (event) => {
+        setConfirmValue(event.target.value);
+    }
+
+    const handleUpdatePwClick = async (loginIdValue, pwValue, newPwValue, confirmValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
+        // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        if (newPwValue === confirmValue) {
+            if (pwValue === newPwValue) {
+                setSamePwErrorModalOn(true);  // 새로운 비밀번호와 입력한 이전 비밀번호가 일치함 에러.
+            }
+            else {
+                await axios
+                    .put('/password', {
+                        loginId: loginIdValue,
+                        firstPw: pwValue,
+                        newFirstPw: newPwValue
+                    })
+                    .then((response) => {
+                        setSuccessModalOn(true);
+                        console.log(response);
+                    })
+                    .catch((error) => {
+                        setLoginErrorModalOn(true);  // 로그인 정보가 불일치함 에러.
+                        console.log(error);
+                    })
+            }
+        }
+        else {
+            setConfirmErrorModalOn(true);  // pw 확인이 불일치함 에러.
+        }
+    }
+
+    async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
+        await axios
+            .get('/auth')
+            .then((response) => {
+                setTokenUserId(response.data.data.id);
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
+
+        if (storedToken) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+
+            const remaingTime = (new Date(storedExpirationDate).getTime()) - (new Date().getTime());
+            if (remaingTime <= 1000) {  // 토큰 잔여만료시간이 1초 이하라면
+                localStorage.removeItem('token');
+                localStorage.removeItem('expirationTime');
+            }
+
+            checkLogin();
+            if (tokenUserId) {
+                navigate(`/users/${tokenUserId}/memos`);
+            }
+        }
+    }, [tokenUserId]);
+
     return (
         <MoreWrapper>
             <h2>
@@ -41,25 +131,62 @@ function ChangePwPage(props) {
                 <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 비밀번호 변경<br></br>
                 <hr></hr>
-                <form onSubmit={null}>
-                    <div className="flex-container">
-                        &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" value={null} size="15" />
-                    </div>
-                    <div className="flex-container">
-                        현재 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
-                    </div>
-                    <div className="flex-container change">
-                        바꿀 pw:&nbsp;&nbsp;<input type="text" value={null} size="15" />
-                    </div>
-                    <div className="flex-container change">
-                        pw 확인:&nbsp;&nbsp;<input type="text" value={null} size="15" />
-                    </div>
-                    <div className="flex-container">
-                        <button type="submit">변경 완료</button>
-                        {/* 변경 완료했으면 홈화면으로 리다이렉트 시키자 */}
-                    </div>
-                </form>
+                <div className="flex-container">
+                    &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeLoginId} />
+                </div>
+                <div className="flex-container">
+                    현재 pw:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangePw} />
+                </div>
+                <div className="flex-container change">
+                    바꿀 pw:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeNewPw} />
+                </div>
+                <div className="flex-container change">
+                    pw 확인:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeConfirm} />
+                </div>
+                <div className="flex-container">
+                    <button onClick={(event) => handleUpdatePwClick(loginIdValue, pwValue, newPwValue, confirmValue)}>변경 완료</button>
+                </div>
             </h2>
+            {successModalOn && (
+                <ConfirmModal closeModal={() => setSuccessModalOn(!successModalOn)}>
+                    <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    <h2 className="successSignupModalTitle">
+                        비밀번호 변경 성공.<br></br>
+                        로그인 페이지로 이동합니다.
+                    </h2>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => { setSuccessModalOn(false); navigate('/login'); }}>이동</button>
+                </ConfirmModal>
+            )}
+            {confirmErrorModalOn && (
+                <ConfirmModal closeModal={() => setConfirmErrorModalOn(!confirmErrorModalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">
+                        비밀번호가 일치하지 않습니다.<br></br>
+                        다시 입력해주세요.
+                    </h2>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setConfirmErrorModalOn(false)}>확인</button>
+                </ConfirmModal>
+            )}
+            {samePwErrorModalOn && (
+                <ConfirmModal closeModal={() => setSamePwErrorModalOn(!samePwErrorModalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">
+                        이전 비밀번호와 동일합니다.<br></br>
+                        다시 입력해주세요.
+                    </h2>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setSamePwErrorModalOn(false)}>확인</button>
+                </ConfirmModal>
+            )}
+            {loginErrorModalOn && (
+                <ConfirmModal closeModal={() => setLoginErrorModalOn(!loginErrorModalOn)}>
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h2 className="modalTitle">
+                        로그인 정보가 틀립니다.<br></br>
+                        다시 입력해주세요.
+                    </h2>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginErrorModalOn(false)}>확인</button>
+                </ConfirmModal>
+            )}
         </MoreWrapper>
     );
 }

@@ -59,7 +59,7 @@ function SignupPage(props) {
         setPwValue(event.target.value);
     }
 
-    const handleChangeComfirm = (event) => {
+    const handleChangeConfirm = (event) => {
         setConfirmValue(event.target.value);
     }
 
@@ -139,7 +139,7 @@ function SignupPage(props) {
                     pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container">
-                    pw 확인:&nbsp;&nbsp;<input type="text" size="14" onChange={handleChangeComfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="text" size="14" onChange={handleChangeConfirm} />
                 </div>
                 <div className="flex-container">
                     <button onClick={(event) => handleSignupClick(nameValue, loginIdValue, pwValue, confirmValue)}>가입 완료</button>
