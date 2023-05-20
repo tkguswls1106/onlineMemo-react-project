@@ -124,6 +124,7 @@ function FriendList(props) {
             })}
             {modalOn && (
                 <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <br></br>
                     <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
                     <h2 className="modalTitle">정말 삭제하시겠습니까?</h2>
                     <br></br>

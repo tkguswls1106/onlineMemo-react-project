@@ -166,19 +166,26 @@ function ReadAndEditMemoNav(props) {
     const handleUpdateSaveClick = async (titleValue, contentValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
-        await axios
-            .put(`/memos/${props.memoId}`, {
-                title: titleValue,
-                content: contentValue
-            })
-            .then((response) => {
-                console.log(response);
-                
-                props.propPurposeFunction("read");  // 하위 컴포넌트 함수
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        if (titleValue.length < 1) {
+            var element = document.querySelector(".memoTitleInput");
+            element.style.border = "3.3px solid #dd2b2b";
+            element.style.borderRadius = "5px";
+        }
+        else {
+            await axios
+                .put(`/memos/${props.memoId}`, {
+                    title: titleValue,
+                    content: contentValue
+                })
+                .then((response) => {
+                    console.log(response);
+
+                    props.propPurposeFunction("read");  // 하위 컴포넌트 함수
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
     }
 
     const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
@@ -248,6 +255,7 @@ function ReadAndEditMemoNav(props) {
             </ul>
             {modalOn && (
                 <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <br></br>
                     <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
                     <h2 className="modalTitle">정말&nbsp;{modalText}하시겠습니까?</h2>
                     <br></br>

@@ -153,26 +153,33 @@ function NewMemoNav(props) {
     const handleNewSaveClick = async (titleValue, contentValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
-        await axios
-            .post(`/users/${props.userId}/memos`, {
-                title: titleValue,
-                content: contentValue
-            })
-            .then((response) => {
-                console.log(response);
+        if (titleValue.length < 1) {
+            var element = document.querySelector(".memoTitleInput");
+            element.style.border = "3.3px solid #dd2b2b";
+            element.style.borderRadius = "5px";
+        }
+        else {
+            await axios
+                .post(`/users/${props.userId}/memos`, {
+                    title: titleValue,
+                    content: contentValue
+                })
+                .then((response) => {
+                    console.log(response);
 
-                var memoId = response.data.data.memoId
+                    var memoId = response.data.data.memoId
 
-                if (props.isGroup == 1) {  // 새 공동메모 생성시라면
-                    handleInviteGroupMemo(memoId, e);
-                }
-                else {  // 새 개인메모 생성시라면
-                    navigate(`/memos/${memoId}`, { state: { userId: props.userId } });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+                    if (props.isGroup == 1) {  // 새 공동메모 생성시라면
+                        handleInviteGroupMemo(memoId, e);
+                    }
+                    else {  // 새 개인메모 생성시라면
+                        navigate(`/memos/${memoId}`, { state: { userId: props.userId } });
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
     }
 
     useEffect(() => {

@@ -31,6 +31,16 @@ const MoreWrapper = styled(HelloWrapper)`
         padding: 2.3px;
         border-radius: 42%; */
     }
+
+    .inputInform::placeholder {
+        font-size: 4.8px;
+        font-weight: bold;
+    }
+
+    .wrongName, .wrongId, .wrongPw, .wrongConfirm {
+        border: 3.3px solid #dd2b2b;
+        border-radius: 3px;
+    }
 `;
 
 function SignupPage(props) {
@@ -45,28 +55,67 @@ function SignupPage(props) {
     const [pwValue, setPwValue] = useState("");
     const [confirmValue, setConfirmValue] = useState("");
 
+    const [isWrongName, setIsWrongName] = useState(false);
+    const [isWrongId, setIsWrongId] = useState(false);
+    const [isWrongPw, setIsWrongPw] = useState(false);
+    const [isWrongConfirm, setIsWrongConfirm] = useState(false);
+
+    const [isWrongResult, setIsWrongResult] = useState(false);
+
     const [tokenUserId, setTokenUserId] = useState();
 
     const handleChangeName = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9ㄱ-ㅎ가-힣]/gi, '');
         setNameValue(event.target.value);
     }
 
     const handleChangeLoginId = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9]/gi, '');
         setLoginIdValue(event.target.value);
     }
 
     const handleChangePw = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9!@#$%^&*()~]/gi, '');
         setPwValue(event.target.value);
     }
 
     const handleChangeConfirm = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9!@#$%^&*()~]/gi, '');
         setConfirmValue(event.target.value);
+    }
+
+    const checkInput = (nameValue, loginIdValue, pwValue, confirmValue) => {
+        if (nameValue.length < 2)
+            setIsWrongName(true);
+        else
+            setIsWrongName(false);
+
+        if (loginIdValue.length < 4 || 16 < loginIdValue.length)
+            setIsWrongId(true);
+        else
+            setIsWrongId(false);
+
+        if (pwValue.length < 8)
+            setIsWrongPw(true);
+        else
+            setIsWrongPw(false);
+
+        if (pwValue !== confirmValue)
+            setIsWrongConfirm(true)
+        else
+            setIsWrongConfirm(false);
     }
 
     const handleSignupClick = async (nameValue, loginIdValue, pwValue, confirmValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
-        if(pwValue === confirmValue) {
+        checkInput(nameValue, loginIdValue, pwValue, confirmValue);
+
+        if (!(nameValue.length < 2 ||
+            (loginIdValue.length < 4 || 16 < loginIdValue.length) ||
+            pwValue.length < 8 ||
+            pwValue !== confirmValue)) {
+
             await axios
                 .post('/signup', {
                     loginId: loginIdValue,
@@ -75,6 +124,7 @@ function SignupPage(props) {
                 })
                 .then((response) => {
                     setSuccessModalOn(true);
+                    setIsWrongResult(false);
                     console.log(response);
                 })
                 .catch((error) => {
@@ -82,8 +132,12 @@ function SignupPage(props) {
                     console.log(error);
                 })
         }
-        else {
+        else if (pwValue !== confirmValue) {
+            setIsWrongResult(true);
             setConfirmErrorModalOn(true);
+        }
+        else {
+            setIsWrongResult(true);
         }
     }
 
@@ -132,20 +186,24 @@ function SignupPage(props) {
                 회원가입<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" size="17" onChange={handleChangeName} />
+                    &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" className={isWrongName ? 'wrongName inputInform' : 'inputInform'} placeholder=" 한글,영문,숫자 (2자 이상)" size="17" onChange={handleChangeName} />
                 </div>
                 <div className="flex-container">
-                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} />
+                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} placeholder=" 영문,숫자 (4~16자)" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} />
+                    pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} placeholder=" 영문,숫자,특수문자 (8자 이상)" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container">
-                    pw 확인:&nbsp;&nbsp;<input type="text" size="14" onChange={handleChangeConfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="text" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} placeholder=" pw 재입력" size="14" onChange={handleChangeConfirm} />
                 </div>
+                <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">
                     <button onClick={(event) => handleSignupClick(nameValue, loginIdValue, pwValue, confirmValue)}>가입 완료</button>
                 </div>
+                {isWrongResult &&
+                    <span style={{ fontSize: "1.35rem", color: "#dd2b2b" }}>!!! 입력 양식을 재확인해주세요 !!!</span>
+                }
             </h2>
             {successModalOn && (
                 <ConfirmModal closeModal={() => setSuccessModalOn(!successModalOn)}>
@@ -154,7 +212,7 @@ function SignupPage(props) {
                         회원가입 성공.<br></br>
                         로그인 페이지로 이동합니다.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => { setSuccessModalOn(false); navigate('/login'); }}>이동</button>
+                    <button style={{ fontSize: "1.5rem",  }} onClick={() => { setSuccessModalOn(false); navigate('/login'); }}>이동</button>
                 </ConfirmModal>
             )}
             {duplicateErrorModalOn && (

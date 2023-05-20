@@ -27,6 +27,16 @@ const MoreWrapper = styled(HelloWrapper)`
     .change {
         text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
     }
+
+    .inputInform::placeholder {
+        font-size: 4.8px;
+        font-weight: bold;
+    }
+
+    .wrongId, .wrongPw, .wrongNewPw, .wrongConfirm {
+        border: 3.3px solid #dd2b2b;
+        border-radius: 3px;
+    }
 `;
 
 function ChangePwPage(props) {
@@ -42,6 +52,13 @@ function ChangePwPage(props) {
     const [newPwValue, setNewPwValue] = useState("");
     const [confirmValue, setConfirmValue] = useState("");
 
+    const [isWrongId, setIsWrongId] = useState(false);
+    const [isWrongPw, setIsWrongPw] = useState(false);
+    const [isWrongNewPw, setIsWrongNewPw] = useState(false);
+    const [isWrongConfirm, setIsWrongConfirm] = useState(false);
+
+    const [isWrongResult, setIsWrongResult] = useState(false);
+
     const [tokenUserId, setTokenUserId] = useState();
 
     const handleChangeLoginId = (event) => {
@@ -53,10 +70,12 @@ function ChangePwPage(props) {
     }
 
     const handleChangeNewPw = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9!@#$%^&*()~]/gi, '');
         setNewPwValue(event.target.value);
     }
 
     const handleChangeConfirm = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9!@#$%^&*()~]/gi, '');
         setConfirmValue(event.target.value);
     }
 
@@ -65,6 +84,12 @@ function ChangePwPage(props) {
 
         if (newPwValue === confirmValue) {
             if (pwValue === newPwValue) {
+                setIsWrongId(false);
+                setIsWrongPw(false);
+                setIsWrongNewPw(true);
+                setIsWrongConfirm(false);
+                setIsWrongResult(true);
+
                 setSamePwErrorModalOn(true);  // 새로운 비밀번호와 입력한 이전 비밀번호가 일치함 에러.
             }
             else {
@@ -75,16 +100,34 @@ function ChangePwPage(props) {
                         newFirstPw: newPwValue
                     })
                     .then((response) => {
+                        setIsWrongId(false);
+                        setIsWrongPw(false);
+                        setIsWrongNewPw(false);
+                        setIsWrongConfirm(false);
+                        setIsWrongResult(false);
+
                         setSuccessModalOn(true);
                         console.log(response);
                     })
                     .catch((error) => {
+                        setIsWrongId(true);
+                        setIsWrongPw(true);
+                        setIsWrongNewPw(false);
+                        setIsWrongConfirm(false);
+                        setIsWrongResult(true);
+
                         setLoginErrorModalOn(true);  // 로그인 정보가 불일치함 에러.
                         console.log(error);
                     })
             }
         }
         else {
+            setIsWrongId(false);
+            setIsWrongPw(false);
+            setIsWrongNewPw(false);
+            setIsWrongConfirm(true);
+            setIsWrongResult(true);
+
             setConfirmErrorModalOn(true);  // pw 확인이 불일치함 에러.
         }
     }
@@ -134,20 +177,24 @@ function ChangePwPage(props) {
                 비밀번호 변경<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeLoginId} />
+                    &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} size="15" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    현재 pw:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangePw} />
+                    현재 pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} size="15" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container change">
-                    바꿀 pw:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeNewPw} />
+                    바꿀 pw:&nbsp;&nbsp;<input type="text" size="15" className={isWrongNewPw ? 'wrongNewPw inputInform' : 'inputInform'} placeholder=" 영문,숫자,기호 (8자 이상)" onChange={handleChangeNewPw} />
                 </div>
                 <div className="flex-container change">
-                    pw 확인:&nbsp;&nbsp;<input type="text" size="15" onChange={handleChangeConfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="text" size="15" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} placeholder=" pw 재입력" onChange={handleChangeConfirm} />
                 </div>
+                <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">
                     <button onClick={(event) => handleUpdatePwClick(loginIdValue, pwValue, newPwValue, confirmValue)}>변경 완료</button>
                 </div>
+                {isWrongResult &&
+                    <span style={{ fontSize: "1.35rem", color: "#dd2b2b" }}>!!! 입력하신 정보를 재확인해주세요 !!!</span>
+                }
             </h2>
             {successModalOn && (
                 <ConfirmModal closeModal={() => setSuccessModalOn(!successModalOn)}>

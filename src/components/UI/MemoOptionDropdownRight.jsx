@@ -229,6 +229,7 @@ function MemoOptionDropdownRight(props) {
             )}
             {deleteModalOn && (
                 <ConfirmModal closeModal={() => setDeleteModalOn(!deleteModalOn)}>
+                    <br></br>
                     <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
                     <h2 className="modalTitle">정말&nbsp;{modalText}하시겠습니까?</h2>
                     <br></br>

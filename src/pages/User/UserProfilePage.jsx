@@ -80,6 +80,22 @@ const MoreWrapper = styled(HelloWrapper)`
             background-color: #a1c4dfa4;
         }
     }
+
+    .inputInform {
+        border: "1px solid #463f3a";
+    }
+    .inputInform::placeholder {
+        font-size: 9px;
+        font-weight: bold;
+    }
+
+    .wrongName {
+        border: 3.3px solid #dd2b2b;
+    } 
+    .wrongName::placeholder {
+        font-size: 9px;
+        font-weight: bold;
+    }
 `;
 
 function UserProfilePage(props) {
@@ -93,11 +109,14 @@ function UserProfilePage(props) {
     const [nameValue, setNameValue] = useState("");
     const [purpose, setPurpose] = useState("read");
 
+    const [isWrongName, setIsWrongName] = useState(false);
+
     const [modalOn, setModalOn] = useState(false);
 
     const handleChangeName = (event) => {
+        event.target.value = event.target.value.replace(/[^a-z0-9ㄱ-ㅎ가-힣]/gi, '');
         setNameValue(event.target.value);
-    }    
+    }
 
     const handleClickCopy = (event) => {
         window.navigator.clipboard.writeText(user.loginId);
@@ -115,18 +134,25 @@ function UserProfilePage(props) {
     const handleUpdateSaveClick = async (nameValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
-        await axios
-            .put(`/users/${userId}`, {
-                username: nameValue,
-            })
-            .then((response) => {
-                console.log(response);
+        if (nameValue.length < 2) {
+            setIsWrongName(true);
+        }
+        else {
+            await axios
+                .put(`/users/${userId}`, {
+                    username: nameValue,
+                })
+                .then((response) => {
+                    console.log(response);
 
-                setPurpose("read");
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+                    setIsWrongName(false);
+                    setPurpose("read");
+                })
+                .catch((error) => {
+                    setIsWrongName(false);
+                    console.log(error);
+                })
+        }
     }
 
     const handleDeleteClick = async (e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
@@ -171,8 +197,8 @@ function UserProfilePage(props) {
     if (purpose == "edit") {
         purposeText = "edit";
 
-        nameComponent = <input type="text" value={user && nameValue} onChange={handleChangeName} placeholder="이름을 입력해주세요."
-            style={{ width: "60px", textAlign: "center", paddingTop: "4.5px", paddingBottom: "2.5px", marginBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
+        nameComponent = <input type="text" className={isWrongName ? 'wrongName' : 'inputInform'} value={user && nameValue} onChange={handleChangeName} placeholder="2자 이상 입력."
+            style={{ width: "60px", textAlign: "center", paddingTop: "4.5px", paddingBottom: "2.5px", marginBottom: "4px", backgroundColor: "#f4f3ee", borderRadius: "5px" }} />
 
         saveComponent = <button className="saveNameButton" style={{ width: "51.6px" }} onClick={(event) => handleUpdateSaveClick(nameValue)}>저장</button>
     }
@@ -182,7 +208,7 @@ function UserProfilePage(props) {
         nameComponent = <span>{user && user.username}</span>
 
         saveComponent = <button onClick={handleEditClick}>수정&nbsp;<i className="fa fa-pencil" aria-hidden="true"></i></button>
-    }       
+    }
 
     return (
         <MoreWrapper>
@@ -195,6 +221,9 @@ function UserProfilePage(props) {
                 <div>
                     <div className="flex-container">
                         <span>이름:&nbsp;&nbsp;{nameComponent}</span>
+                        {isWrongName &&
+                            <span style={{ fontSize: "1.35rem", color: "#dd2b2b" }}>!!! 2자 이상 입력하세요 !!!</span>
+                        }
                         {saveComponent}
                     </div>
                     <hr className="divideHr"></hr>
@@ -203,14 +232,14 @@ function UserProfilePage(props) {
                         <button className="copyButton" onClick={handleClickCopy}>복사&nbsp;<i className={copyClassName} aria-hidden="true"></i></button>
                     </div>
                     <hr className="divideHr"></hr>
-                    <button onClick={() => {navigate('/pw')}}>pw 변경&nbsp;&nbsp;<i className="fa fa-unlock-alt" aria-hidden="true"></i></button>
-                    &nbsp;&nbsp;<button className="deleteUserButton" onClick={() => setModalOn(!modalOn)}>회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
+                    <button className="deleteUserButton" onClick={() => setModalOn(!modalOn)}>회원 탈퇴&nbsp;&nbsp;<i className="fa fa-user-times" aria-hidden="true"></i></button>
                 </div>
             </h2>
             {modalOn && (
                 <ConfirmModal closeModal={() => setModalOn(!modalOn)}>
+                    <br></br>
                     <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <h2 className="modalTitle">정말 삭제하시겠습니까?</h2>
+                    <h2 className="modalTitle">정말 탈퇴하시겠습니까?</h2>
                     <br></br>
                     <div style={{ float: "right" }}>
                         <button className="confirmDeleteButton" onClick={handleDeleteClick}>확인</button>&nbsp;&nbsp;

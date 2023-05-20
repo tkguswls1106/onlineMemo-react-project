@@ -127,7 +127,7 @@ function LoginPage(props) {
                 Login<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
+                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" maxLength="16" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
                     pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />

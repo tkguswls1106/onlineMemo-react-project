@@ -69,7 +69,7 @@ const DropMenu = styled.div`
         }
     }
 
-        ul li {
+    ul li {
         font-size:2rem;
         list-style: none;
         line-height:44px;
@@ -103,6 +103,8 @@ function FriendOptionDropdownRight(props) {
     const [modalOn, setModalOn] = useState(false);
     const [idValue, setIdValue] = useState("");
 
+    const [isNone, setIsNone] = useState(false);
+
     const handleChangeId = (event) => {
         setIdValue(event.target.value);
     }
@@ -117,9 +119,11 @@ function FriendOptionDropdownRight(props) {
             .then((response) => {
                 console.log(response);
 
+                setIsNone(false);
                 setModalOn(false);
             })
             .catch((error) => {
+                setIsNone(true);
                 console.log(error);
             })
     }
@@ -151,12 +155,14 @@ function FriendOptionDropdownRight(props) {
                 </DropMenu>
             }
             {modalOn && (
-                <SendFriendshipModal closeModal={() => setModalOn(!modalOn)}>
+                <SendFriendshipModal closeModal={() => { setModalOn(!modalOn); setIsNone(false); }}>
                     <h2>-&nbsp;친구 요청&nbsp;<i className="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;-</h2>
-                    <div style={{ marginBottom: "10px" }}>
-                        초대 id:&nbsp;&nbsp;<input type="text" onChange={handleChangeId} placeholder="친구의 id를 입력해주세요."
+                    <div style={{ marginBottom: "4px" }}>
+                        초대 id:&nbsp;&nbsp;<input type="text" onChange={handleChangeId} placeholder="친구의 id를 입력해주세요." maxLength="16"
                             style={{ width: "150px", textAlign: "center", paddingTop: "4px", paddingBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
                     </div>
+                    <span style={isNone ? { display: "", fontSize: "1.26rem", color: "#dd2b2b" } : { display: "none" }}>!!! 존재하지않거나 이미 초대한 사용자입니다 !!!</span>
+                    <div style={{ lineHeight: "40%" }}><br></br></div>
                     <button style={{ float: "right", fontSize: "1.5rem" }} onClick={handleSendClick}>요청 완료</button>
                 </SendFriendshipModal>
             )}

@@ -117,7 +117,7 @@ function ReadAndEditMemoPage(props) {
         purposeComponent =
             <div>
                 <div className="memoTitle">
-                    <input type="text" value={memo && titleValue} onChange={handleChangeTitle} placeholder="제목을 입력해주세요."
+                    <input className="memoTitleInput" type="text" value={memo && titleValue} onChange={handleChangeTitle} placeholder="제목 입력 (1~15자)" maxLength="15"
                         style={{ width: "38vw", textAlign: "center", paddingTop: "4px", paddingBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
                 </div>
                 <hr></hr>
