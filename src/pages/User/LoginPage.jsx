@@ -77,11 +77,11 @@ function LoginPage(props) {
 
                 checkLogin();
 
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
                 setLoginFailModalOn(true);
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -90,10 +90,10 @@ function LoginPage(props) {
             .get('/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

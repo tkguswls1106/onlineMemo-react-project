@@ -143,14 +143,14 @@ function UserProfilePage(props) {
                     username: nameValue,
                 })
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
 
                     setIsWrongName(false);
                     setPurpose("read");
                 })
                 .catch((error) => {
                     setIsWrongName(false);
-                    console.log(error);
+                    //console.log(error);
                 })
         }
     }
@@ -161,14 +161,14 @@ function UserProfilePage(props) {
         await axios
             .delete(`/users/${userId}`)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 localStorage.removeItem('token');
                 localStorage.removeItem('expirationTime');
                 navigate('/login');
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -178,10 +178,10 @@ function UserProfilePage(props) {
             .then((response) => {
                 setUser(response.data.data);
                 setNameValue(response.data.data.username)
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

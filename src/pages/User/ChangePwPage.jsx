@@ -107,7 +107,7 @@ function ChangePwPage(props) {
                         setIsWrongResult(false);
 
                         setSuccessModalOn(true);
-                        console.log(response);
+                        //console.log(response);
                     })
                     .catch((error) => {
                         setIsWrongId(true);
@@ -117,7 +117,7 @@ function ChangePwPage(props) {
                         setIsWrongResult(true);
 
                         setLoginErrorModalOn(true);  // 로그인 정보가 불일치함 에러.
-                        console.log(error);
+                        //console.log(error);
                     })
             }
         }
@@ -137,10 +137,10 @@ function ChangePwPage(props) {
             .get('/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

@@ -91,10 +91,10 @@ function ReadAndEditMemoPage(props) {
                     textarea.style.height = `${height + 8}px`;
                 }  // textarea 초기 높이 지정
 
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

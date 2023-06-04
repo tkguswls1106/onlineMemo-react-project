@@ -14,10 +14,10 @@ function IsStarButton(props) {
             .then((response) => {
                 setMemo(response.data.data);
                 setIsStar(response.data.data.isStar);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -36,10 +36,10 @@ function IsStarButton(props) {
                 isStar: starValue
             })
             .then((response) => {
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

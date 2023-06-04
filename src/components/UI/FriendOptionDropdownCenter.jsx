@@ -117,14 +117,14 @@ function FriendOptionDropdownRight(props) {
                 loginId: idValue
             })
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 setIsNone(false);
                 setModalOn(false);
             })
             .catch((error) => {
                 setIsNone(true);
-                console.log(error);
+                //console.log(error);
             })
     }
 

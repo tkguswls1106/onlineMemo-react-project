@@ -121,11 +121,11 @@ function SignupPage(props) {
                 .then((response) => {
                     setSuccessModalOn(true);
                     setIsWrongResult(false);
-                    console.log(response);
+                    //console.log(response);
                 })
                 .catch((error) => {
                     setDuplicateErrorModalOn(true);
-                    console.log(error);
+                    //console.log(error);
                 })
         }
         else if (pwValue !== confirmValue) {
@@ -142,10 +142,10 @@ function SignupPage(props) {
             .get('/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

@@ -140,12 +140,12 @@ function NewMemoNav(props) {
                 userRequestDtos: props.friendList
             })
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 navigate(`/users/${props.userId}/memos`);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -164,7 +164,7 @@ function NewMemoNav(props) {
                     content: contentValue
                 })
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
 
                     var memoId = response.data.data.memoId
 
@@ -176,7 +176,7 @@ function NewMemoNav(props) {
                     }
                 })
                 .catch((error) => {
-                    console.log(error);
+                    //console.log(error);
                 })
         }
     }

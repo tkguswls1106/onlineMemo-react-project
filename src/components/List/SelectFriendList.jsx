@@ -92,10 +92,10 @@ function SelectFriendList(props) {
             .get(`/users/${userId}/friends`)
             .then((response) => {
                 setFriends(response.data.data);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

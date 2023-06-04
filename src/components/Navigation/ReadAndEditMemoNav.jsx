@@ -177,12 +177,12 @@ function ReadAndEditMemoNav(props) {
                     content: contentValue
                 })
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
 
                     props.propPurposeFunction("read");  // 하위 컴포넌트 함수
                 })
                 .catch((error) => {
-                    console.log(error);
+                    //console.log(error);
                 })
         }
     }
@@ -193,12 +193,12 @@ function ReadAndEditMemoNav(props) {
         await axios
             .delete(`/users/${props.userId}/memos/${props.memoId}`)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 navigate(`/users/${props.userId}/memos`);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

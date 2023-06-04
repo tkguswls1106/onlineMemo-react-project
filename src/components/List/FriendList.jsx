@@ -76,13 +76,13 @@ function FriendList(props) {
         await axios
             .delete(`/users/${userId}/friends/${friendId}`)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 setModalOn((modalOn) => !modalOn);
                 getFriends();
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -91,10 +91,10 @@ function FriendList(props) {
             .get(`/users/${userId}/friends`)
             .then((response) => {
                 setFriends(response.data.data);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

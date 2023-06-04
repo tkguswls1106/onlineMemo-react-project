@@ -97,13 +97,13 @@ function MemoList(props) {
             .get(`/users/${userId}/memos`)
             .then((response) => {
                 setMemos(response.data.data);
-                console.log(response);
+                //console.log(response);
 
                 var result = document.getElementById("noneResult");
                 result.style.display = 'none';
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -112,13 +112,13 @@ function MemoList(props) {
             .get(`/users/${userId}/memos?order=${sortValue}`)
             .then((response) => {
                 setMemos(response.data.data);
-                console.log(response);
+                //console.log(response);
 
                 var result = document.getElementById("noneResult");
                 result.style.display = 'none';
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -127,7 +127,7 @@ function MemoList(props) {
             .get(`/users/${userId}/memos?search=${searchValue}`)
             .then((response) => {
                 setMemos(response.data.data);
-                console.log(response);
+                //console.log(response);
 
                 if (Object.keys(response.data.data).length == 0) {  // 검색 결과가 0개일 경우
                     var result = document.getElementById("noneResult");
@@ -139,7 +139,7 @@ function MemoList(props) {
                 }
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 

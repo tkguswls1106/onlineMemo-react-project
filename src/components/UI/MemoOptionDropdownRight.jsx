@@ -137,12 +137,12 @@ function MemoOptionDropdownRight(props) {
                 userRequestDtos: checkedList
             })
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 navigate(`/memos/${memoId}`, { state: { userId: userId } });
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -152,12 +152,12 @@ function MemoOptionDropdownRight(props) {
         await axios
             .delete(`/users/${userId}/memos/${memoId}`)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
 
                 rerendering();
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -166,10 +166,10 @@ function MemoOptionDropdownRight(props) {
             .get(`/users/${userId}/friends`)
             .then((response) => {
                 setAllFriends(response.data.data);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
@@ -178,10 +178,10 @@ function MemoOptionDropdownRight(props) {
             .get(`/memos/${memoId}`)
             .then((response) => {
                 setUsers(response.data.data.userResponseDtos);
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             })
     }
 
