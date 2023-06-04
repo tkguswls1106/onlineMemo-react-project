@@ -48,7 +48,6 @@ const UserWrapper = styled.div`
         border-radius: 4px;
     }
     &::-webkit-scrollbar-thumb {
-        // background-color: #b4a8a1;
         background-color: gray;
         border-radius: 4px;
     }
@@ -67,7 +66,6 @@ const UserWrapper = styled.div`
         }
     }
     .user-li:before {
-        // content: "\f4ff";
         content: "\f007";
         font-family: "FontAwesome";
     }
@@ -75,8 +73,6 @@ const UserWrapper = styled.div`
 
 function MemoListItem(props) {
     const { memoId } = props;
-
-    // const baseUrl = "http://localhost:8080";
 
     const [memo, setMemo] = useState();
 

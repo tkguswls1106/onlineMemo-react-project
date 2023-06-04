@@ -60,12 +60,11 @@ function App(props) {
         <Route path="login" element={<NoLoginNav />} />
         <Route path="signup" element={<NoLoginNav />} />
         <Route path="password" element={<NoLoginNav />} />
-        <Route path="/users/:userId/memos" element={<YesLoginNav />} />
-        <Route path="/users/:userId" element={<YesLoginNav />} />
-
         <Route path="information" element={<NoLoginNav />} />
         <Route path="notice" element={<NoLoginNav />} />
 
+        <Route path="/users/:userId/memos" element={<YesLoginNav />} />
+        <Route path="/users/:userId" element={<YesLoginNav />} />
         <Route path="/users/:userId/friends" element={<YesLoginNav />} />
         <Route path="/users/:userId/senders" element={<YesLoginNav />} />
       </Routes>
@@ -78,14 +77,12 @@ function App(props) {
         <Route path="notice" element={<NoticePage />} />
 
         <Route path="/users/:userId/memos" element={<MemoListPage />} />
-        <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
-
-        <Route path="/users/:userId/memo" element={<NewMemoPage />} />
-
         <Route path="/users/:userId" element={<UserProfilePage />} />
-
         <Route path="/users/:userId/friends" element={<FriendListPage />} />
         <Route path="/users/:userId/senders" element={<SenderListPage />} />
+
+        <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
+        <Route path="/users/:userId/memo" element={<NewMemoPage />} />
       </Routes>
     </BrowserRouter>
   );

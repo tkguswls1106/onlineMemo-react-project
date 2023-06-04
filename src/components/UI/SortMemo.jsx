@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
-import MainPage from "../../pages/Memo/MemoListPage";
 
 const Button = styled.button`
     background-color: #645b56;

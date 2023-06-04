@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-// import '../../App.css';
 
 function useDetectDropdown(initialValue) {  // 드롭다운 부분 클릭 감지하는 커스텀 훅
     // 조건 1: 드롭다운 메뉴 열려있는데 드롭다운 클릭시 -> 드롭다운 닫기 (toggleHandler 이용)

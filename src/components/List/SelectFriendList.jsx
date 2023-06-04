@@ -62,8 +62,6 @@ const NameIdWrapper = styled.div`
 function SelectFriendList(props) {
     const { userId, checkedList ,setCheckedList } = props;
 
-    // const baseUrl = "http://localhost:8080";
-
     const [friends, setFriends] = useState();
     const [isChecked, setIsChecked] = useState(false);
 

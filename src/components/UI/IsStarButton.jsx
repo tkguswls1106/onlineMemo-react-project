@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import axios from 'axios'
 import { CheckToken } from "../../utils/CheckToken";
 
 function IsStarButton(props) {
-
     const { memoId } = props;
-
-    // const baseUrl = "http://localhost:8080";
 
     const [memo, setMemo] = useState();
     const [isStar, setIsStar] = useState();

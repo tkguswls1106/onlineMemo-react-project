@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import styled from "styled-components";
-import axios from 'axios'
+import { useParams, useLocation } from "react-router-dom";
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
 import NewMemoNav from "../../components/Navigation/NewMemoNav";
 import { CheckToken } from "../../utils/CheckToken";
 
 function NewMemoPage(props) {
-    const navigate = useNavigate();
-
     const { userId } = useParams();
 
     const location = useLocation();
     const { isGroup, friendList } = location.state;
-
-    // const baseUrl = "http://localhost:8080";
 
     const [titleValue, setTitleValue] = useState("");
     const [contentValue, setContentValue] = useState("");

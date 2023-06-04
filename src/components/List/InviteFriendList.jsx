@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from 'axios'
 import Checkbox from "../UI/Checkbox";
 
 const FriendsWrapper = styled.div`
@@ -60,8 +59,6 @@ const NameIdWrapper = styled.div`
 
 function InviteFriendList(props) {
     const { userId, checkedList, setCheckedList, friends } = props;
-
-    // const baseUrl = "http://localhost:8080";
 
     const [isChecked, setIsChecked] = useState(false);
 

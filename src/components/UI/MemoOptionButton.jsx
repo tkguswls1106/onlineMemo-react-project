@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from 'axios'
 import MemoOptionDropdownRight from "./MemoOptionDropdownRight";
 
 const MemoOptionWrapper = styled.div`
     display: "inline-block";
-
-    /* ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        
-        align-items: baseline;
-    } */
 
     ul li {
         font-size:2rem;

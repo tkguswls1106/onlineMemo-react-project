@@ -60,8 +60,6 @@ const NameIdWrapper = styled.div`
 function SenderList(props) {
     const { userId } = props;
 
-    // const baseUrl = "http://localhost:8080";
-
     const [senders, setSenders] = useState();
 
     const handleAcceptClick = async (senderId, event) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.

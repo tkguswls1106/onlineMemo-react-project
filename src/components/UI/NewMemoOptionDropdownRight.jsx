@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
 import useDetectDropdown from "../../hooks/useDetectDropdown";
-import axios from 'axios'
 import FriendGroupModal from "../Modal/FriendGroupModal";
 import SelectFriendList from "../List/SelectFriendList";
 
@@ -84,7 +83,6 @@ const FriendsWrapper = styled.div`
         border-radius: 4px;
     }
     &::-webkit-scrollbar-thumb {
-        // background-color: #b4a8a1;
         background-color: #5e5c58;
         border-radius: 4px;
     }

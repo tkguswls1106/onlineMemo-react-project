@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import axios from 'axios'
 import '../../App.css';
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import BasicWrapper from "../../components/Styled/BasicWrapper";
 import SortMemo from "../../components/UI/SortMemo";
 import SearchMemo from "../../components/UI/SearchMemo";
@@ -26,8 +25,6 @@ const DivWrapper = styled.div`
 `;
 
 function MemoListPage(props) {
-    const navigate = useNavigate();
-
     const { userId } = useParams();
 
     const location = useLocation();

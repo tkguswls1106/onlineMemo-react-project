@@ -61,8 +61,6 @@ const NameIdWrapper = styled.div`
 function FriendList(props) {
     const { userId } = props;
 
-    // const baseUrl = "http://localhost:8080";
-
     const [friends, setFriends] = useState();
     const [modalOn, setModalOn] = useState(false);
     const [modalFriendId, setModalFriendId] = useState();

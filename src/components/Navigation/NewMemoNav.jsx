@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../../App.css';
@@ -100,7 +100,6 @@ const Wrapper = styled(NavWrapper)`
     .flex-copy {
         display: inline-flex;
         flex-direction: column;
-        // align-items: center;
         justify-content: center;
         line-height: 13.7px;
         width: 30px;

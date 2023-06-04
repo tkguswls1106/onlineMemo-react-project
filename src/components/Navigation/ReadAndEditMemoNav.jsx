@@ -101,7 +101,6 @@ const Wrapper = styled(NavWrapper)`
     .flex-copy {
         display: inline-flex;
         flex-direction: column;
-        // align-items: center;
         justify-content: center;
         line-height: 13.7px;
         width: 30px;

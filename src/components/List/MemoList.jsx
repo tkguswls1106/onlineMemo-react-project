@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
@@ -90,8 +90,6 @@ const NoneSearch = styled.div`
 function MemoList(props) {
     const { userId, sortValue, searchValue } = props;
 
-    // const baseUrl = "http://localhost:8080";
-
     const [memos, setMemos] = useState();
 
     async function getMemos() {  // 해당 사용자의 모든 메모 리스트 조회 (초기 메인 화면)
@@ -132,7 +130,6 @@ function MemoList(props) {
                 console.log(response);
 
                 if (Object.keys(response.data.data).length == 0) {  // 검색 결과가 0개일 경우
-                    // alert("검색하신 메모는 존재하지 않습니다.");
                     var result = document.getElementById("noneResult");
                     result.style.display = 'block';
                 }

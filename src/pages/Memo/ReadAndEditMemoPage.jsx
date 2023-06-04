@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { useParams, useLocation } from "react-router-dom";
 import axios from 'axios'
 import OneMemoWrapper from "../../components/Styled/OneMemoWrapper";
 import ReadAndEditMemoNav from "../../components/Navigation/ReadAndEditMemoNav";
 import { CheckToken } from "../../utils/CheckToken";
 
 function ReadAndEditMemoPage(props) {
-    const navigate = useNavigate();
-
     const { memoId } = useParams();
 
     const location = useLocation();
     const { userId } = location.state;
-
-    // const baseUrl = "http://localhost:8080";
 
     const [memo, setMemo] = useState();
     const [titleValue, setTitleValue] = useState("");

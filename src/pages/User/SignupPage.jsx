@@ -26,10 +26,6 @@ const MoreWrapper = styled(HelloWrapper)`
 
     .fa-user-plus {
         font-size: 2.1rem;
-        
-        /* border: solid 2px #463f3a;
-        padding: 2.3px;
-        border-radius: 42%; */
     }
 
     .inputInform::placeholder {

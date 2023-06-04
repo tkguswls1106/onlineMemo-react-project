@@ -44,7 +44,6 @@ const BasicWrapper = styled.div`
         border-radius: 4px;
     }
     &::-webkit-scrollbar-thumb {
-        // background-color: #b4a8a1;
         background-color: #5e5c58;
         border-radius: 4px;
     }
