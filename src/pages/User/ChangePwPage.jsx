@@ -83,7 +83,14 @@ function ChangePwPage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         if (newPwValue === confirmValue) {
-            if (pwValue === newPwValue) {
+            if (newPwValue.length < 8 && pwValue !== newPwValue) {
+                setIsWrongId(false);
+                setIsWrongPw(false);
+                setIsWrongNewPw(true);
+                setIsWrongConfirm(false);
+                setIsWrongResult(true);
+            }
+            else if (newPwValue.length < 8 && pwValue === newPwValue) {
                 setIsWrongId(false);
                 setIsWrongPw(false);
                 setIsWrongNewPw(true);
@@ -92,7 +99,16 @@ function ChangePwPage(props) {
 
                 setSamePwErrorModalOn(true);  // 새로운 비밀번호와 입력한 이전 비밀번호가 일치함 에러.
             }
-            else {
+            else if (newPwValue.length >= 8 && pwValue === newPwValue) {
+                setIsWrongId(false);
+                setIsWrongPw(false);
+                setIsWrongNewPw(true);
+                setIsWrongConfirm(false);
+                setIsWrongResult(true);
+
+                setSamePwErrorModalOn(true);  // 새로운 비밀번호와 입력한 이전 비밀번호가 일치함 에러.
+            }
+            else {  // 만약 (newPwValue.length >= 8 && pwValue !== newPwValue) 일때를 의미함.
                 await axios
                     .put('/password', {
                         loginId: loginIdValue,
@@ -122,13 +138,22 @@ function ChangePwPage(props) {
             }
         }
         else {
-            setIsWrongId(false);
-            setIsWrongPw(false);
-            setIsWrongNewPw(false);
-            setIsWrongConfirm(true);
-            setIsWrongResult(true);
+            if (newPwValue.length < 8) {
+                setIsWrongId(false);
+                setIsWrongPw(false);
+                setIsWrongNewPw(true);
+                setIsWrongConfirm(true);
+                setIsWrongResult(true);
+            }
+            else {
+                setIsWrongId(false);
+                setIsWrongPw(false);
+                setIsWrongNewPw(false);
+                setIsWrongConfirm(true);
+                setIsWrongResult(true);
 
-            setConfirmErrorModalOn(true);  // pw 확인이 불일치함 에러.
+                setConfirmErrorModalOn(true);  // pw 확인이 불일치함 에러.
+            }
         }
     }
 
