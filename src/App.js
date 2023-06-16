@@ -7,19 +7,35 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import './App.css';
-import NoLoginNav from "./components/Navigation/NoLoginNav";
-import LoginPage from "./pages/User/LoginPage";
-import SignupPage from "./pages/User/SignupPage";
-import ChangePwPage from "./pages/User/ChangePwPage";
-import YesLoginNav from "./components/Navigation/YesLoginNav";
-import MemoListPage from "./pages/Memo/MemoListPage";
-import InformationPage from "./pages/Etc/InformationPage";
-import ReadAndEditMemoPage from "./pages/Memo/ReadAndEditMemoPage";
-import NewMemoPage from "./pages/Memo/NewMemoPage";
-import UserProfilePage from "./pages/User/UserProfilePage";
-import FriendListPage from "./pages/Friend/FriendListPage";
-import SenderListPage from "./pages/Friend/SenderListPage";
-import NoticePage from "./pages/Etc/NoticePage";
+import LoadingNav from "./components/Navigation/LoadingNav";
+import BasicWrapper from "./components/Styled/BasicWrapper";
+// import NoLoginNav from "./components/Navigation/NoLoginNav";
+// import LoginPage from "./pages/User/LoginPage";
+// import SignupPage from "./pages/User/SignupPage";
+// import ChangePwPage from "./pages/User/ChangePwPage";
+// import YesLoginNav from "./components/Navigation/YesLoginNav";
+// import MemoListPage from "./pages/Memo/MemoListPage";
+// import InformationPage from "./pages/Etc/InformationPage";
+// import ReadAndEditMemoPage from "./pages/Memo/ReadAndEditMemoPage";
+// import NewMemoPage from "./pages/Memo/NewMemoPage";
+// import UserProfilePage from "./pages/User/UserProfilePage";
+// import FriendListPage from "./pages/Friend/FriendListPage";
+// import SenderListPage from "./pages/Friend/SenderListPage";
+// import NoticePage from "./pages/Etc/NoticePage";
+const NoLoginNav = React.lazy(() => import('./components/Navigation/NoLoginNav'));
+const LoginPage = React.lazy(() => import('./pages/User/LoginPage'));
+const SignupPage = React.lazy(() => import('./pages/User/SignupPage'));
+const ChangePwPage = React.lazy(() => import('./pages/User/ChangePwPage'));
+const YesLoginNav = React.lazy(() => import('./components/Navigation/YesLoginNav'));
+const MemoListPage = React.lazy(() => import('./pages/Memo/MemoListPage'));
+const InformationPage = React.lazy(() => import('./pages/Etc/InformationPage'));
+const ReadAndEditMemoPage = React.lazy(() => import('./pages/Memo/ReadAndEditMemoPage'));
+const NewMemoPage = React.lazy(() => import('./pages/Memo/NewMemoPage'));
+const UserProfilePage = React.lazy(() => import('./pages/User/UserProfilePage'));
+const FriendListPage = React.lazy(() => import('./pages/Friend/FriendListPage'));
+const SenderListPage = React.lazy(() => import('./pages/Friend/SenderListPage'));
+const NoticePage = React.lazy(() => import('./pages/Etc/NoticePage'));
+
 
 const MainTitleText = styled.header`
     font-size: 3rem;
@@ -55,35 +71,37 @@ function App(props) {
           <LittleTitle>OnlineMemo.kr</LittleTitle>
         </Link>
       </MainTitleText>
-      <Routes>
-        <Route index element={<NoLoginNav />} />
-        <Route path="login" element={<NoLoginNav />} />
-        <Route path="signup" element={<NoLoginNav />} />
-        <Route path="password" element={<NoLoginNav />} />
-        <Route path="information" element={<NoLoginNav />} />
-        <Route path="notice" element={<NoLoginNav />} />
+      <React.Suspense fallback={<div><LoadingNav></LoadingNav><BasicWrapper><div style={{textAlign: "center", fontSize: "16px"}}>loading...</div></BasicWrapper></div>}>
+        <Routes>
+          <Route index element={<NoLoginNav />} />
+          <Route path="login" element={<NoLoginNav />} />
+          <Route path="signup" element={<NoLoginNav />} />
+          <Route path="password" element={<NoLoginNav />} />
+          <Route path="information" element={<NoLoginNav />} />
+          <Route path="notice" element={<NoLoginNav />} />
 
-        <Route path="/users/:userId/memos" element={<YesLoginNav />} />
-        <Route path="/users/:userId" element={<YesLoginNav />} />
-        <Route path="/users/:userId/friends" element={<YesLoginNav />} />
-        <Route path="/users/:userId/senders" element={<YesLoginNav />} />
-      </Routes>
-      <Routes>
-        <Route index element={<LoginPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="signup" element={<SignupPage />} />
-        <Route path="password" element={<ChangePwPage />} />
-        <Route path="information" element={<InformationPage />} />
-        <Route path="notice" element={<NoticePage />} />
+          <Route path="/users/:userId/memos" element={<YesLoginNav />} />
+          <Route path="/users/:userId" element={<YesLoginNav />} />
+          <Route path="/users/:userId/friends" element={<YesLoginNav />} />
+          <Route path="/users/:userId/senders" element={<YesLoginNav />} />
+        </Routes>
+        <Routes>
+          <Route index element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignupPage />} />
+          <Route path="password" element={<ChangePwPage />} />
+          <Route path="information" element={<InformationPage />} />
+          <Route path="notice" element={<NoticePage />} />
 
-        <Route path="/users/:userId/memos" element={<MemoListPage />} />
-        <Route path="/users/:userId" element={<UserProfilePage />} />
-        <Route path="/users/:userId/friends" element={<FriendListPage />} />
-        <Route path="/users/:userId/senders" element={<SenderListPage />} />
+          <Route path="/users/:userId/memos" element={<MemoListPage />} />
+          <Route path="/users/:userId" element={<UserProfilePage />} />
+          <Route path="/users/:userId/friends" element={<FriendListPage />} />
+          <Route path="/users/:userId/senders" element={<SenderListPage />} />
 
-        <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
-        <Route path="/users/:userId/memo" element={<NewMemoPage />} />
-      </Routes>
+          <Route path="/memos/:memoId" element={<ReadAndEditMemoPage />} />
+          <Route path="/users/:userId/memo" element={<NewMemoPage />} />
+        </Routes>
+      </React.Suspense>
     </BrowserRouter>
   );
 }

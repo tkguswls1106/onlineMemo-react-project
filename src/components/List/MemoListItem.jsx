@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from 'axios'
-import { CheckToken } from "../../utils/CheckToken";
+// import axios from 'axios'
+// import { CheckToken } from "../../utils/CheckToken";
 
 const TitleDateUserWrapper = styled.div`
     display: flex;
@@ -72,27 +72,28 @@ const UserWrapper = styled.div`
 `;
 
 function MemoListItem(props) {
-    const { memoId } = props;
+    const { memo } = props;
+    // const { memoId } = props;
 
-    const [memo, setMemo] = useState();
+    // const [memo, setMemo] = useState();
 
-    async function getMemo() {  // 해당 사용자의 메모 1개 조회
-        await axios
-            .get(`/memos/${memoId}`)
-            .then((response) => {
-                setMemo(response.data.data);
-                //console.log(response);
-            })
-            .catch((error) => {
-                //console.log(error);
-            })
-    }
+    // async function getMemo() {  // 해당 사용자의 메모 1개 조회
+    //     await axios
+    //         .get(`/memos/${memoId}`)
+    //         .then((response) => {
+    //             setMemo(response.data.data);
+    //             //console.log(response);
+    //         })
+    //         .catch((error) => {
+    //             //console.log(error);
+    //         })
+    // }
 
-    useEffect(() => {
-        CheckToken();
+    // useEffect(() => {
+    //     CheckToken();
 
-        getMemo();  // 출생시점에 getMemo 한번 실행.
-    }, []);
+    //     getMemo();  // 출생시점에 getMemo 한번 실행.
+    // }, []);
 
     return (
         <TitleDateUserWrapper>

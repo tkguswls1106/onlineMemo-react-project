@@ -172,7 +172,8 @@ function MemoList(props) {
                         <IsStarButton memoId={memo.id} style={{ flexGrow: "4" }} />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Link style={{ textDecoration: "none", flexGrow: "8" }} to={`/memos/${memo.id}`} state={{ userId: userId }}>
-                            <MemoListItem memoId={memo.id} /> 
+                            <MemoListItem memo={memo} /> 
+                            {/* <MemoListItem memoId={memo.id} /> */}
                         </Link>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <MemoOptionButton memoHasUsersCount={memo.memoHasUsersCount} style={{ flexGrow: "4" }} userId={userId} memoId={memo.id} rerendering={getMemos} />
