@@ -1,10 +1,10 @@
 [[redirects]]
-  from = "/login/*"
+  from = "https://onlinememo.netlify.app/login/*"
   to = "https://www.onlinememo.kr/login/:splat"
   status = 200
 
 [[redirects]]
-  from = "/auth/*"
+  from = "https://onlinememo.netlify.app/auth/*"
   to = "https://www.onlinememo.kr/auth/:splat"
   status = 200
 
