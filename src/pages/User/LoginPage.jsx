@@ -69,9 +69,6 @@ function LoginPage(props) {
             .post('https://api.onlinememo.kr/login', {
                 loginId: loginIdValue,
                 firstPw: pwValue
-            },
-            {
-                withCredentials: true // cors 통신 설정
             })
             .then((response) => {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.data.accessToken}`;
@@ -90,9 +87,7 @@ function LoginPage(props) {
 
     async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get('https://api.onlinememo.kr/auth', {
-                withCredentials: true // cors 통신 설정
-            })
+            .get('https://api.onlinememo.kr/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
                 //console.log(response);
@@ -105,6 +100,7 @@ function LoginPage(props) {
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
+        axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
         if(storedToken) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
