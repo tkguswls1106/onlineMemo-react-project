@@ -20,8 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://Onlinememo-springBackend-env.eba-k3env3uc.ap-northeast-2.elasticbeanstalk.com/",
-  "homepage": "http://Onlinememo-springBackend-env.eba-k3env3uc.ap-northeast-2.elasticbeanstalk.com/",
+  "proxy": "https://www.onlinememo.kr/",
+  "homepage": "https://www.onlinememo.kr/",
   "eslintConfig": {
     "extends": [
       "react-app",
