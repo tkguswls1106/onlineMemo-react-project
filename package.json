@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://awseb-e-2-awsebloa-ylou4nmwebxq-792739917.ap-northeast-2.elb.amazonaws.com",
+  "proxy": "http://onlinememo-springbackend-env.eba-k3env3uc.ap-northeast-2.elasticbeanstalk.com",
   "eslintConfig": {
     "extends": [
       "react-app",
