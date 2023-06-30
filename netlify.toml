@@ -1,5 +1,14 @@
 [[redirects]]
-  from = "/proxy/*"
-  to = "https://www.onlinememo.kr/:splat"
+  from = "/login/*"
+  to = "https://www.onlinememo.kr/login/:splat"
   status = 200
-  force = true
+
+[[redirects]]
+  from = "/auth/*"
+  to = "https://www.onlinememo.kr/auth/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
