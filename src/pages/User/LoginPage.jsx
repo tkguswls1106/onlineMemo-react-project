@@ -101,9 +101,11 @@ function LoginPage(props) {
         await axios
             .get('/testget')
             .then((response) => {
+                console.log("get 성공!");
                 console.log(response);
             })
             .catch((error) => {
+                console.log("get 실패!");
                 console.log(error);
             })
     }
