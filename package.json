@@ -21,7 +21,6 @@
     "eject": "react-scripts eject"
   },
   "proxy": "https://www.onlinememo.kr/",
-  "homepage": "https://www.onlinememo.kr/",
   "eslintConfig": {
     "extends": [
       "react-app",
