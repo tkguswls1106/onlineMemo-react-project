@@ -41,6 +41,9 @@ const DivWrapper = styled.div`
 function LoginPage(props) {
     const navigate = useNavigate();
 
+    const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+    // const URL = `${PROXY}/v1/search/book.json`;
+
     const [loginFailModalOn, setLoginFailModalOn] = useState(false);
 
     const [loginIdValue, setLoginIdValue] = useState("");
@@ -66,7 +69,7 @@ function LoginPage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post('https://www.onlinememo.kr/login', {
+            .post(`${PROXY}/login`, {
                 loginId: loginIdValue,
                 firstPw: pwValue
             })
@@ -87,7 +90,7 @@ function LoginPage(props) {
 
     async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get('https://www.onlinememo.kr/auth')
+            .get(`${PROXY}/auth`)
             .then((response) => {
                 setTokenUserId(response.data.data.id);
                 //console.log(response);
