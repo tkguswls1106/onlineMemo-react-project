@@ -97,7 +97,20 @@ function LoginPage(props) {
             })
     }
 
+    async function testGet() {  // 테스트용 api
+        await axios
+            .get('/testget')
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     useEffect(() => {
+        testGet();  // 테스트용 api
+
         const storedToken = localStorage.getItem('token');
         const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
 
