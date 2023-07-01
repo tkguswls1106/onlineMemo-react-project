@@ -77,7 +77,7 @@ function LoginPage(props) {
 
                 checkLogin();
 
-                //console.log(response);
+                console.log(response);
             })
             .catch((error) => {
                 setLoginFailModalOn(true);
