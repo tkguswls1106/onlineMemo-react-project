@@ -66,7 +66,7 @@ function LoginPage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post('/login', {
+            .get('/login', {
                 loginId: loginIdValue,
                 firstPw: pwValue
             })
