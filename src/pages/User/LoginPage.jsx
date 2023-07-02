@@ -66,7 +66,7 @@ function LoginPage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .get('/login', {
+            .post('/login', {
                 loginId: loginIdValue,
                 firstPw: pwValue
             })
@@ -77,7 +77,7 @@ function LoginPage(props) {
 
                 checkLogin();
 
-                console.log(response);
+                //console.log(response);
             })
             .catch((error) => {
                 setLoginFailModalOn(true);
@@ -97,12 +97,15 @@ function LoginPage(props) {
             })
     }
 
+    const [testUsername, setTestusername] = useState();
     async function testGet() {  // 테스트용 api
         await axios
             .get('/testget')
             .then((response) => {
                 console.log("get 성공!");
+                console.log(response.data.data.username);
                 console.log(response);
+                setTestusername(response.data.data.username);
             })
             .catch((error) => {
                 console.log("get 실패!");
@@ -137,6 +140,7 @@ function LoginPage(props) {
     return (
         <HelloWrapper>
             <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i className="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
+            {testUsername && testUsername}
             <h2>
                 <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 Login<br></br>
