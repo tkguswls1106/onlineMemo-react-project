@@ -139,7 +139,7 @@ function UserProfilePage(props) {
         }
         else {
             await axios
-                .put(`/users/${userId}`, {
+                .put(process.env.REACT_APP_DB_HOST + `/users/${userId}`, {
                     username: nameValue,
                 })
                 .then((response) => {
@@ -159,7 +159,7 @@ function UserProfilePage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .delete(`/users/${userId}`)
+            .delete(process.env.REACT_APP_DB_HOST + `/users/${userId}`)
             .then((response) => {
                 //console.log(response);
 
@@ -174,7 +174,7 @@ function UserProfilePage(props) {
 
     async function getUser() {  // 사용자 회원정보 조회
         await axios
-            .get(`/users/${userId}`)
+            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}`)
             .then((response) => {
                 setUser(response.data.data);
                 setNameValue(response.data.data.username)

@@ -89,7 +89,7 @@ function SelectFriendList(props) {
 
     async function getFriends() {  // 해당 사용자의 모든 친구 리스트 조회
         await axios
-            .get(`/users/${userId}/friends`)
+            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/friends`)
             .then((response) => {
                 setFriends(response.data.data);
                 //console.log(response);

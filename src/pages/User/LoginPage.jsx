@@ -66,7 +66,7 @@ function LoginPage(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post('/login', {
+            .post(process.env.REACT_APP_DB_HOST + '/login', {
                 loginId: loginIdValue,
                 firstPw: pwValue
             })
@@ -87,7 +87,7 @@ function LoginPage(props) {
 
     async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get('/auth')
+            .get(process.env.REACT_APP_DB_HOST + '/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
                 //console.log(response);
@@ -97,25 +97,7 @@ function LoginPage(props) {
             })
     }
 
-    const [testUsername, setTestusername] = useState();
-    async function testGet() {  // 테스트용 api
-        await axios
-            .get(process.env.REACT_APP_DB_HOST + '/testapi')
-            .then((response) => {
-                console.log("get 성공!");
-                console.log(response.data.data.username);
-                console.log(response);
-                setTestusername(response.data.data.username);
-            })
-            .catch((error) => {
-                console.log("get 실패!");
-                console.log(error);
-            })
-    }
-
     useEffect(() => {
-        testGet();  // 테스트용 api
-
         const storedToken = localStorage.getItem('token');
         const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
 
@@ -135,12 +117,11 @@ function LoginPage(props) {
                 navigate(`/users/${tokenUserId}/memos`);
             }
         }
-    }, [tokenUserId, testUsername]);
+    }, [tokenUserId]);
 
     return (
         <HelloWrapper>
             <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i className="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
-            {testUsername && testUsername}
             <h2>
                 <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 Login<br></br>

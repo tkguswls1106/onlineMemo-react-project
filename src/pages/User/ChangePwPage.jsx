@@ -110,7 +110,7 @@ function ChangePwPage(props) {
             }
             else {  // 만약 (newPwValue.length >= 8 && pwValue !== newPwValue) 일때를 의미함.
                 await axios
-                    .put('/password', {
+                    .put(process.env.REACT_APP_DB_HOST + '/password', {
                         loginId: loginIdValue,
                         firstPw: pwValue,
                         newFirstPw: newPwValue
@@ -159,7 +159,7 @@ function ChangePwPage(props) {
 
     async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get('/auth')
+            .get(process.env.REACT_APP_DB_HOST + '/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
                 //console.log(response);

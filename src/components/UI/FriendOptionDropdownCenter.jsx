@@ -113,7 +113,7 @@ function FriendOptionDropdownRight(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post(`/users/${userId}/friends`, {
+            .post(process.env.REACT_APP_DB_HOST + `/users/${userId}/friends`, {
                 loginId: idValue
             })
             .then((response) => {

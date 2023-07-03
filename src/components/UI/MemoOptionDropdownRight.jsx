@@ -133,7 +133,7 @@ function MemoOptionDropdownRight(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post(`/memos/${memoId}`, {
+            .post(process.env.REACT_APP_DB_HOST + `/memos/${memoId}`, {
                 userRequestDtos: checkedList
             })
             .then((response) => {
@@ -150,7 +150,7 @@ function MemoOptionDropdownRight(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .delete(`/users/${userId}/memos/${memoId}`)
+            .delete(process.env.REACT_APP_DB_HOST + `/users/${userId}/memos/${memoId}`)
             .then((response) => {
                 //console.log(response);
 
@@ -163,7 +163,7 @@ function MemoOptionDropdownRight(props) {
 
     async function getFriends() {  // 해당 사용자의 모든 친구 리스트 조회
         await axios
-            .get(`/users/${userId}/friends`)
+            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/friends`)
             .then((response) => {
                 setAllFriends(response.data.data);
                 //console.log(response);
@@ -175,7 +175,7 @@ function MemoOptionDropdownRight(props) {
 
     async function getMemoHasUsers() {  // 해당 메모의 모든 사용자 리스트 조회 (메모 조회)
         await axios
-            .get(`/memos/${memoId}`)
+            .get(process.env.REACT_APP_DB_HOST + `/memos/${memoId}`)
             .then((response) => {
                 setUsers(response.data.data.userResponseDtos);
                 //console.log(response);

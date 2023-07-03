@@ -113,7 +113,7 @@ function SignupPage(props) {
             pwValue !== confirmValue)) {
 
             await axios
-                .post('/signup', {
+                .post(process.env.REACT_APP_DB_HOST + '/signup', {
                     loginId: loginIdValue,
                     firstPw: pwValue,
                     username: nameValue
@@ -139,7 +139,7 @@ function SignupPage(props) {
 
     async function checkLogin() {  // 로그인 상태 여부 확인하고 해당 사용자의 userId 반환
         await axios
-            .get('/auth')
+            .get(process.env.REACT_APP_DB_HOST + '/auth')
             .then((response) => {
                 setTokenUserId(response.data.data.id);
                 //console.log(response);
