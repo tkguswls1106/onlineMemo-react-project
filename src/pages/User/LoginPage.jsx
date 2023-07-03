@@ -48,6 +48,8 @@ function LoginPage(props) {
 
     const [tokenUserId, setTokenUserId] = useState();
 
+    const [viewPw, setViewPw] = useState('');
+
     const handleChangeLoginId = (event) => {
         setLoginIdValue(event.target.value);
     }   
@@ -57,13 +59,10 @@ function LoginPage(props) {
     }
 
     const doClickEnter = (event) => {
-        if (event.key === 'Enter' && !loginFailModalOn) {
+        if (event.key === 'Enter' && loginFailModalOn == false) {
             handleLoginClick(loginIdValue, pwValue);
         }
-    };
-
-    const doClickEnterOK = (event) => {
-        if (event.key === 'Enter' && loginFailModalOn) {
+        else if (event.key === 'Enter' && loginFailModalOn == true) {
             setLoginFailModalOn(false);
         }
     };
@@ -136,7 +135,7 @@ function LoginPage(props) {
                     &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" maxLength="16" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="text" onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
+                    pw:&nbsp;&nbsp;<input type="password" onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
                     <Link to={'/password'}>pw 변경</Link>
@@ -162,7 +161,7 @@ function LoginPage(props) {
                         로그인에 실패하였습니다.<br></br>
                         다시 입력해주세요.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)} onKeyDown={(event) => doClickEnterOK(event)}>확인</button>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)}>확인</button>
                 </ConfirmModal>
             )}
         </HelloWrapper>
