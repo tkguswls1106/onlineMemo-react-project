@@ -57,13 +57,13 @@ function LoginPage(props) {
     }
 
     const doClickEnter = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && !loginFailModalOn) {
             handleLoginClick(loginIdValue, pwValue);
         }
     };
 
     const doClickEnterOK = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && loginFailModalOn) {
             setLoginFailModalOn(false);
         }
     };
