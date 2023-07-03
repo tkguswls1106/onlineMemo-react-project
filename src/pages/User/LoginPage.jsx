@@ -62,6 +62,12 @@ function LoginPage(props) {
         }
     };
 
+    const doClickEnterOK = (event) => {
+        if (event.key === 'Enter') {
+            setLoginFailModalOn(false);
+        }
+    };
+
     const handleLoginClick = async (loginIdValue, pwValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
@@ -156,7 +162,7 @@ function LoginPage(props) {
                         로그인에 실패하였습니다.<br></br>
                         다시 입력해주세요.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)}>확인</button>
+                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)} onKeyDown={(event) => doClickEnterOK(event)}>확인</button>
                 </ConfirmModal>
             )}
         </HelloWrapper>
