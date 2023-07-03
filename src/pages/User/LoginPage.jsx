@@ -100,7 +100,7 @@ function LoginPage(props) {
     const [testUsername, setTestusername] = useState();
     async function testGet() {  // 테스트용 api
         await axios
-            .get('/testget')
+            .get('/testapi')
             .then((response) => {
                 console.log("get 성공!");
                 console.log(response.data.data.username);
@@ -135,7 +135,7 @@ function LoginPage(props) {
                 navigate(`/users/${tokenUserId}/memos`);
             }
         }
-    }, [tokenUserId]);
+    }, [tokenUserId, testUsername]);
 
     return (
         <HelloWrapper>
