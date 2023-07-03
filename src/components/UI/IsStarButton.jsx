@@ -10,7 +10,7 @@ function IsStarButton(props) {
 
     async function getMemo() {  // 해당 사용자의 메모 1개 조회
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `/memos/${memoId}`)
+            .get(`${process.env.REACT_APP_DB_HOST}/memos/${memoId}`)
             .then((response) => {
                 setMemo(response.data.data);
                 setIsStar(response.data.data.isStar);
@@ -32,7 +32,7 @@ function IsStarButton(props) {
         setIsStar(starValue);  // toggle
 
         await axios
-            .put(process.env.REACT_APP_DB_HOST + `/memos/${memo.id}/star`, {
+            .put(`${process.env.REACT_APP_DB_HOST}/memos/${memo.id}/star`, {
                 isStar: starValue
             })
             .then((response) => {

@@ -79,7 +79,7 @@ function MemoListItem(props) {
 
     // async function getMemo() {  // 해당 사용자의 메모 1개 조회
     //     await axios
-    //         .get(process.env.REACT_APP_DB_HOST + `/memos/${memoId}`)
+    //         .get(`${process.env.REACT_APP_DB_HOST}/memos/${memoId}`)
     //         .then((response) => {
     //             setMemo(response.data.data);
     //             //console.log(response);

@@ -66,7 +66,7 @@ function SenderList(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .put(process.env.REACT_APP_DB_HOST + `/users/${userId}/senders/${senderId}`, {
+            .put(`${process.env.REACT_APP_DB_HOST}/users/${userId}/senders/${senderId}`, {
                 isFriend: 1,
                 isWait: 0
             })
@@ -84,7 +84,7 @@ function SenderList(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .put(process.env.REACT_APP_DB_HOST + `/users/${userId}/senders/${senderId}`, {
+            .put(`${process.env.REACT_APP_DB_HOST}/users/${userId}/senders/${senderId}`, {
                 isFriend: 0,
                 isWait: 0
             })
@@ -100,7 +100,7 @@ function SenderList(props) {
 
     async function getSenders() {  // 해당 사용자의 모든 친구요청발신자 리스트 조회
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/senders`)
+            .get(`${process.env.REACT_APP_DB_HOST}/users/${userId}/senders`)
             .then((response) => {
                 setSenders(response.data.data);
                 //console.log(response);

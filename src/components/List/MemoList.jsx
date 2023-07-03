@@ -94,7 +94,7 @@ function MemoList(props) {
 
     async function getMemos() {  // 해당 사용자의 모든 메모 리스트 조회 (초기 메인 화면)
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `${process.env.REACT_APP_DB_HOST}/users/${userId}/memos`)
+            .get(`${process.env.REACT_APP_DB_HOST}/users/${userId}/memos`)
             .then((response) => {
                 setMemos(response.data.data);
                 //console.log(response);
@@ -109,7 +109,7 @@ function MemoList(props) {
 
     async function sortMemos() {  // 메모들 정렬해서 조회
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/memos?order=${sortValue}`)
+            .get(`${process.env.REACT_APP_DB_HOST}/users/${userId}/memos?order=${sortValue}`)
             .then((response) => {
                 setMemos(response.data.data);
                 //console.log(response);
@@ -124,7 +124,7 @@ function MemoList(props) {
 
     async function searchMemos() {  // 메모들 검색해서 조회
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/memos?search=${searchValue}`)
+            .get(`${process.env.REACT_APP_DB_HOST}/users/${userId}/memos?search=${searchValue}`)
             .then((response) => {
                 setMemos(response.data.data);
                 //console.log(response);

@@ -136,7 +136,7 @@ function NewMemoNav(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .post(process.env.REACT_APP_DB_HOST + `/memos/${memoId}`, {
+            .post(`${process.env.REACT_APP_DB_HOST}/memos/${memoId}`, {
                 userRequestDtos: props.friendList
             })
             .then((response) => {
@@ -159,7 +159,7 @@ function NewMemoNav(props) {
         }
         else {
             await axios
-                .post(process.env.REACT_APP_DB_HOST + `/users/${props.userId}/memos`, {
+                .post(`${process.env.REACT_APP_DB_HOST}/users/${props.userId}/memos`, {
                     title: titleValue,
                     content: contentValue
                 })

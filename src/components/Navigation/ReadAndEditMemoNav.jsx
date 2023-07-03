@@ -172,7 +172,7 @@ function ReadAndEditMemoNav(props) {
         }
         else {
             await axios
-                .put(process.env.REACT_APP_DB_HOST + `/memos/${props.memoId}`, {
+                .put(`${process.env.REACT_APP_DB_HOST}/memos/${props.memoId}`, {
                     title: titleValue,
                     content: contentValue
                 })
@@ -191,7 +191,7 @@ function ReadAndEditMemoNav(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .delete(process.env.REACT_APP_DB_HOST + `/users/${props.userId}/memos/${props.memoId}`)
+            .delete(`${process.env.REACT_APP_DB_HOST}/users/${props.userId}/memos/${props.memoId}`)
             .then((response) => {
                 //console.log(response);
 

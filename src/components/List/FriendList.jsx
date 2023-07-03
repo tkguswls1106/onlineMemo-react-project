@@ -74,7 +74,7 @@ function FriendList(props) {
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
         await axios
-            .delete(process.env.REACT_APP_DB_HOST + `/users/${userId}/friends/${friendId}`)
+            .delete(`${process.env.REACT_APP_DB_HOST}/users/${userId}/friends/${friendId}`)
             .then((response) => {
                 //console.log(response);
 
@@ -88,7 +88,7 @@ function FriendList(props) {
 
     async function getFriends() {  // 해당 사용자의 모든 친구 리스트 조회
         await axios
-            .get(process.env.REACT_APP_DB_HOST + `/users/${userId}/friends`)
+            .get(`${process.env.REACT_APP_DB_HOST}/users/${userId}/friends`)
             .then((response) => {
                 setFriends(response.data.data);
                 //console.log(response);
