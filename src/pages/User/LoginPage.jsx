@@ -100,7 +100,7 @@ function LoginPage(props) {
     const [testUsername, setTestusername] = useState();
     async function testGet() {  // 테스트용 api
         await axios
-            .get('/testapi')
+            .get(process.env.REACT_APP_DB_HOST + '/testapi')
             .then((response) => {
                 console.log("get 성공!");
                 console.log(response.data.data.username);
