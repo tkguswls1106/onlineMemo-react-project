@@ -48,11 +48,9 @@ function LoginPage(props) {
 
     const [tokenUserId, setTokenUserId] = useState();
 
-    const [viewPw, setViewPw] = useState('');
-
     const handleChangeLoginId = (event) => {
         setLoginIdValue(event.target.value);
-    }   
+    }
 
     const handleChangePw = (event) => {
         setPwValue(event.target.value);
@@ -106,11 +104,11 @@ function LoginPage(props) {
         const storedToken = localStorage.getItem('token');
         const storedExpirationDate = localStorage.getItem('expirationTime') || '0';
 
-        if(storedToken) {
+        if (storedToken) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
 
             const remainingTime = storedExpirationDate - String(new Date().getTime());
-            if(remainingTime <= '1000') {  // 토큰 잔여만료시간이 1초 이하라면
+            if (remainingTime <= '1000') {  // 토큰 잔여만료시간이 1초 이하라면
                 localStorage.removeItem('token');
                 localStorage.removeItem('expirationTime');
 
@@ -118,7 +116,7 @@ function LoginPage(props) {
             }
 
             checkLogin();
-            if(tokenUserId) {
+            if (tokenUserId) {
                 navigate(`/users/${tokenUserId}/memos`);
             }
         }
