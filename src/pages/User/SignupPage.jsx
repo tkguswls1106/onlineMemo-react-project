@@ -182,16 +182,16 @@ function SignupPage(props) {
                 회원가입<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" className={isWrongName ? 'wrongName inputInform' : 'inputInform'} placeholder=" 한글,영문,숫자 (2자 이상)" size="17" onChange={handleChangeName} />
+                    &nbsp;&nbsp;이름:&nbsp;&nbsp;<input type="text" className={isWrongName ? 'wrongName inputInform' : 'inputInform'} width="114px" placeholder=" 한글,영문,숫자 (2자 이상)" size="17" onChange={handleChangeName} />
                 </div>
                 <div className="flex-container">
-                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} placeholder=" 영문,숫자 (4~16자)" maxLength="16" onChange={handleChangeLoginId} />
+                    &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} width="132px" placeholder=" 영문,숫자 (4~16자)" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} placeholder=" 영문,숫자,특수문자 (8자 이상)" onChange={handleChangePw} />
+                    pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} width="132px" placeholder=" 영문,숫자,특수문자 (8자 이상)" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container">
-                    pw 확인:&nbsp;&nbsp;<input type="text" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} placeholder=" pw 재입력" size="14" onChange={handleChangeConfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="text" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} width="93px" placeholder=" pw 재입력" size="14" onChange={handleChangeConfirm} />
                 </div>
                 <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">

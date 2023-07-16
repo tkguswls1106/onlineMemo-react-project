@@ -43,7 +43,7 @@ const Wrapper = styled(NavWrapper)`
     button {
         border-radius: 6.5px;
         font-family: "jua";
-        font-size: 17.5px;
+        font-size: 1.75rem;
 
         width: 51.5px;
         height: 27px;
