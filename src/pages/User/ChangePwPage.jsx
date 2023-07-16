@@ -202,10 +202,10 @@ function ChangePwPage(props) {
                 비밀번호 변경<br></br>
                 <hr></hr>
                 <div className="flex-container">
-                    &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} style={{ width: "97px" }} size="15" maxLength="16" onChange={handleChangeLoginId} />
+                    &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} style={{ width: "96px" }} size="15" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    현재 pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "97.5px" }} size="15" onChange={handleChangePw} />
+                    현재 pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "98px" }} size="15" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container change">
                     바꿀 pw:&nbsp;&nbsp;<input type="text" size="15" className={isWrongNewPw ? 'wrongNewPw inputInform' : 'inputInform'} style={{ width: "97px" }} placeholder=" 영문,숫자,기호 (8자 이상)" onChange={handleChangeNewPw} />

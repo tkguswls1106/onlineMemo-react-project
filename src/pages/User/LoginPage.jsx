@@ -125,7 +125,7 @@ function LoginPage(props) {
     return (
         <HelloWrapper>
             <h2>나만의 메모 보관함으로 접속&nbsp;&nbsp;<i className="fa fa-mouse-pointer" aria-hidden="true"></i></h2>
-            <h2>
+            <h2 style={{ paddingLeft: "18px", paddingRight: "18px" }}>
                 <i className="fa fa-user-circle" aria-hidden="true"></i><br></br>
                 Login<br></br>
                 <hr></hr>
@@ -133,7 +133,7 @@ function LoginPage(props) {
                     &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" style={{ width: "120px" }} maxLength="16" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="password" style={{ width: "120.5px" }} onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
+                    pw:&nbsp;&nbsp;<input type="password" style={{ width: "121px" }} onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
                     <Link to={'/password'}>pw 변경</Link>
