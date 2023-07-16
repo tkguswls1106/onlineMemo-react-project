@@ -133,10 +133,10 @@ function LoginPage(props) {
                     &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" style={{ width: "120px" }} maxLength="16" onChange={handleChangeLoginId} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="password" style={{ width: "121px" }} onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
+                    pw:&nbsp;&nbsp;<input type="password" style={{ width: "122.4px" }} onChange={handleChangePw} onKeyDown={(event) => doClickEnter(event)} />
                 </div>
                 <div className="flex-container">
-                    <Link to={'/password'}>pw 변경</Link>
+                    <Link to={'/password'}>&nbsp;pw 변경</Link>
                     &nbsp;&nbsp;&nbsp;
                     <Link to={'/signup'}>회원가입</Link>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
