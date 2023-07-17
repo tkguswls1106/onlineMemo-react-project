@@ -145,9 +145,9 @@ const Inform = () => {
                 <li><strong>백엔드 :</strong>&nbsp;&nbsp;Spring Boot, Java</li>
                 <li><strong>데이터베이스 :</strong>&nbsp;&nbsp;MySQL</li>
                 <li><strong>보안 :</strong>&nbsp;&nbsp;Spring Security, JSON Web Token</li>
-                <li><strong>기타 :</strong>&nbsp;&nbsp;Nginx, Amazon AWS</li>
+                <li><strong>기타 :</strong>&nbsp;&nbsp;Amazon AWS</li>
                 <div style={{ lineHeight: "17%" }}><br></br></div>
-                <span>&nbsp;&nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;REST API</span>
+                <span>&nbsp;&nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;REST API, HTTPS</span>
                 <div style={{ lineHeight: "10.5px" }}><br></br></div>
             </ul>
             <span className="device"><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;APP&nbsp;&nbsp;<i className="fa fa-mobile" aria-hidden="true"></i></span>
