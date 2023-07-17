@@ -161,7 +161,7 @@ function FriendOptionDropdownRight(props) {
                         초대 id:&nbsp;&nbsp;<input type="text" onChange={handleChangeId} placeholder="친구의 id를 입력해주세요." maxLength="16"
                             style={{ width: "138px", textAlign: "center", paddingTop: "4px", paddingBottom: "4px", border: "1px solid #463f3a", borderRadius: "5px", backgroundColor: "#f4f3ee" }} />
                     </div>
-                    <span style={isNone ? { display: "", fontSize: "1.26rem", color: "#dd2b2b" } : { display: "none" }}>!!! 존재하지않거나 이미 초대한 사용자입니다 !!!</span>
+                    <span style={isNone ? { display: "", fontSize: "1.26rem", color: "#dd2b2b" } : { display: "none" }}>!!! 이미 초대했거나 없는 사용자입니다 !!!</span>
                     <div style={{ lineHeight: "40%" }}><br></br></div>
                     <button style={{ float: "right", fontSize: "1.5rem" }} onClick={handleSendClick}>요청 완료</button>
                 </SendFriendshipModal>
