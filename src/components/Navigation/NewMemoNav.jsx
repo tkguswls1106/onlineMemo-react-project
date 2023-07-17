@@ -87,6 +87,12 @@ const Wrapper = styled(NavWrapper)`
         background-color: #a1c4df;
         color: #463f3a;
 
+        padding: 1px 6px 1px 6px;
+        border-top: 2px solid #767676;
+        border-left: 2px solid #767676;
+        border-bottom: 2px solid #212121;
+        border-right: 2px solid #212121;
+
         &:hover {
             background-color: #a1c4dfa4;
         }

@@ -223,14 +223,14 @@ function MemoOptionDropdownRight(props) {
                     <FriendsWrapper>
                         <InviteFriendList userId={userId} checkedList={checkedList} setCheckedList={setCheckedList} friends={invitableFriends} />
                     </FriendsWrapper>
-                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px" }} onClick={handleInviteGroupMemo}>선택 완료</button>
+                    <button style={{ float: "right", fontSize: "1.5rem", marginTop: "10px", padding: "1px 6px 1px 6px", borderTop: "2px solid #767676", borderLeft: "2px solid #767676", borderBottom: "2px solid #212121", borderRight: "2px solid #212121" }} onClick={handleInviteGroupMemo}>선택 완료</button>
                 </FriendGroupModal>
             )}
             {deleteModalOn && (
                 <ConfirmModal closeModal={() => setDeleteModalOn(!deleteModalOn)}>
                     <br></br>
                     <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <h2 className="modalTitle">정말&nbsp;{modalText}하시겠습니까?</h2>
+                    <h2 className="modalTitle" style={{ fontSize: "1.8rem" }}>정말&nbsp;{modalText}하시겠습니까?</h2>
                     <br></br>
                     <div style={{ float: "right" }}>
                         <button className="confirmDeleteButton" onClick={handleDeleteClick}>확인</button>&nbsp;&nbsp;
