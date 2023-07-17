@@ -68,6 +68,12 @@ const ModalWrapper = styled.div`
         background-color: #dd2b2b;
         color: #312d29;
 
+        padding: 1px 6px 1px 6px;
+        border-top: 2px solid #767676;
+        border-left: 2px solid #767676;
+        border-bottom: 2px solid #212121;
+        border-right: 2px solid #212121;
+
         &:hover {
             background-color: #dd2b2ba4;
         }
@@ -77,6 +83,12 @@ const ModalWrapper = styled.div`
         font-size: 1.5rem;
         background-color: #463f3a;
         color: white;
+
+        padding: 1px 6px 1px 6px;
+        border-top: 2px solid #767676;
+        border-left: 2px solid #767676;
+        border-bottom: 2px solid #212121;
+        border-right: 2px solid #212121;
 
         &:hover {
             background-color: #463f3aa4;

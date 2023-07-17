@@ -127,8 +127,8 @@ function FriendList(props) {
                     <h2 className="modalTitle">정말 삭제하시겠습니까?</h2>
                     <br></br>
                     <div style={{ float: "right" }}>
-                        <button className="confirmDeleteButton" style={{ fontSize: "1.5rem" }} onClick={() => {handleDeleteClick(modalFriendId)}}>확인</button>&nbsp;&nbsp;
-                        <button style={{ fontSize: "1.5rem" }} onClick={() => setModalOn(!modalOn)}>취소</button>
+                        <button className="confirmDeleteButton" onClick={() => {handleDeleteClick(modalFriendId)}}>확인</button>&nbsp;&nbsp;
+                        <button className="cancelButton" onClick={() => setModalOn(!modalOn)}>취소</button>
                     </div>
                 </ConfirmModal>
             )}

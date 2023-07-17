@@ -44,6 +44,12 @@ const MoreWrapper = styled(HelloWrapper)`
 
     button {
         font-size: 1.47rem;
+
+        padding: 1px 6px 1px 6px;
+        border-top: 2px solid #767676;
+        border-left: 2px solid #767676;
+        border-bottom: 2px solid #212121;
+        border-right: 2px solid #212121;
     }
 
     .deleteUserButton {
