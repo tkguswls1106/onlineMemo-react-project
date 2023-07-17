@@ -218,7 +218,7 @@ function ChangePwPage(props) {
                     <button style={{ padding: "1px 6px 1px 6px", borderTop: "2px solid #767676", borderLeft: "2px solid #767676", borderBottom: "2px solid #212121", borderRight: "2px solid #212121" }} onClick={(event) => handleUpdatePwClick(loginIdValue, pwValue, newPwValue, confirmValue)}>변경 완료</button>
                 </div>
                 {isWrongResult &&
-                    <span style={{ fontSize: "1.25rem", color: "#dd2b2b" }}>!!! 입력하신 정보를 재확인해주세요 !!!</span>
+                    <span style={{ fontSize: "1.1rem", color: "#dd2b2b" }}>!!! 입력하신 정보를 재확인해주세요 !!!</span>
                 }
             </h2>
             {successModalOn && (
