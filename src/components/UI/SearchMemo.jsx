@@ -10,6 +10,11 @@ const Button = styled.button`
     // font-family: "jua";
     font-size: 1.64rem;
 
+    border-top: 2px solid #767676;
+    border-left: 2px solid #767676;
+    border-bottom: 2px solid #212121;
+    border-right: 2px solid #212121;
+
     &:hover {
         cursor: pointer;
         background-color: #4a433f;
