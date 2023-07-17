@@ -140,7 +140,7 @@ function LoginPage(props) {
                     &nbsp;&nbsp;&nbsp;
                     <Link to={'/signup'}>회원가입</Link>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button onClick={(event) => handleLoginClick(loginIdValue, pwValue)}>로그인</button>
+                    <button style={{ padding: "1px 6px 1px 6px", borderTop: "2px solid #767676", borderLeft: "2px solid #767676", borderBottom: "2px solid #212121", borderRight: "2px solid #212121" }} onClick={(event) => handleLoginClick(loginIdValue, pwValue)}>로그인</button>
                 </div>
             </h2>
 
@@ -159,7 +159,7 @@ function LoginPage(props) {
                         로그인에 실패하였습니다.<br></br>
                         다시 입력해주세요.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => setLoginFailModalOn(false)}>확인</button>
+                    <button className="cancelButton" onClick={() => setLoginFailModalOn(false)}>확인</button>
                 </ConfirmModal>
             )}
         </HelloWrapper>

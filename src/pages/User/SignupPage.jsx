@@ -195,7 +195,7 @@ function SignupPage(props) {
                 </div>
                 <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">
-                    <button onClick={(event) => handleSignupClick(nameValue, loginIdValue, pwValue, confirmValue)}>가입 완료</button>
+                    <button style={{ padding: "1px 6px 1px 6px", borderTop: "2px solid #767676", borderLeft: "2px solid #767676", borderBottom: "2px solid #212121", borderRight: "2px solid #212121" }} onClick={(event) => handleSignupClick(nameValue, loginIdValue, pwValue, confirmValue)}>가입 완료</button>
                 </div>
                 {isWrongResult &&
                     <span style={{ fontSize: "1.35rem", color: "#dd2b2b" }}>!!! 입력 양식을 재확인해주세요 !!!</span>
@@ -208,7 +208,7 @@ function SignupPage(props) {
                         회원가입 성공.<br></br>
                         로그인 페이지로 이동합니다.
                     </h2>
-                    <button style={{ fontSize: "1.5rem",  }} onClick={() => { setSuccessModalOn(false); navigate('/login'); }}>이동</button>
+                    <button className="cancelButton" onClick={() => { setSuccessModalOn(false); navigate('/login'); }}>이동</button>
                 </ConfirmModal>
             )}
             {duplicateErrorModalOn && (
@@ -218,7 +218,7 @@ function SignupPage(props) {
                         이미 존재하는 id입니다.<br></br>
                         다시 입력해주세요.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => setDuplicateErrorModalOn(false)}>확인</button>
+                    <button className="cancelButton" onClick={() => setDuplicateErrorModalOn(false)}>확인</button>
                 </ConfirmModal>
             )}
             {confirmErrorModalOn && (
@@ -228,7 +228,7 @@ function SignupPage(props) {
                         비밀번호가 일치하지 않습니다.<br></br>
                         다시 입력해주세요.
                     </h2>
-                    <button style={{ fontSize: "1.5rem" }} onClick={() => setConfirmErrorModalOn(false)}>확인</button>
+                    <button className="cancelButton" onClick={() => setConfirmErrorModalOn(false)}>확인</button>
                 </ConfirmModal>
             )}
         </MoreWrapper>
