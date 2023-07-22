@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "notelogo192.png",
+      "src": "memoicon192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "notelogo512.png",
+      "src": "memoicon512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
