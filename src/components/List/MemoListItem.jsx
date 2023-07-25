@@ -40,7 +40,8 @@ const UserWrapper = styled.div`
     color: #a14e1b;
 
     height: 37px;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
         width: 5px;
