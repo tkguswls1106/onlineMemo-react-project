@@ -94,26 +94,26 @@ const Notice = () => {
             <div style={{ lineHeight: "20%" }}><br></br></div>
             <ol>
                 <strong><li>&nbsp;공동메모 동시 수정 주의할 것</li></strong>
-                공동메모는 팀원중 한 명만 접속해서 수정하시길 권장드립니다.<br></br>
-                만약 동시접속하여 수정하실 경우, 가장 마지막으로 저장을 누른 팀원의 메모로 수정됩니다.
+                공동메모는 팀원중 한 명만 접속해서 수정하시길 권장드립니다. 동시접속하여 수정 시, 마지막으로 저장을 누른 팀원의 메모로 수정됩니다.
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
                 <strong><li>&nbsp;로그인 유지 시간은 6시간</li></strong>
-                보안을 위해 로그인 유지 시간을 제한합니다.<br></br>
-                로그인 이후 6시간 경과시, 자동으로 로그아웃되어 재로그인해야 합니다.<br></br>
+                보안을 위해 로그인 이후 6시간 경과시, 자동으로 로그아웃되어 재로그인해야 합니다.<br></br>
                 만약 장기 대기시간이 우려될 경우, 중간에 한번 로그아웃 후 재로그인을 권장드립니다.
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
                 <strong><li>&nbsp;사이트 주소 및 앱 다운로드</li></strong>
                 - 웹사이트 링크:&nbsp;<a href="https://www.OnlineMemo.kr">www.OnlineMemo.kr</a><br></br>
-                - Android 앱 다운로드: ~링크~
+                - 앱 다운로드 안내: ~링크~
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
                 <strong><li>&nbsp;전달사항은 메일과 DM으로</li></strong>
-                문의, 건의사항, 보완할점, 오류 등등 전달 사항이 있다면, '개발 정보' 탭 하단의 메일과 인스타 DM을 통해 말씀해주세요.
+                문의, 오류 등등의 전달사항은, '개발 정보' 탭 하단의 메일을 통해 부탁드립니다.
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
-                <strong><li style={{ color: "#dd2b2b" }}>&nbsp;본 사이트는 개인정보 취득 및 수익창출이 전혀 없음을 알립니다.</li></strong>
+                <strong><li style={{ color: "#dd2b2b" }}>&nbsp;'온라인 메모장'의 계정 삭제</li></strong>
+                계정 정보는 '이름, id, 암호화된 pw'로 탈퇴 전까지 DB에 영구적으로 보관됩니다.<br></br>
+                - 삭제 방법: 로그인 후 -&gt; 좌측 상단 사람 아이콘 클릭 -&gt; 회원정보 탭 -&gt; 회원 탈퇴
             </ol>
             <div style={{ lineHeight: "140%" }}><br></br></div>
         </div>

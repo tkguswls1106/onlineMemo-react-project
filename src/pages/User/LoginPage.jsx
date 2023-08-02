@@ -150,6 +150,7 @@ function LoginPage(props) {
                     <li>개인정보 필요없는 10초 회원가입 절차!&nbsp;<br></br>(생성할 id, pw 만 입력하면 끝!)</li>
                     <li>어느 기기에서든지 쉽고 빠르게 로그인 후&nbsp;<br></br>나만의 메모 관리!</li>
                     <li>친구들끼리 그룹을 만들어 공동 메모도 작성 가능!</li>
+                    <li>수익창출X 광고없이 무료 이용 가능!</li>
                 </ol>
             </DivWrapper>
             {loginFailModalOn && (
