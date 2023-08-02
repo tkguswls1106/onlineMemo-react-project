@@ -84,12 +84,12 @@ function YesLoginNav(props) {
             link: `/users/${userId}`,
         },
         {
-            name: "친구 목록",
-            link: `/users/${userId}/friends`,
+            name: "공지사항",
+            link: '/notice',
         },
         {
-            name: "메모 목록",
-            link: `/users/${userId}/memos`,
+            name: "개발 정보",
+            link: '/information',
         },
         {
             name: "로그아웃",
@@ -117,8 +117,8 @@ function YesLoginNav(props) {
                     dropMain={<i className="fa fa-user-o" aria-hidden="true"></i>}
                     dropItems={dropItemsUser}
                 />
-                <li><a onClick={() => { navigate('/notice') }}>공지사항</a></li>
-                <li><a onClick={() => { navigate('/information') }}>개발 정보</a></li>
+                <li><a onClick={() => { navigate(`/users/${userId}/memos`) }}>메모 목록</a></li>
+                <li><a onClick={() => { navigate(`/users/${userId}/friends`) }}>친구 목록</a></li>
                 <NewMemoOptionDropdownRight
                     dropMain={<span><button>+ 새 메모&nbsp;<i className="fa fa-caret-down" aria-hidden="true"></i></button></span>}
                     dropItems={dropItemsPlus}
