@@ -9,6 +9,7 @@ import styled from "styled-components";
 import './App.css';
 import LoadingNav from "./components/Navigation/LoadingNav";
 import BasicWrapper from "./components/Styled/BasicWrapper";
+import { retryLazy } from "./utils/lazyUtil.js"
 // import NoLoginNav from "./components/Navigation/NoLoginNav";
 // import LoginPage from "./pages/User/LoginPage";
 // import SignupPage from "./pages/User/SignupPage";
@@ -22,19 +23,19 @@ import BasicWrapper from "./components/Styled/BasicWrapper";
 // import FriendListPage from "./pages/Friend/FriendListPage";
 // import SenderListPage from "./pages/Friend/SenderListPage";
 // import NoticePage from "./pages/Etc/NoticePage";
-const NoLoginNav = React.lazy(() => import('./components/Navigation/NoLoginNav'));
-const LoginPage = React.lazy(() => import('./pages/User/LoginPage'));
-const SignupPage = React.lazy(() => import('./pages/User/SignupPage'));
-const ChangePwPage = React.lazy(() => import('./pages/User/ChangePwPage'));
-const YesLoginNav = React.lazy(() => import('./components/Navigation/YesLoginNav'));
-const MemoListPage = React.lazy(() => import('./pages/Memo/MemoListPage'));
-const InformationPage = React.lazy(() => import('./pages/Etc/InformationPage'));
-const ReadAndEditMemoPage = React.lazy(() => import('./pages/Memo/ReadAndEditMemoPage'));
-const NewMemoPage = React.lazy(() => import('./pages/Memo/NewMemoPage'));
-const UserProfilePage = React.lazy(() => import('./pages/User/UserProfilePage'));
-const FriendListPage = React.lazy(() => import('./pages/Friend/FriendListPage'));
-const SenderListPage = React.lazy(() => import('./pages/Friend/SenderListPage'));
-const NoticePage = React.lazy(() => import('./pages/Etc/NoticePage'));
+const NoLoginNav = retryLazy(() => import('./components/Navigation/NoLoginNav'));
+const LoginPage = retryLazy(() => import('./pages/User/LoginPage'));
+const SignupPage = retryLazy(() => import('./pages/User/SignupPage'));
+const ChangePwPage = retryLazy(() => import('./pages/User/ChangePwPage'));
+const YesLoginNav = retryLazy(() => import('./components/Navigation/YesLoginNav'));
+const MemoListPage = retryLazy(() => import('./pages/Memo/MemoListPage'));
+const InformationPage = retryLazy(() => import('./pages/Etc/InformationPage'));
+const ReadAndEditMemoPage = retryLazy(() => import('./pages/Memo/ReadAndEditMemoPage'));
+const NewMemoPage = retryLazy(() => import('./pages/Memo/NewMemoPage'));
+const UserProfilePage = retryLazy(() => import('./pages/User/UserProfilePage'));
+const FriendListPage = retryLazy(() => import('./pages/Friend/FriendListPage'));
+const SenderListPage = retryLazy(() => import('./pages/Friend/SenderListPage'));
+const NoticePage = retryLazy(() => import('./pages/Etc/NoticePage'));
 
 
 const MainTitleText = styled.header`
