@@ -30,14 +30,17 @@ footer {
 }
 
 #footerUp {
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
+    color: black;
+    font-size: 1.2rem;
+    font-family: "Kalam-Regular";
 }
 
-#footerDown {
+/* #footerDown {
   color: black;
   font-size: 1.2rem;
   font-family: "Kalam-Regular";
-}
+} */
 
 @media(min-width: 1365px) {
   html {
@@ -45,12 +48,13 @@ footer {
   }
 
   #footerUp {
-    font-size: 1.25rem;
-  }
-
-  #footerDown {
+    /* font-size: 1.25rem; */
     font-size: 1.35rem;
   }
+
+  /* #footerDown {
+    font-size: 1.35rem;
+  } */
 
   footer {
     margin-top: 18px;
