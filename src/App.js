@@ -23,6 +23,7 @@ import { retryLazy } from "./utils/lazyUtil.js"
 // import FriendListPage from "./pages/Friend/FriendListPage";
 // import SenderListPage from "./pages/Friend/SenderListPage";
 // import NoticePage from "./pages/Etc/NoticePage";
+// import DownloadPage from "./pages/Etc/DownloadPage";
 const NoLoginNav = retryLazy(() => import('./components/Navigation/NoLoginNav'));
 const LoginPage = retryLazy(() => import('./pages/User/LoginPage'));
 const SignupPage = retryLazy(() => import('./pages/User/SignupPage'));
@@ -36,6 +37,7 @@ const UserProfilePage = retryLazy(() => import('./pages/User/UserProfilePage'));
 const FriendListPage = retryLazy(() => import('./pages/Friend/FriendListPage'));
 const SenderListPage = retryLazy(() => import('./pages/Friend/SenderListPage'));
 const NoticePage = retryLazy(() => import('./pages/Etc/NoticePage'));
+const DownloadPage = retryLazy(() => import('./pages/Etc/DownloadPage'));
 
 
 const MainTitleText = styled.header`
@@ -80,6 +82,7 @@ function App(props) {
           <Route path="password" element={<NoLoginNav />} />
           <Route path="information" element={<NoLoginNav />} />
           <Route path="notice" element={<NoLoginNav />} />
+          <Route path="download" element={<NoLoginNav />} />
 
           <Route path="/users/:userId/memos" element={<YesLoginNav />} />
           <Route path="/users/:userId" element={<YesLoginNav />} />
@@ -93,6 +96,7 @@ function App(props) {
           <Route path="password" element={<ChangePwPage />} />
           <Route path="information" element={<InformationPage />} />
           <Route path="notice" element={<NoticePage />} />
+          <Route path="download" element={<DownloadPage />} />
 
           <Route path="/users/:userId/memos" element={<MemoListPage />} />
           <Route path="/users/:userId" element={<UserProfilePage />} />

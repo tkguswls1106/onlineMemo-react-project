@@ -84,9 +84,30 @@ const DivWrapper = styled.div`
     strong {
         font-size: 1.78rem;
     }
+
+    button {
+        background-color: #463f3a;
+        color: white;
+        border-radius: 5px;
+        font-family: "jua";
+        font-size: 1.5rem;
+
+        padding: 1px 6px 1px 6px;
+        border-top: 2px solid #767676;
+        border-left: 2px solid #767676;
+        border-bottom: 2px solid #212121;
+        border-right: 2px solid #212121;
+
+        &:hover {
+            cursor:pointer;
+            background-color: #2c2927;
+        }
+    }
 `;
 
 const Notice = () => {
+    const navigate = useNavigate();
+
     return (
         <div>
             <div style={{ lineHeight: "140%" }}><br></br></div>
@@ -103,8 +124,8 @@ const Notice = () => {
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
                 <strong><li>&nbsp;사이트 주소 및 앱 다운로드</li></strong>
-                - 웹사이트 링크:&nbsp;<a href="https://www.OnlineMemo.kr">www.OnlineMemo.kr</a><br></br>
-                - 앱 다운로드 안내: ~링크~
+                - 웹사이트:&nbsp;<a href="https://www.OnlineMemo.kr">www.OnlineMemo.kr</a><br></br>
+                - 모바일 앱:&nbsp;<button onClick={() => { navigate('/download') }}>다운로드 안내</button>
                 <div style={{ lineHeight: "60%" }}><br></br></div>
 
                 <strong><li>&nbsp;전달사항은 메일과 DM으로</li></strong>
