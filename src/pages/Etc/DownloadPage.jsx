@@ -100,7 +100,7 @@ const Download = () => {
             <div style={{ lineHeight: "185%" }}><br></br></div>
             <h5>&lt;&nbsp;Android&nbsp;&nbsp;<i className="fa fa-android" aria-hidden="true"></i>&nbsp;&gt;</h5>
             <div style={{ lineHeight: "35%" }}><br></br></div>
-            Play Store 다운로드:&nbsp;&nbsp;<a href=""><i className="fa fa-download" aria-hidden="true"></i></a>
+            Play Store 다운로드:&nbsp;&nbsp;<a href="https://play.google.com/store/apps/details?id=com.shj.onlinememo"><i className="fa fa-download" aria-hidden="true"></i></a>
             <div style={{ lineHeight: "150%" }}><br></br></div>
 
             <h5>&lt;&nbsp;iOS&nbsp;&nbsp;<i className="fa fa-apple" aria-hidden="true"></i>&nbsp;&gt;</h5>
