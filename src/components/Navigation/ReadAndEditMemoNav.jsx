@@ -124,6 +124,28 @@ const Wrapper = styled(NavWrapper)`
         }
     }
 
+    .flex-reload {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 13.7px;
+        width: 30px;
+        margin-top: 1.5px;
+
+        color: #463f3a;        
+        border: solid 1.8px #463f3a;
+        border-radius: 6px;
+        background-color: #f4f3ee;
+        padding: 2.3px 4.8px;
+
+        font-size: 1.45rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #f4f3eea4;
+        }
+    }
+
     .fa-clone {
         font-size: 1.45rem;   
         font-weight: bold;
@@ -136,6 +158,12 @@ const Wrapper = styled(NavWrapper)`
     }
 
     .copyText {
+        font-size: 1.15rem;
+        font-weight: bold; 
+        height: 11px;
+    }
+
+    .reloadText {
         font-size: 1.15rem;
         font-weight: bold; 
         height: 11px;
@@ -214,20 +242,32 @@ function ReadAndEditMemoNav(props) {
 
     const readPrivateNavItems = [  // 개인메모 보기 용도
         <span className="flex-left">
-            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(`/users/${props.userId}/memos`) }}></i>&nbsp;&nbsp;
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(`/users/${props.userId}/memos`) }}></i>
+            &nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
                 <i className={copyClassName} aria-hidden="true"></i>
                 <span className="copyText">복사</span>
+            </span>
+            &nbsp;&nbsp;
+            <span className="flex-reload" onClick={() => { window.location.reload() }}>
+                <i className="fa fa-refresh" aria-hidden="true"></i>
+                <span className="reloadText">리로드</span>
             </span>
         </span>,
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton" onClick={(event) => handleFirstModalClick("삭제", event)}>삭제</button>&nbsp;</span>
     ];
     const readGroupNavItems = [  // 공동메모 보기 용도
         <span className="flex-left">
-            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>&nbsp;&nbsp;
+            &nbsp;<i className="fa fa-arrow-left" aria-hidden="true" onClick={() => { navigate(-1) }}></i>
+            &nbsp;&nbsp;
             <span className="flex-copy" onClick={handleClickCopy}>
                 <i className={copyClassName} aria-hidden="true"></i>
                 <span className="copyText">복사</span>
+            </span>
+            &nbsp;&nbsp;
+            <span className="flex-reload" onClick={() => { window.location.reload() }}>
+                <i className="fa fa-refresh" aria-hidden="true"></i>
+                <span className="reloadText">리로드</span>
             </span>
         </span>,
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleFirstModalClick("그룹을 탈퇴", event)}>그룹 탈퇴</button>&nbsp;</span>
