@@ -251,7 +251,7 @@ function ReadAndEditMemoNav(props) {
             &nbsp;&nbsp;
             <span className="flex-reload" onClick={() => { window.location.reload() }}>
                 <i className="fa fa-refresh" aria-hidden="true"></i>
-                <span className="reloadText">리로드</span>
+                <span className="reloadText">로딩</span>
             </span>
         </span>,
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deletePrivateButton" onClick={(event) => handleFirstModalClick("삭제", event)}>삭제</button>&nbsp;</span>
@@ -267,7 +267,7 @@ function ReadAndEditMemoNav(props) {
             &nbsp;&nbsp;
             <span className="flex-reload" onClick={() => { window.location.reload() }}>
                 <i className="fa fa-refresh" aria-hidden="true"></i>
-                <span className="reloadText">리로드</span>
+                <span className="reloadText">로딩</span>
             </span>
         </span>,
         <span><button className="editButton" onClick={handleEditClick}>수정</button>&nbsp;&nbsp;<button className="deleteGroupButton" onClick={(event) => handleFirstModalClick("그룹을 탈퇴", event)}>그룹 탈퇴</button>&nbsp;</span>
