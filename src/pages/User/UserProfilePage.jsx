@@ -126,7 +126,7 @@ function UserProfilePage(props) {
 
     const handleClickCopy = (event) => {
         window.navigator.clipboard.writeText(user.loginId);
-        window.ReactNativeWebView && window.ReactNativeWebView.postMessage(props.content);  // 리액트 네이티브에 복사한 텍스트 전송 (모바일 웹뷰앱을 위한 코드)
+        window.ReactNativeWebView && window.ReactNativeWebView.postMessage(user.loginId);  // 리액트 네이티브에 복사한 텍스트 전송 (모바일 웹뷰앱을 위한 코드)
 
         setCopyClassName('fa fa-check');
         setTimeout(() => {
