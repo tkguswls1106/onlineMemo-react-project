@@ -188,10 +188,10 @@ function SignupPage(props) {
                     &nbsp;&nbsp;id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} style={{ width: "132px" }} placeholder=" 영문,숫자 (4~16자)" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "133px" }} placeholder=" 영문,숫자,특수문자 (8자 이상)" onChange={handleChangePw} />
+                    pw:&nbsp;&nbsp;<input type="password" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "133px" }} placeholder=" 영문,숫자,특수문자 (8자 이상)" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container">
-                    pw 확인:&nbsp;&nbsp;<input type="text" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} style={{ width: "93px" }} placeholder=" pw 재입력" size="14" onChange={handleChangeConfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="password" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} style={{ width: "93px" }} placeholder=" pw 재입력" size="14" onChange={handleChangeConfirm} />
                 </div>
                 <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">

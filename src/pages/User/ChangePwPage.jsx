@@ -205,13 +205,13 @@ function ChangePwPage(props) {
                     &nbsp;&nbsp;현재 id:&nbsp;&nbsp;<input type="text" className={isWrongId ? 'wrongId inputInform' : 'inputInform'} style={{ width: "96px" }} size="15" maxLength="16" onChange={handleChangeLoginId} />
                 </div>
                 <div className="flex-container">
-                    현재 pw:&nbsp;&nbsp;<input type="text" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "98px" }} size="15" onChange={handleChangePw} />
+                    현재 pw:&nbsp;&nbsp;<input type="password" className={isWrongPw ? 'wrongPw inputInform' : 'inputInform'} style={{ width: "98px" }} size="15" onChange={handleChangePw} />
                 </div>
                 <div className="flex-container change">
-                    바꿀 pw:&nbsp;&nbsp;<input type="text" size="15" className={isWrongNewPw ? 'wrongNewPw inputInform' : 'inputInform'} style={{ width: "97px" }} placeholder=" 영문,숫자,기호 (8자 이상)" onChange={handleChangeNewPw} />
+                    바꿀 pw:&nbsp;&nbsp;<input type="password" size="15" className={isWrongNewPw ? 'wrongNewPw inputInform' : 'inputInform'} style={{ width: "97px" }} placeholder=" 영문,숫자,기호 (8자 이상)" onChange={handleChangeNewPw} />
                 </div>
                 <div className="flex-container change">
-                    pw 확인:&nbsp;&nbsp;<input type="text" size="15" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} style={{ width: "97px" }} placeholder=" pw 재입력" onChange={handleChangeConfirm} />
+                    pw 확인:&nbsp;&nbsp;<input type="password" size="15" className={isWrongConfirm ? 'wrongConfirm inputInform' : 'inputInform'} style={{ width: "97px" }} placeholder=" pw 재입력" onChange={handleChangeConfirm} />
                 </div>
                 <div style={{ lineHeight: "40%" }}><br></br></div>
                 <div className="flex-container">
