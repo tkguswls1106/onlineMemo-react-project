@@ -115,7 +115,7 @@ const Download = () => {
                     <li>과정 3: 옵션에서 '홈 화면에 추가' 클릭</li>
                 </ul>
             </div>
-            <div style={{ lineHeight: "170%" }}><br></br></div>
+            <div style={{ lineHeight: "165%" }}><br></br></div>
 
             <strong>
                 <i className="fa fa-arrow-down" aria-hidden="true"></i>
