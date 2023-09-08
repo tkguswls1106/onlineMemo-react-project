@@ -141,7 +141,7 @@ const Inform = () => {
             <span className="device"><i className="fa fa-angle-down" aria-hidden="true"></i>&nbsp;WEB&nbsp;&nbsp;<i className="fa fa-desktop" aria-hidden="true"></i></span>
             <ul style={{ marginTop: "0px", marginBottom: "0px" }}>
                 <div style={{ lineHeight: "30%" }}><br></br></div>
-                <li><strong>프론트엔드 :</strong>&nbsp;&nbsp;React.js</li>
+                <li><strong>프론트엔드 :</strong>&nbsp;&nbsp;React, JavaScript</li>
                 <li><strong>백엔드 :</strong>&nbsp;&nbsp;Spring Boot, Java</li>
                 <li><strong>데이터베이스 :</strong>&nbsp;&nbsp;MySQL</li>
                 <li><strong>보안 :</strong>&nbsp;&nbsp;Spring Security, JSON Web Token</li>
