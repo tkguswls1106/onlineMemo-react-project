@@ -42,6 +42,7 @@ function LoginPage(props) {
     const navigate = useNavigate();
 
     const [loginFailModalOn, setLoginFailModalOn] = useState(false);
+    const [noticeModalOn, setNoticeModalOn] = useState(false);
 
     const [loginIdValue, setLoginIdValue] = useState("");
     const [pwValue, setPwValue] = useState("");
@@ -67,6 +68,13 @@ function LoginPage(props) {
 
     const handleLoginClick = async (loginIdValue, pwValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
+
+        const currentDate = new Date();
+        const targetDate = new Date('2024-08-16T22:00:00+09:00');  // 한국 시각 기준으로 2024.08.16 오후10시
+        if (currentDate > targetDate) {
+            alert('접속 불가능 - 대규모 패치중입니다!');
+            return;
+        }
 
         await axios
             .post(process.env.REACT_APP_DB_HOST + '/login', {
@@ -120,7 +128,29 @@ function LoginPage(props) {
                 navigate(`/users/${tokenUserId}/memos`);
             }
         }
+
+        if (!storedToken) {
+            setTimeout(() => {
+                setNoticeModalOn(true);
+            }, 300); // 0.3초 딜레이 후에 공지 모달 생성.
+        }
+        else {
+            navigate(`/memos`);
+        }
     }, [tokenUserId]);
+
+    useEffect(() => {
+        const handleEnterKeyDown = (event) => {  // 엔터키로 공지 모달 닫기.
+            if (event.key === "Enter" && noticeModalOn == true) {
+                setNoticeModalOn(false);
+            }
+        };
+        if (noticeModalOn) window.addEventListener("keydown", handleEnterKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleEnterKeyDown);
+        };
+    }, [noticeModalOn]);
 
     return (
         <HelloWrapper>
@@ -161,6 +191,17 @@ function LoginPage(props) {
                         다시 입력해주세요.
                     </h2>
                     <button className="cancelButton" onClick={() => setLoginFailModalOn(false)}>확인</button>
+                </ConfirmModal>
+            )}
+            {noticeModalOn && (
+                <ConfirmModal closeModal={() => setNoticeModalOn(!noticeModalOn)}>
+                    <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    <h2 className="successSignupModalTitle">
+                        [ 대규모 패치 공지 ]<br></br>
+                        '8/16 22시 ~ 8/17 06시'<br></br>
+                        접속이 제한됩니다. 감사합니다!
+                    </h2>
+                    <button className="cancelButton" onClick={() => setNoticeModalOn(false)}>확인</button>
                 </ConfirmModal>
             )}
         </HelloWrapper>
