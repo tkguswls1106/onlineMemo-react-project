@@ -69,12 +69,12 @@ function LoginPage(props) {
     const handleLoginClick = async (loginIdValue, pwValue, e) => {  // 화살표함수로 선언하여 이벤트 사용시 바인딩되도록 함.
         // e.preventDefault();  // 리프레쉬 방지 (spa로서)
 
-        const currentDate = new Date();
-        const targetDate = new Date('2024-08-16T22:00:00+09:00');  // 한국 시각 기준으로 2024.08.16 오후10시
-        if (currentDate > targetDate) {
-            alert('접속 불가능 - 대규모 패치중입니다!');
-            return;
-        }
+        // const currentDate = new Date();
+        // const targetDate = new Date('2024-08-16T22:00:00+09:00');  // 한국 시각 기준으로 2024.08.16 오후10시
+        // if (currentDate > targetDate) {
+        //     alert('접속 불가능 - 대규모 패치중입니다!');
+        //     return;
+        // }
 
         await axios
             .post(process.env.REACT_APP_DB_HOST + '/login', {
