@@ -196,7 +196,7 @@ function LoginPage(props) {
                     <h2 className="successSignupModalTitle">
                         [ 대규모 패치 공지 ]<br></br>
                         '8/16 22시 ~ 8/17 06시'<br></br>
-                        접속이 제한됩니다. 감사합니다!
+                        접속이 제한됩니다. (꾸벅)
                     </h2>
                     <button className="cancelButton" onClick={() => setNoticeModalOn(false)}>확인</button>
                 </ConfirmModal>
